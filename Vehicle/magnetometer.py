@@ -1,9 +1,9 @@
 import csv
 import time
 
-def stream_gps():
+def stream_magnetometer():
 
-    with open("../dummy_data/gps_data.csv", newline="") as f:
+    with open("../dummy_data/magnetometer_data.csv", newline="") as f:
         reader = csv.DictReader(f)
 
         prev_time = None
@@ -19,9 +19,8 @@ def stream_gps():
 
             prev_time = t
 
-            gps_pkt = {
-                "lat": float(row["lat_N"]),
-                "lon": float(row["lon_E"])
+            mag_pkt = {
+                "raw_heading_deg": float(row["raw_heading_deg"])
             }
 
-            yield gps_pkt
+            yield mag_pkt

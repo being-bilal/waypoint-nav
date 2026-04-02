@@ -47,11 +47,13 @@ def send_waypoints():
     sock.close()
 
 # Thread: listen for telemetry from Pi
+
 def telemetry_listener():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind(("0.0.0.0", UDP_PORT_IN))
     sock.settimeout(1.0)
+
     print(f"[RX] Listening for telemetry on port {UDP_PORT_IN}...")
 
     while running:
@@ -59,26 +61,24 @@ def telemetry_listener():
             data, _ = sock.recvfrom(4096)
             pkt = json.loads(data.decode())
 
-            if pkt.get("type") == "imu":
-                telemetry["roll"]  = pkt.get("roll",  0.0)
-                telemetry["pitch"] = pkt.get("pitch", 0.0)
-                telemetry["yaw"]   = pkt.get("yaw",   0.0)
+            # -------- IMU --------
+            imu = pkt.get("imu", {})
+            telemetry["roll"]  = imu.get("gyro_x", 0.0)
+            telemetry["pitch"] = imu.get("gyro_y", 0.0)
+            telemetry["yaw"]   = imu.get("gyro_z", 0.0)
 
-            elif pkt.get("type") == "gps":
-                telemetry["gps_lat"] = pkt.get("lat", 0.0)
-                telemetry["gps_lon"] = pkt.get("lon", 0.0)
+            # -------- GPS --------
+            gps = pkt.get("gps", {})
+            telemetry["gps_lat"] = gps.get("lat", 0.0)
+            telemetry["gps_lon"] = gps.get("lon", 0.0)
 
-            elif pkt.get("type") == "nav":
-                telemetry["heading"]           = pkt.get("heading",           0.0)
-                telemetry["desired_bearing"]   = pkt.get("desired_bearing",   0.0)
-                telemetry["heading_error"]     = pkt.get("heading_error",     0.0)
-                telemetry["cross_track_error"] = pkt.get("cross_track_error", 0.0)
-                telemetry["dist_to_waypoint"]  = pkt.get("dist_to_waypoint",  0.0)
-                telemetry["active_wp"]         = pkt.get("active_waypoint_idx", 0)
-                telemetry["nav_status"]        = pkt.get("nav_status",        "?")
+            # -------- Magnetometer --------
+            mag = pkt.get("mag", {})
+            telemetry["heading"] = mag.get("heading_deg", 0.0)
 
         except socket.timeout:
             continue
+
         except Exception as e:
             print(f"[RX] Error: {e}")
 

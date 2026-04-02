@@ -18,6 +18,7 @@ import time
 import csv
 import os
 import logging
+from nav import transmitData
 
 BASE_IP      = "127.0.0.1"
 UDP_PORT_OUT = 5006
@@ -76,7 +77,7 @@ def waypoint_receiver():
     
 
     sock.close()
-
+    
 def main():
 
     global running
@@ -85,76 +86,24 @@ def main():
     wp_thread = threading.Thread(target=waypoint_receiver, daemon=True)
     wp_thread.start()
 
-    # Load CSV files
-    gps_rows = load_csv(GPS_CSV)
-    imu_rows = load_csv(IMU_CSV)
-    mag_rows = load_csv(MAG_CSV)
-
-    print(f"[CSV] Loaded  GPS:{len(gps_rows)} rows  IMU:{len(imu_rows)} rows  MAG:{len(mag_rows)} rows")
+    print("[TX] Starting NAV data stream. Press Ctrl+C to stop.\n")
 
     # UDP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    # Index counters
-    gps_idx = 0
-    imu_idx = 0
-    mag_idx = 0
-
     # Loop timing
     dt = 0.01   # 100 Hz
 
-    print("[TX] Starting RAW data stream. Press Ctrl+C to stop.\n")
-
     try:
 
-        while running:
+        for nav_data in transmitData():
 
-            imu_row = imu_rows[imu_idx % len(imu_rows)]
-            gps_row = gps_rows[gps_idx % len(gps_rows)]
-            mag_row = mag_rows[mag_idx % len(mag_rows)]
+            if not running:
+                break
 
-            # --------------------------------------------------------
-            # IMU packet (raw)
-            # --------------------------------------------------------
-            imu_pkt = {
-                "type": "imu",
-                "accel_x": float(imu_row["accel_x_ms2"]),
-                "accel_y": float(imu_row["accel_y_ms2"]),
-                "accel_z": float(imu_row["accel_z_ms2"]),
-                "gyro_x":  float(imu_row["gyro_x_degs"]),
-                "gyro_y":  float(imu_row["gyro_y_degs"]),
-                "gyro_z":  float(imu_row["gyro_z_degs"])
-            }
+            print(f"[TX] Sending nav packet: {nav_data}")
 
-            sock.sendto(json.dumps(imu_pkt).encode(), (BASE_IP, UDP_PORT_OUT))
-
-            # --------------------------------------------------------
-            # GPS packet (raw)
-            # --------------------------------------------------------
-            gps_pkt = {
-                "type": "gps",
-                "lat": float(gps_row["lat_N"]),
-                "lon": float(gps_row["lon_E"])
-            }
-
-            sock.sendto(json.dumps(gps_pkt).encode(), (BASE_IP, UDP_PORT_OUT))
-
-            # --------------------------------------------------------
-            # Magnetometer packet (raw)
-            # --------------------------------------------------------
-            mag_pkt = {
-                "type": "mag",
-                "heading_deg": float(mag_row["raw_heading_deg"])
-            }
-
-            sock.sendto(json.dumps(mag_pkt).encode(), (BASE_IP, UDP_PORT_OUT))
-
-            # --------------------------------------------------------
-            # Increment indexes
-            # --------------------------------------------------------
-            imu_idx += 1
-            gps_idx += 1
-            mag_idx += 1
+            sock.sendto(json.dumps(nav_data).encode(), (BASE_IP, UDP_PORT_OUT))
 
             time.sleep(dt)
 
@@ -164,7 +113,6 @@ def main():
 
     finally:
         sock.close()
-
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
