@@ -1,6 +1,5 @@
 """
 Reads IMU + GPS data from Pixhawk over USB and prints it.
-Install: pip install pymavlink
 """
 
 from pymavlink import mavutil

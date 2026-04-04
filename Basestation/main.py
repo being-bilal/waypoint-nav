@@ -1,65 +1,135 @@
-import numpy as np
-import folium
-import matplotlib.pyplot as plt
-"""
-Dummy waypoints for testing:
-Waypoint 0 (Start): 27.915800°N, 78.078200°E
-Waypoint 1:         27.916150°N, 78.078600°E  
-Waypoint 2:         27.916400°N, 78.079100°E  
-Waypoint 3:         27.916100°N, 78.079400°E  
-Waypoint 4 (End):   27.915800°N, 78.079200°E  
-"""
-waypoints = [
-    (27.914731, 78.0766382),
-    (27.9147516, 78.0768118),
-    (27.9146165, 78.0767982),
-    (27.9146257, 78.076599),
-    (27.914731, 78.0766382),
+import socket
+import threading
+import json
+import time
+import gui
+
+ASV_IP       = "127.0.0.1"
+UDP_PORT_OUT = 5005
+UDP_PORT_IN  = 5006
+
+WAYPOINTS = [
+    (27.914731,78.0766382),
+    (27.9147516,78.0768118),
+    (27.9146165,78.0767982),
+    (27.9146257,78.076599),
+    (27.914731,78.0766382)
 ]
 
-m = folium.Map(location=[waypoints[0][0], waypoints[0][1]], zoom_start=20)
+telemetry = {
+    "gps_lat":           0.0,
+    "gps_lon":           0.0,
+    "heading":           0.0,
+    "roll":              0.0,
+    "pitch":             0.0,
+    "yaw":               0.0,
+    "desired_bearing":   0.0,
+    "heading_error":     0.0,
+    "cross_track_error": 0.0,
+    "dist_to_waypoint":  0.0,
+    "active_wp":         0,
+    "nav_status":        "WAITING",
+}
 
-folium.Marker([waypoints[0][0], waypoints[0][1]], popup="Start").add_to(m)
-folium.Marker([waypoints[-1][0], waypoints[-1][1]], popup="End").add_to(m)
+running = True
 
-folium.PolyLine(waypoints, color="red", weight=3).add_to(m)
+def send_waypoints():
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    packet = {
+        "type":      "waypoints",
+        "waypoints": WAYPOINTS,
+    }
+    data = json.dumps(packet).encode()
+    for _ in range(5):
+        sock.sendto(data, (ASV_IP, UDP_PORT_OUT))
+        time.sleep(0.2)
+    print(f"[TX] Waypoints sent to {ASV_IP}:{UDP_PORT_OUT}  ({len(WAYPOINTS)} points)")
+    sock.close()
 
-m.save("map.html")
+def telemetry_listener():
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock.bind(("0.0.0.0", UDP_PORT_IN))
+    sock.settimeout(1.0)
 
-# Turning lat/lon into x/y for plotting
-R = 6378137
-lat0 = waypoints[0][0]
-lon0 = waypoints[0][1]
-x_vals = []
-y_vals = []
+    print(f"[RX] Listening for telemetry on port {UDP_PORT_IN}...")
 
-for lat, lon in waypoints:
-    x = R * np.radians(lon - lon0) * np.cos(np.radians(lat0))
-    y = R * np.radians(lat - lat0)
+    while running:
+        try:
+            data, _ = sock.recvfrom(4096)
+            pkt = json.loads(data.decode())
 
-    x_vals.append(x/1000)  
-    y_vals.append(y/1000)
+            imu = pkt.get("imu", {})
+            telemetry["roll"]  = imu.get("gyro_x", 0.0)
+            telemetry["pitch"] = imu.get("gyro_y", 0.0)
+            telemetry["yaw"]   = imu.get("gyro_z", 0.0)
 
-plt.figure(figsize=(8,6))
+            gps = pkt.get("gps", {})
+            telemetry["gps_lat"] = gps.get("lat", 0.0)
+            telemetry["gps_lon"] = gps.get("lon", 0.0)
 
-plt.plot(
-    x_vals,
-    y_vals,
-    marker='o',
-    linewidth=2,
-    label="Target path"
-)
+            mag = pkt.get("mag", {})
+            telemetry["heading"] = mag.get("heading_deg", 0.0)
 
+        except socket.timeout:
+            continue
 
-plt.scatter(x_vals[0], y_vals[0], s=100, label="Start")
-plt.scatter(x_vals[-1], y_vals[-1], s=100, label="End")
+        except Exception as e:
+            print(f"[RX] Error: {e}")
 
-plt.title("Target Path")
-plt.xlabel("X (km)")
-plt.ylabel("Y (km)")
+    sock.close()
 
-plt.axis("equal")
-plt.grid(True)
-plt.legend()
+def main():
+    global running
 
-plt.show()
+    send_waypoints()
+
+    listener = threading.Thread(target=telemetry_listener, daemon=True)
+    listener.start()
+
+    gui_thread = threading.Thread(target=gui.show, args=(WAYPOINTS,), daemon=True)
+    gui_thread.start()
+
+    print("\033[2J")
+    try:
+        while True:
+            t = telemetry
+            wp_idx   = t["active_wp"]
+            wp_total = len(WAYPOINTS)
+            wp_lat   = WAYPOINTS[min(wp_idx, wp_total - 1)][0]
+            wp_lon   = WAYPOINTS[min(wp_idx, wp_total - 1)][1]
+
+            print(
+                f"\033[H"
+                f"\n"
+                f"{'='*55}\n"
+                f"  ASV LIVE TELEMETRY\n"
+                f"{'='*55}\n"
+                f"\n"
+                f"  GPS\n"
+                f"    Lat : {t['gps_lat']:>12.6f} °N\n"
+                f"    Lon : {t['gps_lon']:>12.6f} °E\n"
+                f"\n"
+                f"  IMU\n"
+                f"    Roll  : {t['roll']:>7.2f} °\n"
+                f"    Pitch : {t['pitch']:>7.2f} °\n"
+                f"    Yaw   : {t['yaw']:>7.2f} °\n"
+                f"\n"
+                f"  NAVIGATION   [{t['nav_status']}]   WP {wp_idx}/{wp_total-1}\n"
+                f"    Target      : {wp_lat:.6f} °N  {wp_lon:.6f} °E\n"
+                f"    Heading     : {t['heading']:>7.1f} °   (desired {t['desired_bearing']:.1f} °)\n"
+                f"    Heading err : {t['heading_error']:>+7.1f} °\n"
+                f"    Cross-track : {t['cross_track_error']:>+7.2f} m\n"
+                f"    Dist to WP  : {t['dist_to_waypoint']:>7.2f} m\n"
+                f"\n"
+                f"{'='*55}\n"
+                f"  Ctrl+C to quit\n",
+                end="", flush=True
+            )
+            time.sleep(0.1)
+
+    except KeyboardInterrupt:
+        running = False
+        print("\n[INFO] Stopped.")
+
+main()
