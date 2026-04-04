@@ -3,7 +3,7 @@ import threading
 import json
 import time
 
-ASV_IP       = "127.0.0.1"   
+ASV_IP       = "172.20.10.2"   
 UDP_PORT_OUT = 5005             
 UDP_PORT_IN  = 5006              
 

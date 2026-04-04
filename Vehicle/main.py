@@ -100,9 +100,6 @@ def main():
 
             if not running:
                 break
-
-            print(f"[TX] Sending nav packet: {nav_data}")
-
             sock.sendto(json.dumps(nav_data).encode(), (BASE_IP, UDP_PORT_OUT))
 
             time.sleep(dt)

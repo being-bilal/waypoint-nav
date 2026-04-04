@@ -2,7 +2,8 @@ import csv
 import time
 
 def stream_imu():
-
+    # Reading Dummy IMU data from CSV and yielding one packet at a time with timing
+    # !! Replace with real IMU readings !!
     with open("../dummy_data/imu_data.csv", newline="") as f:
         reader = csv.DictReader(f)
 
