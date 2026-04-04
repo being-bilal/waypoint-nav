@@ -3,6 +3,7 @@ import threading
 import json
 import time
 import gui
+import logging
 
 ASV_IP       = "127.0.0.1"
 UDP_PORT_OUT = 5005
@@ -31,8 +32,14 @@ telemetry = {
     "nav_status":        "WAITING",
 }
 
-running = True
+logging.basicConfig(
+    filename="info.log",
+    level=logging.INFO,
+    format="%(asctime)s - [%(levelname)s] - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
 
+running = True
 def send_waypoints():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     packet = {
@@ -44,6 +51,7 @@ def send_waypoints():
         sock.sendto(data, (ASV_IP, UDP_PORT_OUT))
         time.sleep(0.2)
     print(f"[TX] Waypoints sent to {ASV_IP}:{UDP_PORT_OUT}  ({len(WAYPOINTS)} points)")
+    logging.info("Waypoints sent to %s:%d  (%d points)", ASV_IP, UDP_PORT_OUT, len(WAYPOINTS))
     sock.close()
 
 def telemetry_listener():
@@ -53,6 +61,7 @@ def telemetry_listener():
     sock.settimeout(1.0)
 
     print(f"[RX] Listening for telemetry on port {UDP_PORT_IN}...")
+    logging.info("Telemetry listener started on port %d", UDP_PORT_IN)
 
     while running:
         try:
@@ -76,6 +85,7 @@ def telemetry_listener():
 
         except Exception as e:
             print(f"[RX] Error: {e}")
+            logging.error("Error in telemetry listener: %s", str(e))
 
     sock.close()
 
@@ -87,10 +97,9 @@ def main():
     listener = threading.Thread(target=telemetry_listener, daemon=True)
     listener.start()
 
-    gui_thread = threading.Thread(target=gui.show, args=(WAYPOINTS,), daemon=True)
+    gui_thread = threading.Thread(target=gui.show, args=(WAYPOINTS, telemetry), daemon=True)
     gui_thread.start()
 
-    print("\033[2J")
     try:
         while True:
             t = telemetry
@@ -98,38 +107,11 @@ def main():
             wp_total = len(WAYPOINTS)
             wp_lat   = WAYPOINTS[min(wp_idx, wp_total - 1)][0]
             wp_lon   = WAYPOINTS[min(wp_idx, wp_total - 1)][1]
-
-            print(
-                f"\033[H"
-                f"\n"
-                f"{'='*55}\n"
-                f"  ASV LIVE TELEMETRY\n"
-                f"{'='*55}\n"
-                f"\n"
-                f"  GPS\n"
-                f"    Lat : {t['gps_lat']:>12.6f} °N\n"
-                f"    Lon : {t['gps_lon']:>12.6f} °E\n"
-                f"\n"
-                f"  IMU\n"
-                f"    Roll  : {t['roll']:>7.2f} °\n"
-                f"    Pitch : {t['pitch']:>7.2f} °\n"
-                f"    Yaw   : {t['yaw']:>7.2f} °\n"
-                f"\n"
-                f"  NAVIGATION   [{t['nav_status']}]   WP {wp_idx}/{wp_total-1}\n"
-                f"    Target      : {wp_lat:.6f} °N  {wp_lon:.6f} °E\n"
-                f"    Heading     : {t['heading']:>7.1f} °   (desired {t['desired_bearing']:.1f} °)\n"
-                f"    Heading err : {t['heading_error']:>+7.1f} °\n"
-                f"    Cross-track : {t['cross_track_error']:>+7.2f} m\n"
-                f"    Dist to WP  : {t['dist_to_waypoint']:>7.2f} m\n"
-                f"\n"
-                f"{'='*55}\n"
-                f"  Ctrl+C to quit\n",
-                end="", flush=True
-            )
             time.sleep(0.1)
 
     except KeyboardInterrupt:
         running = False
         print("\n[INFO] Stopped.")
+        logging.info("Basestation stopped by user.")
 
 main()

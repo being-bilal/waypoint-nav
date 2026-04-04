@@ -1,0 +1,21 @@
+2026-04-05 00:40:22 - [INFO] - Telemetry listener started on port 5006
+2026-04-05 00:43:35 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-05 00:43:35 - [INFO] - Telemetry listener started on port 5006
+2026-04-05 00:43:35 - [INFO] - Map saved to map.html with 5 waypoints
+2026-04-05 00:43:35 - [INFO] - Starting telemetry plot
+2026-04-05 00:43:39 - [INFO] - Basestation stopped by user.
+2026-04-05 00:44:39 - [INFO] - [TX] Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-05 00:44:39 - [INFO] - [RX] Telemetry listener started on port 5006
+2026-04-05 00:44:39 - [INFO] - GUI] Map saved to map.html with 5 waypoints
+2026-04-05 00:44:39 - [INFO] - GUI] Starting telemetry plot
+2026-04-05 00:44:41 - [INFO] - Basestation stopped by user.
+2026-04-05 00:45:24 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-05 00:45:24 - [INFO] - Telemetry listener started on port 5006
+2026-04-05 00:45:24 - [INFO] - Map saved to map.html with 5 waypoints
+2026-04-05 00:45:24 - [INFO] - Starting telemetry plot
+2026-04-05 00:45:26 - [INFO] - Basestation stopped by user.
+2026-04-05 01:10:15 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-05 01:10:15 - [INFO] - Building dashboard with 5 waypoints
+2026-04-05 01:10:15 - [INFO] - Telemetry listener started on port 5006
+2026-04-05 01:10:15 - [INFO] - Dashboard running at http://localhost:8080
+2026-04-05 01:11:37 - [INFO] - Basestation stopped by user.
