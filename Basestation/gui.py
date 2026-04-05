@@ -166,12 +166,10 @@ def _build_dashboard(waypoints, map_html):
 </div>
 
 <script>
-// ── Inject map HTML ────────────────────────────────────────────
 document.getElementById('map-container').innerHTML = `{map_escaped}`;
 const mapEl = document.getElementById('map-container').firstElementChild;
 if (mapEl) {{ mapEl.style.cssText = 'width:100%;height:100%;border:none;'; }}
 
-// ── Tab switching ──────────────────────────────────────────────
 function switchTab(name, btn) {{
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
@@ -180,7 +178,6 @@ function switchTab(name, btn) {{
   if (name === 'map') window.dispatchEvent(new Event('resize'));
 }}
 
-// ── Chart helpers ──────────────────────────────────────────────
 const GRID  = '#1e2330';
 const TICK  = {{ color: '#4a5068', font: {{ family: 'JetBrains Mono', size: 10 }} }};
 const SCALE = {{ x: {{ ticks: TICK, grid: {{ color: GRID }} }},
@@ -205,7 +202,6 @@ function pushLabel(chart, lbl) {{
   if (chart.data.labels.length > MAX) chart.data.labels.shift();
 }}
 
-// ── Charts ────────────────────────────────────────────────────
 const WP_XY  = {waypoints_js};
 const WP_RAW = {waypoints_raw};
 
@@ -256,20 +252,25 @@ const distChart = new Chart(document.getElementById('c-dist'), {{
   options: BASE
 }});
 
-// ── XY conversion ──────────────────────────────────────────────
-const R_E = 6378137, lat0 = WP_RAW[0][0], lon0 = WP_RAW[0][1];
+// ── XY conversion (matches Python exactly) ─────────────────────
+const R_E  = 6378137;
+const lat0 = WP_RAW[0][0];
+const lon0 = WP_RAW[0][1];
+
 function toXY(lat, lon) {{
+  const dLon = (lon - lon0) * Math.PI / 180;
+  const dLat = (lat - lat0) * Math.PI / 180;
+  const lat0r = lat0 * Math.PI / 180;
   return {{
-    x: +(R_E*(lon-lon0)*Math.PI/180*Math.cos(lat0*Math.PI/180)).toFixed(3),
-    y: +(R_E*(lat-lat0)*Math.PI/180).toFixed(3)
+    x: +(R_E * dLon * Math.cos(lat0r)).toFixed(3),
+    y: +(R_E * dLat).toFixed(3)
   }};
 }}
 
-// ── Poll /telemetry ────────────────────────────────────────────
 async function poll() {{
   try {{
-    const d   = await (await fetch('/telemetry')).json();
-    const ts  = new Date().toLocaleTimeString('en', {{hour12:false}});
+    const d  = await (await fetch('/telemetry')).json();
+    const ts = new Date().toLocaleTimeString('en', {{hour12:false}});
 
     document.getElementById('hdr-status').textContent = d.nav_status;
     document.getElementById('hdr-lat').textContent    = d.gps_lat.toFixed(6);
@@ -301,7 +302,7 @@ async function poll() {{
     push(distChart, 0, d.dist_to_waypoint);
     distChart.update();
 
-  }} catch(e) {{ /* server not ready, retry silently */ }}
+  }} catch(e) {{}}
 }}
 
 setInterval(poll, 200);
@@ -310,7 +311,6 @@ poll();
 </body>
 </html>"""
 
-# ── Minimal HTTP server ───────────────────────────────────────────────────────
 class _Handler(BaseHTTPRequestHandler):
     def log_message(self, *a): pass
 
