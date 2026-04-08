@@ -54,3 +54,28 @@
 2026-04-05 01:32:11 - [INFO] - Telemetry listener started on port 5006
 2026-04-05 01:32:11 - [INFO] - Dashboard running at http://localhost:8080
 2026-04-05 01:32:40 - [INFO] - Basestation stopped by user.
+2026-04-05 19:15:07 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-05 19:15:07 - [INFO] - Building dashboard with 5 waypoints
+2026-04-05 19:15:07 - [INFO] - Telemetry listener started on port 5006
+2026-04-05 19:15:07 - [INFO] - Dashboard running at http://localhost:8080
+2026-04-05 19:15:28 - [INFO] - Basestation stopped by user.
+2026-04-05 19:16:08 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-05 19:16:08 - [INFO] - Building dashboard with 5 waypoints
+2026-04-05 19:16:08 - [INFO] - Telemetry listener started on port 5006
+2026-04-05 19:16:08 - [INFO] - Dashboard running at http://localhost:8080
+2026-04-05 19:18:01 - [INFO] - Basestation stopped by user.
+2026-04-05 19:18:17 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-05 19:18:17 - [INFO] - Building dashboard with 5 waypoints
+2026-04-05 19:18:17 - [INFO] - Telemetry listener started on port 5006
+2026-04-05 19:18:17 - [INFO] - Dashboard running at http://localhost:8080
+2026-04-05 19:24:03 - [INFO] - Basestation stopped by user.
+2026-04-05 19:26:26 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-05 19:26:26 - [INFO] - Building dashboard with 5 waypoints
+2026-04-05 19:26:26 - [INFO] - Telemetry listener started on port 5006
+2026-04-05 19:26:26 - [INFO] - Dashboard running at http://localhost:8080
+2026-04-06 20:22:36 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-06 20:22:36 - [INFO] - Building dashboard with 5 waypoints
+2026-04-06 20:22:36 - [INFO] - Telemetry listener started on port 5006
+2026-04-06 20:22:37 - [INFO] - NumExpr defaulting to 10 threads.
+2026-04-06 20:22:37 - [INFO] - Dashboard running at http://localhost:8080
+2026-04-06 20:24:02 - [INFO] - Basestation stopped by user.

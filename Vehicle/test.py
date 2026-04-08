@@ -1,11 +1,12 @@
 """
 Reads IMU + GPS data from Pixhawk over USB and prints it.
+ls /dev/tty.usbmodem*
 """
 
 from pymavlink import mavutil
 import math
 
-master = mavutil.mavlink_connection("/dev/tty.usbmodem11301", baud=115200)
+master = mavutil.mavlink_connection("/dev/tty.usbmodem1101", baud=115200)
 
 print("Waiting for heartbeat...")
 master.wait_heartbeat()

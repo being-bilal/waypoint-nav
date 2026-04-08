@@ -62,23 +62,20 @@ def telemetry_listener():
 
     print(f"[RX] Listening for telemetry on port {UDP_PORT_IN}...")
     logging.info("Telemetry listener started on port %d", UDP_PORT_IN)
+    
 
     while running:
         try:
             data, _ = sock.recvfrom(4096)
             pkt = json.loads(data.decode())
 
-            imu = pkt.get("imu", {})
-            telemetry["roll"]  = imu.get("gyro_x", 0.0)
-            telemetry["pitch"] = imu.get("gyro_y", 0.0)
-            telemetry["yaw"]   = imu.get("gyro_z", 0.0)
+            accel = pkt.get("accel", {})
+            telemetry["ax"] = accel.get("ax", 0.0)
+            telemetry["ay"] = accel.get("ay", 0.0)
+            telemetry["az"] = accel.get("az", 0.0)
 
-            gps = pkt.get("gps", {})
-            telemetry["gps_lat"] = gps.get("lat", 0.0)
-            telemetry["gps_lon"] = gps.get("lon", 0.0)
-
-            mag = pkt.get("mag", {})
-            telemetry["heading"] = mag.get("heading_deg", 0.0)
+            print(f"\rACCEL  x={telemetry['ax']:>+7.3f}  y={telemetry['ay']:>+7.3f}  z={telemetry['az']:>+7.3f} m/s²",
+                  end="", flush=True)
 
         except socket.timeout:
             continue
