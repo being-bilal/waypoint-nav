@@ -6,7 +6,6 @@ GRAVITY = 9.81
 
 class Accelerometer:
     def __init__(self):
-        # no master, no connection — dispatcher handles it
         self.ax = 0.0
         self.ay = 0.0
         self.az = 0.0

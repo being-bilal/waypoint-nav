@@ -15,6 +15,7 @@ def transmitData():
                     "az": accel_data["az"],
                 },
             }
+            
 
             yield packet
 
