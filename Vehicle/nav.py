@@ -111,23 +111,16 @@ def calculate_target_point():
     A = np.array(waypoints[0])
     B = np.array(waypoints[1])
     P = np.array(get_current_position())
-
     # Vector AB and AP
     AB = B - A
     AP = P - A
     AB_length = np.linalg.norm(AB)
-
-    # Projection distance along AB
     s = np.dot(AP, AB) / AB_length
-
-    # Look-ahead distance
     Delta = 5.0  # meters
-
     delta_AB = AB / AB_length
-
+    
     # Target point
     T = A + (s + Delta) * delta_AB
-
     return tuple(np.round(T, 4))
 
 print("Target point (x, y):", calculate_target_point())
@@ -137,6 +130,13 @@ def get_current_heading():
     # For testing, we can assume a fixed heading (e.g., 0 degrees)
     return 0.0
 
+def calculate_target_heading():
+    T = calculate_target_point()
+    P = get_current_position()
+    dx, dy = T[0] - P[0], T[1] - P[1]
+    Q = np.arctan2(dy, dx)
+    return np.degrees(Q)
+print("Target heading (degrees):", calculate_target_heading())
 
 waypoints = to_local_coordinates()
 A = waypoints[0]
