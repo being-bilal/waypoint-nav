@@ -2,16 +2,35 @@ import time
 import xsensdeviceapi as xda
 
 # ---------------------------------------------------------
-# 1. UPDATED WRAPPER CLASS (Now grabs Accel + Euler)
+# 1. WRAPPER CLASS (Grabs Accel + Euler)
 # ---------------------------------------------------------
+
+# --- IMU ALIGNMENT CALIBRATION ---
+YAW_MOUNTING_OFFSET = 0.0
+
 class SimpleXsens:
-    def __init__(self, hz=100):
+    def __init__(self, hz=100, target_port="COM13"):
         self.control = xda.XsControl_construct()
-        ports = xda.XsScanner_scanPorts()
-        if ports.empty():
-            raise RuntimeError("No MTi device found! Check connection.")
         
-        self.port = ports[0]
+        print(f"Scanning for Xsens on {target_port}...")
+        ports = xda.XsScanner_scanPorts()
+        
+        if ports.empty():
+            raise RuntimeError("No MTi devices found on any port! Check USB connection.")
+        
+        # Find COM13 in the list of detected devices
+        self.port = None
+        for p in ports:
+            if p.portName().upper() == target_port.upper():
+                self.port = p
+                break
+                
+        if self.port is None:
+            available = [p.portName() for p in ports]
+            raise RuntimeError(f"Xsens found, but NOT on {target_port}. Available ports: {available}")
+            
+        print(f"Connected successfully to Xsens on {self.port.portName()} at {self.port.baudrate()} bps")
+        
         self.control.openPort(self.port.portName(), self.port.baudrate())
         self.device = self.control.device(self.port.deviceId())
         
@@ -36,7 +55,7 @@ class SimpleXsens:
         self.device.addCallbackHandler(self.cb)
 
     def get_imu_packet(self):
-        """Extracts Accel and Euler data into your specific dictionary format."""
+        """Extracts Accel and Euler data and aligns axes to the vehicle."""
         if self.cb.packet:
             euler = None
             accel = None
@@ -46,18 +65,21 @@ class SimpleXsens:
             if self.cb.packet.containsCalibratedAcceleration():
                 accel = self.cb.packet.calibratedAcceleration()
 
-            # Ensure we have both before yielding to avoid NoneType errors
-            if euler and accel:
+            # Array fix applied here
+            if euler is not None and accel is not None:
+                aligned_yaw = euler.yaw() + YAW_MOUNTING_OFFSET
+                aligned_yaw = (aligned_yaw + 180) % 360 - 180
+
                 return {
-                    "accel_x": accel[0],
-                    "accel_y": accel[1],
+                    "accel_x": accel[0], 
+                    "accel_y": accel[1], 
                     "accel_z": accel[2],
-                    "gyro_x": euler.roll(),   # Mapped to match your dummy CSV logic
-                    "gyro_y": euler.pitch(),  # Mapped to match your dummy CSV logic
-                    "gyro_z": euler.yaw()     # Mapped to match your dummy CSV logic
+                    "roll": euler.roll(),   
+                    "pitch": euler.pitch(), 
+                    "yaw": aligned_yaw      
                 }
         return None
-
+    
     def close(self):
         """Safely shuts down the connection."""
         self.device.removeCallbackHandler(self.cb)
@@ -65,32 +87,23 @@ class SimpleXsens:
         self.control.destruct()
 
 # ---------------------------------------------------------
-# 2. YOUR NEW DROP-IN GENERATOR
+# 2. DROP-IN GENERATOR
 # ---------------------------------------------------------
 def stream_imu():
-    """
-    Live IMU stream generator. Replaces the dummy CSV reader.
-    Yields one dictionary packet at ~100Hz.
-    """
+    """Live IMU stream generator. Yields one dictionary packet at ~100Hz."""
     print("Initializing Xsens IMU...")
-    sensor = SimpleXsens(hz=100)
+    # You can change "COM13" here if your port ever changes
+    sensor = SimpleXsens(hz=100, target_port="COM13") 
     
     try:
         while True:
-            # Grab the latest packet from the mailbox
             imu_pkt = sensor.get_imu_packet()
             
             if imu_pkt is not None:
                 yield imu_pkt
             
-            # Sleep for exactly the rate of the sensor (100Hz = 0.01s)
-            # This prevents the generator from yielding the identical packet twice
             time.sleep(0.01)
             
     finally:
-        # The 'finally' block is crucial here. 
-        # If your main code breaks out of the loop consuming this generator 
-        # (e.g., stopping the script), Python will automatically run this block
-        # to safely close the hardware port.
         print("Closing Xsens IMU connection...")
         sensor.close()

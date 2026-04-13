@@ -69,13 +69,23 @@ def telemetry_listener():
             data, _ = sock.recvfrom(4096)
             pkt = json.loads(data.decode())
 
-            accel = pkt.get("accel", {})
-            telemetry["ax"] = accel.get("ax", 0.0)
-            telemetry["ay"] = accel.get("ay", 0.0)
-            telemetry["az"] = accel.get("az", 0.0)
+            telemetry["ax"]    = pkt.get("accel_x", 0.0)
+            telemetry["ay"]    = pkt.get("accel_y", 0.0)
+            telemetry["az"]    = pkt.get("accel_z", 0.0)
+            telemetry["roll"]  = pkt.get("roll", 0.0)
+            telemetry["pitch"] = pkt.get("pitch", 0.0)
+            
+            # Grab the raw yaw
+            yaw_val = pkt.get("yaw", 0.0)
+            telemetry["yaw"] = yaw_val
+            
+            # ---> ADD THIS LINE <---
+            # Feed the Yaw value into the GUI's Heading display
+            telemetry["heading"] = yaw_val 
 
-            print(f"\rACCEL  x={telemetry['ax']:>+7.3f}  y={telemetry['ay']:>+7.3f}  z={telemetry['az']:>+7.3f} m/s²",
+            print(f"\rACCEL  x={telemetry['ax']:>+7.3f}  y={telemetry['ay']:>+7.3f}  z={telemetry['az']:>+7.3f} m/s² | R:{telemetry['roll']:>+6.1f} P:{telemetry['pitch']:>+6.1f} Y:{telemetry['yaw']:>+6.1f}",
                   end="", flush=True)
+        
 
         except socket.timeout:
             continue
