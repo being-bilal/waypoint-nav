@@ -98,3 +98,7 @@
 2026-04-13 20:28:35 - [INFO] - Building dashboard with 5 waypoints
 2026-04-13 20:28:35 - [INFO] - Dashboard running at http://localhost:8080
 2026-04-13 20:36:56 - [INFO] - Basestation stopped by user.
+2026-04-13 20:36:59 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-13 20:36:59 - [INFO] - Building dashboard with 5 waypoints
+2026-04-13 20:36:59 - [INFO] - Telemetry listener started on port 5006
+2026-04-13 20:36:59 - [INFO] - Dashboard running at http://localhost:8080
