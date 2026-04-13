@@ -79,3 +79,8 @@
 2026-04-06 20:22:37 - [INFO] - NumExpr defaulting to 10 threads.
 2026-04-06 20:22:37 - [INFO] - Dashboard running at http://localhost:8080
 2026-04-06 20:24:02 - [INFO] - Basestation stopped by user.
+2026-04-13 10:51:39 - [INFO] - Waypoints sent to 127.0.0.1:5005  (5 points)
+2026-04-13 10:51:39 - [INFO] - Building dashboard with 5 waypoints
+2026-04-13 10:51:39 - [INFO] - Telemetry listener started on port 5006
+2026-04-13 10:51:40 - [INFO] - NumExpr defaulting to 10 threads.
+2026-04-13 10:51:40 - [INFO] - Dashboard running at http://localhost:8080
