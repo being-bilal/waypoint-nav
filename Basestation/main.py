@@ -208,9 +208,13 @@ def main():
     # The user can edit them before starting the mission.
     default_waypoints = DEFAULT_WAYPOINTS
 
-    # ── Shared state for the callback ────────────────────────────────────
-    # When the user clicks "Start Mission" in the GUI, this callback fires.
-    # It sends the selected waypoints to the vehicle and starts telemetry.
+    # ── 1. Start telemetry listener IMMEDIATELY ──────────────────────────
+    # This runs from the start so the dashboard shows vehicle data
+    # even while the user is still on the planning page.
+    listener = threading.Thread(target=telemetry_listener, daemon=True)
+    listener.start()
+
+    # ── 2. Callback for when user clicks "Start Mission" ─────────────────
     def on_waypoints_selected(wps):
         """
         Called by gui.py when the user submits waypoints from the planning page.
@@ -222,17 +226,13 @@ def main():
         # Send waypoints to the vehicle via UDP
         send_waypoints(wps)
 
-        # Start listening for telemetry from the vehicle
-        listener = threading.Thread(target=telemetry_listener, daemon=True)
-        listener.start()
+        print("[MISSION] Waypoints sent. Dashboard is live.")
+        log.info("Waypoints sent after mission launch")
 
-        print("[MISSION] Telemetry listener started. Monitoring vehicle...")
-        log.info("Telemetry listener started after mission launch")
-
-    # ── 1. Launch the GUI in a background thread ─────────────────────────
+    # ── 3. Launch the GUI in a background thread ─────────────────────────
     # In planning mode: shows the interactive map for waypoint selection.
     # After the user clicks "Start Mission", on_waypoints_selected() fires,
-    # which sends the waypoints and starts the telemetry listener.
+    # which sends the waypoints to the vehicle.
     # The page then redirects to /dashboard for live monitoring.
     gui_thread = threading.Thread(
         target=gui.show,
@@ -242,7 +242,7 @@ def main():
     )
     gui_thread.start()
 
-    # ── 2. Keep the main thread alive until Ctrl+C ───────────────────────
+    # ── 4. Keep the main thread alive until Ctrl+C ───────────────────────
     try:
         while True:
             time.sleep(0.1)
