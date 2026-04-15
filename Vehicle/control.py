@@ -60,12 +60,23 @@ class PIDController:
 # PIXHAWK BOAT CONTROLLER  –  thrust allocation + MAVLink commands
 # =============================================================================
 class PixhawkBoatController:
-    def __init__(self, connection_string=GPS_CONNECTION_STRING, baud=GPS_BAUD_RATE):
-        # ── 1. Establish MAVLink Connection to the Pixhawk ───────────────
-        print(f"Connecting to Pixhawk on {connection_string}...")
-        self.master = mavutil.mavlink_connection(connection_string, baud=baud)
-        self.master.wait_heartbeat()     # block until Pixhawk responds
-        print("Heartbeat received!")
+    def __init__(self, master=None, connection_string=GPS_CONNECTION_STRING, baud=GPS_BAUD_RATE):
+        """
+        :param master: An existing mavutil.mavlink_connection (e.g. gps.master).
+                       If provided, this connection is SHARED — no new port is opened.
+                       If None, a new connection is created (for standalone testing only).
+        """
+        # ── 1. Use shared connection or create a new one ─────────────────
+        if master is not None:
+            # SHARED MODE: reuse the MAVLink connection that GPS already opened
+            print(f"Controller sharing existing MAVLink connection.")
+            self.master = master
+        else:
+            # STANDALONE MODE: open our own connection (only for isolated testing)
+            print(f"Connecting to Pixhawk on {connection_string}...")
+            self.master = mavutil.mavlink_connection(connection_string, baud=baud)
+            self.master.wait_heartbeat()
+            print("Heartbeat received!")
 
         # ── 2. Configure Pixhawk hardware ────────────────────────────────
         self.set_pixhawk_passthrough()   # set SERVO outputs to pass-through mode

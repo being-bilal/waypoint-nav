@@ -1033,15 +1033,15 @@ def show(waypoints, telemetry, port=8080, on_waypoints=None):
         # Pre-build a dashboard with default waypoints (will be rebuilt on /start)
         map_html = _build_map_html(waypoints)
         _dashboard_html = _build_dashboard(waypoints, map_html)
-        logging.info("Planning mode — open http://localhost:%d to select waypoints", port)
-        print(f"[GUI] Open → http://localhost:{port}  (select waypoints on the map)")
+        logging.info("Planning mode - open http://localhost:%d to select waypoints", port)
+        print(f"[GUI] Open -> http://localhost:{port}  (select waypoints on the map)")
     else:
         # Direct mode: skip planning, go straight to monitoring dashboard
         _mission_started = True
         map_html = _build_map_html(waypoints)
         _dashboard_html = _build_dashboard(waypoints, map_html)
         logging.info("Dashboard running at http://localhost:%d", port)
-        print(f"[GUI] Open → http://localhost:{port}")
+        print(f"[GUI] Open -> http://localhost:{port}")
 
     HTTPServer(("0.0.0.0", port), _Handler).serve_forever()
 

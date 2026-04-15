@@ -212,9 +212,9 @@ def main():
     # ── 4. Initialise the Navigator and Controller ───────────────────────
     # Navigator receives the GPS and IMU instances (dependency injection)
     navigator  = Navigator(gps, imu, waypoint_file=WAYPOINT_FILE)
-    # Controller manages PID steering and sends PWM to the Pixhawk ESCs
-    controller = PixhawkBoatController(connection_string=GPS_CONNECTION_STRING,
-                                       baud=GPS_BAUD_RATE)
+    # Controller shares the SAME MAVLink connection that GPS already opened
+    # (opening /dev/ttyACM0 twice causes a serial port conflict)
+    controller = PixhawkBoatController(master=gps.master)
 
     # ── 5. Open a UDP socket for outgoing telemetry to the base station ──
     telem_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

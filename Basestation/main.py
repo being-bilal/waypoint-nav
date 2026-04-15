@@ -174,7 +174,7 @@ def telemetry_listener():
             print(
                 f"\r[{telemetry['nav_status']:>10s}] "                              # right-aligned status
                 f"GPS({telemetry['gps_lat']:.6f}, {telemetry['gps_lon']:.6f}) "     # lat/lon
-                f"Hdg:{telemetry['heading']:>+7.1f}° → {telemetry['desired_bearing']:>+7.1f}° "  # actual → target
+                f"Hdg:{telemetry['heading']:>+7.1f} -> {telemetry['desired_bearing']:>+7.1f} "  # actual -> target
                 f"Err:{telemetry['heading_error']:>+7.2f}° "                        # heading error
                 f"XTE:{telemetry['cross_track_error']:>+6.2f}m "                    # cross-track error
                 f"WP:{telemetry['active_wp']} "                                     # waypoint index
@@ -217,7 +217,7 @@ def main():
         :param wps: list of (lat, lon) tuples selected by the user
         """
         print(f"\n[MISSION] User selected {len(wps)} waypoints. Sending to vehicle...")
-        log.info("User selected %d waypoints — sending to vehicle", len(wps))
+        log.info("User selected %d waypoints - sending to vehicle", len(wps))
 
         # Send waypoints to the vehicle via UDP
         send_waypoints(wps)
