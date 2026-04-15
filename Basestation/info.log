@@ -208,3 +208,55 @@
 2026-04-15 17:13:31 - [INFO] - Waypoints sent to 103.55.109.21:5005  (4 points)
 2026-04-15 17:13:31 - [INFO] - Waypoints sent after mission launch
 2026-04-15 17:14:40 - [INFO] - Basestation stopped by user.
+2026-04-15 18:35:56 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 18:35:56 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 18:35:56 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 18:35:57 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 18:38:28 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-15 18:38:28 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-15 18:38:29 - [INFO] - Waypoints sent to 103.55.109.21:5005  (5 points)
+2026-04-15 18:38:29 - [INFO] - Waypoints sent after mission launch
+2026-04-15 18:39:03 - [INFO] - Basestation stopped by user.
+2026-04-15 18:46:32 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 18:46:33 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 18:46:33 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 18:46:33 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 18:46:53 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-15 18:46:53 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-15 18:46:54 - [INFO] - Waypoints sent to 192.168.0.104:5005  (5 points)
+2026-04-15 18:46:54 - [INFO] - Waypoints sent after mission launch
+2026-04-15 20:06:10 - [INFO] - Basestation stopped by user.
+2026-04-15 20:06:12 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 20:06:13 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 20:06:13 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 20:06:13 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 20:06:35 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-15 20:06:35 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-15 20:06:36 - [INFO] - Waypoints sent to 192.168.0.104:5005  (5 points)
+2026-04-15 20:06:36 - [INFO] - Waypoints sent after mission launch
+2026-04-15 20:07:15 - [INFO] - Basestation stopped by user.
+2026-04-15 20:07:17 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 20:07:17 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 20:07:17 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 20:07:17 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 20:07:39 - [INFO] - User submitted 3 waypoints via GUI
+2026-04-15 20:07:39 - [INFO] - User selected 3 waypoints - sending to vehicle
+2026-04-15 20:07:40 - [INFO] - Waypoints sent to 192.168.0.104:5005  (3 points)
+2026-04-15 20:07:40 - [INFO] - Waypoints sent after mission launch
+2026-04-15 20:07:48 - [INFO] - Basestation stopped by user.
+2026-04-15 20:14:55 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 20:14:55 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 20:14:55 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 20:14:55 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 20:15:10 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-15 20:15:11 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-15 20:15:12 - [INFO] - Waypoints sent to 192.168.0.104:5005  (5 points)
+2026-04-15 20:15:12 - [INFO] - Waypoints sent after mission launch
+2026-04-15 20:28:38 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 20:28:39 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 20:28:39 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 20:28:39 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 20:28:48 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-15 20:28:49 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-15 20:28:50 - [INFO] - Waypoints sent to 192.168.0.104:5005  (5 points)
+2026-04-15 20:28:50 - [INFO] - Waypoints sent after mission launch

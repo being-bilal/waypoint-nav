@@ -14,7 +14,7 @@
 #   Base station sends waypoints on UDP_PORT_OUT = 5005
 #   → Vehicle listens on Vehicle.UDP_PORT_IN = 5005  (same port)
 # ─────────────────────────────────────────────────────────────────────────────
-ASV_IP            = "103.55.109.21"     # Vehicle IP on the shared Wi-Fi network
+ASV_IP            = "192.168.0.104"     # Vehicle IP on the shared Wi-Fi network
 UDP_PORT_OUT      = 5005            # Port to SEND waypoints TO the vehicle
 UDP_PORT_IN       = 5006            # Port to RECEIVE telemetry FROM the vehicle
 
