@@ -235,17 +235,28 @@ def main():
             # ── WAITING: sensors not ready yet ───────────────────────────
             elif status == "WAITING":
                 # Show green/red indicators for which sensors have data
-                g_flag = "🟢" if nav.get("gps_updated") or navigator.last_pos is not None else "🔴"
-                i_flag = "🟢" if nav.get("imu_updated") or navigator.last_yaw is not None else "🔴"
+                g_flag = "G" if nav.get("gps_updated") or navigator.last_pos is not None else "-"
+                i_flag = "I" if nav.get("imu_updated") or navigator.last_yaw is not None else "-"
 
-                msg = f"Sensors → GPS: {g_flag} | IMU: {i_flag}"
+                msg = f"[{g_flag}{i_flag}] WAITING for sensors | GPS: {g_flag} | IMU: {i_flag}"
                 # If IMU is already streaming, show its values while we wait for GPS
                 if navigator.last_imu_data is not None:
                     imu_d = navigator.last_imu_data
-                    msg += (f" | RAW IMU → R:{imu_d['roll']:>6.1f} "
+                    msg += (f" | IMU -> R:{imu_d['roll']:>6.1f} "
                             f"P:{imu_d['pitch']:>6.1f} Y:{imu_d['yaw']:>6.1f}")
-                # \r = carriage return → overwrite the same line (no scroll)
+                # \r = carriage return -> overwrite the same line (no scroll)
                 print(msg.ljust(120), end="\r")
+
+                # Stream whatever data we have to the base station so the
+                # dashboard shows live IMU readings even before GPS locks on.
+                # build_telemetry_packet handles missing nav fields gracefully.
+                waiting_nav = {
+                    "status": "WAITING",
+                    "imu_data": navigator.last_imu_data,   # may be None if IMU hasn't fired yet
+                    "actual_yaw": navigator.last_yaw or 0.0,
+                }
+                telem_packet = build_telemetry_packet(waiting_nav, gps, navigator)
+                send_telemetry(telem_sock, telem_packet)
 
             # ── NAVIGATING: full control loop ────────────────────────────
             elif status == "NAVIGATING":
