@@ -161,3 +161,50 @@
 2026-04-15 16:49:32 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
 2026-04-15 16:49:32 - [INFO] - NumExpr defaulting to 8 threads.
 2026-04-15 16:49:32 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 16:51:11 - [INFO] - Basestation stopped by user.
+2026-04-15 16:51:16 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 16:51:16 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 16:51:49 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 16:51:49 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 16:51:50 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 16:58:08 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 16:58:08 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 16:58:08 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 16:58:09 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 17:01:57 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 17:01:58 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 17:01:58 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 17:01:58 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 17:03:04 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-15 17:03:04 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-15 17:03:05 - [INFO] - Waypoints sent to 103.55.109.21:5005  (5 points)
+2026-04-15 17:03:05 - [INFO] - Waypoints sent after mission launch
+2026-04-15 17:04:07 - [INFO] - Basestation stopped by user.
+2026-04-15 17:04:10 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 17:04:10 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 17:04:10 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 17:04:11 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 17:04:27 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-15 17:04:27 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-15 17:04:28 - [INFO] - Waypoints sent to 103.55.109.21:5005  (5 points)
+2026-04-15 17:04:28 - [INFO] - Waypoints sent after mission launch
+2026-04-15 17:06:00 - [INFO] - Basestation stopped by user.
+2026-04-15 17:06:09 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 17:06:09 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 17:06:09 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 17:06:09 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 17:10:03 - [INFO] - Basestation stopped by user.
+2026-04-15 17:10:06 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 17:10:07 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 17:10:07 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 17:10:07 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 17:10:39 - [INFO] - Basestation stopped by user.
+2026-04-15 17:13:06 - [INFO] - Telemetry listener started on port 5006
+2026-04-15 17:13:06 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-15 17:13:06 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-15 17:13:07 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-15 17:13:30 - [INFO] - User submitted 4 waypoints via GUI
+2026-04-15 17:13:30 - [INFO] - User selected 4 waypoints - sending to vehicle
+2026-04-15 17:13:31 - [INFO] - Waypoints sent to 103.55.109.21:5005  (4 points)
+2026-04-15 17:13:31 - [INFO] - Waypoints sent after mission launch
+2026-04-15 17:14:40 - [INFO] - Basestation stopped by user.
