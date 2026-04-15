@@ -1,8 +1,7 @@
 # accelerometer.py
 import threading
 from dispatcher import get_message
-
-GRAVITY = 9.81
+from constants import GRAVITY, ACCEL_CALIBRATION_SAMPLES
 
 class Accelerometer:
     def __init__(self):
@@ -31,7 +30,7 @@ class Accelerometer:
                 self.ay = ay_raw - self.bias_y
                 self.az = az_raw - self.bias_z
 
-    def calibrate(self, samples: int = 200):
+    def calibrate(self, samples: int = ACCEL_CALIBRATION_SAMPLES):
         total_x = total_y = total_z = 0.0
         collected = 0
         while collected < samples:

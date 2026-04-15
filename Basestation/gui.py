@@ -1,6 +1,7 @@
 import numpy as np
 import json
 import logging
+import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 logging.basicConfig(
@@ -10,8 +11,12 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-_telemetry_ref  = {}
-_dashboard_html = ""
+_telemetry_ref   = {}          # shared dict written by telemetry listener, read by /telemetry
+_dashboard_html  = ""          # cached HTML for the monitoring dashboard
+_planning_html   = ""          # cached HTML for the waypoint planning page
+_mission_started = False       # flips to True after the user clicks Start Mission
+_on_waypoints_cb = None        # callback function: called with [(lat,lon), ...] when user submits
+_waypoints_event = threading.Event()  # signalled when waypoints are submitted
 
 
 def _build_map_html(waypoints):
@@ -517,36 +522,533 @@ poll();
 </html>"""
 
 
+# =============================================================================
+# WAYPOINT PLANNING PAGE  –  interactive Leaflet map for selecting waypoints
+# =============================================================================
+def _build_planning_html(default_center, default_waypoints):
+    """
+    Returns a full HTML page with an interactive Leaflet map.
+    The user clicks to place waypoints, then clicks 'Start Mission'
+    to POST them to /start.
+    """
+    # Convert default waypoints to JSON for the JS code
+    default_wp_js = json.dumps([[lat, lon] for lat, lon in default_waypoints])
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ASV · Mission Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+<style>
+  :root {{
+    --white:     #ffffff;
+    --bg:        #f2f4f7;
+    --border:    #dde1e9;
+    --text:      #0f1623;
+    --text-mid:  #4a5568;
+    --text-dim:  #8a94a6;
+    --blue:      #1a56db;
+    --blue-light:#e8effe;
+    --green:     #1a7a4a;
+    --red:       #c0392b;
+    --mono:      'IBM Plex Mono', monospace;
+    --sans:      'IBM Plex Sans', sans-serif;
+  }}
+
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+
+  body {{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }}
+
+  header {{
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    z-index: 1000;
+  }}
+
+  .logo {{
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }}
+
+  .logo-sub {{
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }}
+
+  .main-area {{
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }}
+
+  /* ── Sidebar ── */
+  .sidebar {{
+    width: 320px;
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+  }}
+
+  .sidebar-header {{
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+  }}
+
+  .sidebar-header h2 {{
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }}
+
+  .sidebar-header p {{
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }}
+
+  .wp-list {{
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+  }}
+
+  .wp-item {{
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    border-bottom: 1px solid #f0f1f4;
+    transition: background 0.15s;
+  }}
+
+  .wp-item:hover {{ background: #f8f9fb; }}
+
+  .wp-num {{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }}
+
+  .wp-coords {{
+    flex: 1;
+    color: var(--text);
+  }}
+
+  .wp-remove {{
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }}
+
+  .wp-remove:hover {{ background: #fdecea; color: var(--red); }}
+
+  .wp-empty {{
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    font-style: italic;
+  }}
+
+  .sidebar-footer {{
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }}
+
+  .btn {{
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+  }}
+
+  .btn-primary {{
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+  }}
+
+  .btn-primary:hover {{ background: #1648b8; }}
+  .btn-primary:disabled {{ background: #93b4f7; border-color: #93b4f7; cursor: not-allowed; }}
+
+  .btn-secondary {{
+    background: var(--white);
+    color: var(--text-mid);
+  }}
+
+  .btn-secondary:hover {{ background: var(--bg); }}
+
+  .wp-count {{
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    text-align: center;
+  }}
+
+  /* ── Map ── */
+  #map {{ flex: 1; }}
+
+  .wp-label {{
+    background: var(--blue);
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">ASV · MISSION PLANNER</span>
+  <span class="logo-sub">Click the map to place waypoints</span>
+</header>
+
+<div class="main-area">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h2>Waypoints</h2>
+      <p>Click on the map to add waypoints. Click the ✕ to remove one. You need at least 2 to start.</p>
+    </div>
+    <div class="wp-list" id="wp-list">
+      <div class="wp-empty" id="wp-empty">No waypoints yet — click the map!</div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="wp-count" id="wp-count">0 waypoints</div>
+      <button class="btn btn-secondary" onclick="clearAll()">Clear All</button>
+      <button class="btn btn-primary" id="btn-start" onclick="startMission()" disabled>Start Mission</button>
+    </div>
+  </div>
+  <div id="map"></div>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────
+const waypoints = [];   // array of {{lat, lon, marker, idx}}
+let polyline = null;
+const defaultWps = {default_wp_js};
+
+// ── Map setup ──────────────────────────────────────────────────────────
+const center = defaultWps.length > 0 ? defaultWps[0] : [27.9147, 78.0766];
+const map = L.map('map', {{ zoomControl: true }}).setView(center, 18);
+
+L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
+  attribution: '&copy; OpenStreetMap contributors',
+  maxZoom: 22
+}}).addTo(map);
+
+// ── Custom numbered icon ───────────────────────────────────────────────
+function wpIcon(n) {{
+  return L.divIcon({{
+    className: '',
+    html: `<div class="wp-label">${{n}}</div>`,
+    iconSize: [26, 26],
+    iconAnchor: [13, 13]
+  }});
+}}
+
+// ── Add a waypoint ─────────────────────────────────────────────────────
+function addWaypoint(lat, lon) {{
+  const idx = waypoints.length;
+  const marker = L.marker([lat, lon], {{ icon: wpIcon(idx + 1), draggable: true }}).addTo(map);
+
+  // Drag updates the coordinates
+  marker.on('dragend', function() {{
+    const pos = marker.getLatLng();
+    const wp = waypoints.find(w => w.marker === marker);
+    if (wp) {{ wp.lat = pos.lat; wp.lon = pos.lng; }}
+    updateUI();
+  }});
+
+  waypoints.push({{ lat, lon, marker }});
+  updateUI();
+}}
+
+// ── Remove a waypoint by index ─────────────────────────────────────────
+function removeWaypoint(idx) {{
+  if (idx < 0 || idx >= waypoints.length) return;
+  map.removeLayer(waypoints[idx].marker);
+  waypoints.splice(idx, 1);
+  // Re-number all remaining markers
+  waypoints.forEach((wp, i) => {{ wp.marker.setIcon(wpIcon(i + 1)); }});
+  updateUI();
+}}
+
+// ── Clear all ──────────────────────────────────────────────────────────
+function clearAll() {{
+  waypoints.forEach(wp => map.removeLayer(wp.marker));
+  waypoints.length = 0;
+  updateUI();
+}}
+
+// ── Redraw the sidebar list, polyline, and button state ────────────────
+function updateUI() {{
+  const list = document.getElementById('wp-list');
+  const empty = document.getElementById('wp-empty');
+  const count = document.getElementById('wp-count');
+  const btn   = document.getElementById('btn-start');
+
+  // Rebuild the sidebar list
+  list.querySelectorAll('.wp-item').forEach(el => el.remove());
+
+  if (waypoints.length === 0) {{
+    empty.style.display = 'block';
+  }} else {{
+    empty.style.display = 'none';
+    waypoints.forEach((wp, i) => {{
+      const div = document.createElement('div');
+      div.className = 'wp-item';
+      div.innerHTML = `
+        <span class="wp-num">${{i + 1}}</span>
+        <span class="wp-coords">${{wp.lat.toFixed(7)}}, ${{wp.lon.toFixed(7)}}</span>
+        <button class="wp-remove" onclick="removeWaypoint(${{i}})">✕</button>
+      `;
+      list.appendChild(div);
+    }});
+  }}
+
+  count.textContent = waypoints.length + ' waypoint' + (waypoints.length !== 1 ? 's' : '');
+  btn.disabled = waypoints.length < 2;
+
+  // Redraw the path polyline
+  if (polyline) map.removeLayer(polyline);
+  if (waypoints.length >= 2) {{
+    polyline = L.polyline(
+      waypoints.map(wp => [wp.lat, wp.lon]),
+      {{ color: '#1a56db', weight: 2.5, dashArray: '8 5' }}
+    ).addTo(map);
+  }}
+}}
+
+// ── Map click → add waypoint ───────────────────────────────────────────
+map.on('click', function(e) {{
+  addWaypoint(e.latlng.lat, e.latlng.lng);
+}});
+
+// ── Load default waypoints ─────────────────────────────────────────────
+defaultWps.forEach(([lat, lon]) => addWaypoint(lat, lon));
+
+// ── Start Mission ──────────────────────────────────────────────────────
+async function startMission() {{
+  const btn = document.getElementById('btn-start');
+  btn.disabled = true;
+  btn.textContent = 'SENDING...';
+
+  const wps = waypoints.map(wp => [wp.lat, wp.lon]);
+  try {{
+    const resp = await fetch('/start', {{
+      method: 'POST',
+      headers: {{ 'Content-Type': 'application/json' }},
+      body: JSON.stringify({{ waypoints: wps }})
+    }});
+    if (resp.ok) {{
+      btn.textContent = 'MISSION STARTED ✓';
+      btn.style.background = '#1a7a4a';
+      btn.style.borderColor = '#1a7a4a';
+      // Redirect to the dashboard after a brief delay
+      setTimeout(() => {{ window.location.href = '/dashboard'; }}, 800);
+    }} else {{
+      btn.textContent = 'ERROR — RETRY';
+      btn.style.background = '#c0392b';
+      btn.disabled = false;
+    }}
+  }} catch(e) {{
+    btn.textContent = 'ERROR — RETRY';
+    btn.style.background = '#c0392b';
+    btn.disabled = false;
+  }}
+}}
+</script>
+</body>
+</html>"""
+
+
+# =============================================================================
+# HTTP HANDLER  –  serves planning page, dashboard, and API endpoints
+# =============================================================================
 class _Handler(BaseHTTPRequestHandler):
-    def log_message(self, *a): pass
+    def log_message(self, *a): pass  # suppress default HTTP logs
 
     def do_GET(self):
         if self.path == '/telemetry':
+            # JSON API endpoint polled by the dashboard every 200ms
             body = json.dumps(_telemetry_ref).encode()
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.send_header('Content-Length', len(body))
-            self.end_headers()
-            self.wfile.write(body)
-        else:
+            self._respond(200, 'application/json', body)
+
+        elif self.path == '/dashboard':
+            # The monitoring dashboard (shown after mission starts)
             body = _dashboard_html.encode()
-            self.send_response(200)
-            self.send_header('Content-Type', 'text/html; charset=utf-8')
-            self.send_header('Content-Length', len(body))
-            self.end_headers()
-            self.wfile.write(body)
+            self._respond(200, 'text/html; charset=utf-8', body)
+
+        else:
+            # Root path '/' → show the planning page (or dashboard if mission already started)
+            if _mission_started:
+                body = _dashboard_html.encode()
+            else:
+                body = _planning_html.encode()
+            self._respond(200, 'text/html; charset=utf-8', body)
+
+    def do_POST(self):
+        global _mission_started, _dashboard_html
+
+        if self.path == '/start':
+            # Read the POST body
+            length = int(self.headers.get('Content-Length', 0))
+            raw = self.rfile.read(length)
+            try:
+                data = json.loads(raw.decode())
+                wps = [(lat, lon) for lat, lon in data.get('waypoints', [])]
+
+                if len(wps) < 2:
+                    self._respond(400, 'application/json',
+                                  json.dumps({'error': 'Need at least 2 waypoints'}).encode())
+                    return
+
+                logging.info("User submitted %d waypoints via GUI", len(wps))
+
+                # Rebuild the dashboard with the user-selected waypoints
+                map_html = _build_map_html(wps)
+                _dashboard_html = _build_dashboard(wps, map_html)
+
+                _mission_started = True
+
+                # Call the callback so main.py can send waypoints to the vehicle
+                if _on_waypoints_cb:
+                    _on_waypoints_cb(wps)
+
+                # Signal the event so main.py's blocking wait can proceed
+                _waypoints_event.set()
+
+                self._respond(200, 'application/json',
+                              json.dumps({'ok': True, 'count': len(wps)}).encode())
+
+            except Exception as e:
+                logging.error("Error processing /start: %s", e)
+                self._respond(500, 'application/json',
+                              json.dumps({'error': str(e)}).encode())
+        else:
+            self._respond(404, 'text/plain', b'Not Found')
+
+    def _respond(self, code, content_type, body):
+        self.send_response(code)
+        self.send_header('Content-Type', content_type)
+        self.send_header('Content-Length', len(body))
+        self.end_headers()
+        self.wfile.write(body)
 
 
-def show(waypoints, telemetry, port=8080):
-    global _telemetry_ref, _dashboard_html
+# =============================================================================
+# PUBLIC API  –  called by main.py
+# =============================================================================
+def show(waypoints, telemetry, port=8080, on_waypoints=None):
+    """
+    Start the GUI HTTP server.
 
-    _telemetry_ref = telemetry
+    :param waypoints: Default waypoints to pre-load on the planning map
+    :param telemetry: Shared telemetry dict (updated by telemetry listener)
+    :param port: HTTP port for the web server
+    :param on_waypoints: Callback function(wps) called when user submits waypoints.
+                         If None, the planning page is skipped and the dashboard
+                         is shown immediately with the provided waypoints.
+    """
+    global _telemetry_ref, _dashboard_html, _planning_html
+    global _mission_started, _on_waypoints_cb
 
-    logging.info("Building dashboard with %d waypoints", len(waypoints))
-    map_html        = _build_map_html(waypoints)
-    _dashboard_html = _build_dashboard(waypoints, map_html)
+    _telemetry_ref  = telemetry
+    _on_waypoints_cb = on_waypoints
 
-    logging.info("Dashboard running at http://localhost:%d", port)
-    print(f"[GUI] Open → http://localhost:{port}")
+    if on_waypoints is not None:
+        # Planning mode: show the interactive waypoint selector first
+        _mission_started = False
+        center = waypoints[0] if waypoints else (27.9147, 78.0766)
+        _planning_html = _build_planning_html(center, waypoints)
+        # Pre-build a dashboard with default waypoints (will be rebuilt on /start)
+        map_html = _build_map_html(waypoints)
+        _dashboard_html = _build_dashboard(waypoints, map_html)
+        logging.info("Planning mode — open http://localhost:%d to select waypoints", port)
+        print(f"[GUI] Open → http://localhost:{port}  (select waypoints on the map)")
+    else:
+        # Direct mode: skip planning, go straight to monitoring dashboard
+        _mission_started = True
+        map_html = _build_map_html(waypoints)
+        _dashboard_html = _build_dashboard(waypoints, map_html)
+        logging.info("Dashboard running at http://localhost:%d", port)
+        print(f"[GUI] Open → http://localhost:{port}")
 
     HTTPServer(("0.0.0.0", port), _Handler).serve_forever()
+
+
+def wait_for_waypoints(timeout=None):
+    """
+    Block until the user submits waypoints from the planning page.
+    Returns True if waypoints were received, False on timeout.
+    """
+    return _waypoints_event.wait(timeout=timeout)
