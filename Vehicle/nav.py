@@ -38,6 +38,7 @@ import json                          # Reading the waypoints JSON file
 import utm                           # Converting lat/lon ↔ UTM (x, y in metres)
 import time                          # Sleeping between navigation loop iterations
 import matplotlib.pyplot as plt      # (available for offline plotting/debugging)
+import math
 
 # Import constants from the central config file
 from constants import (GPS_CONNECTION_STRING, IMU_TARGET_PORT, IMU_HZ,   # sensor ports (for standalone mode)
@@ -82,7 +83,7 @@ class Navigator:
         # Look-ahead distance (metres) – how far ahead of our projection on the path
         # we place the target point T
         self.LOOK_AHEAD_DELTA = LOOK_AHEAD_DELTA
-        self.Acceptance_radius = ACCEPTANCE_RADIUS
+        self.ACCEPTANCE_RADIUS = ACCEPTANCE_RADIUS
         # ── State variables: last-known-good sensor readings ─────────────
         # GPS and IMU update at different rates and may have gaps, so we
         # cache the most recent valid reading and reuse it until a new one arrives
@@ -138,6 +139,12 @@ class Navigator:
         dt = current_time - self.last_time
         self.last_time = current_time
         if dt <= 0: dt = 0.01
+        # --- CRITICAL FIX ---
+        # Always cache the latest IMU data so main.py and the Base Station 
+        # dashboard can display it, even while waiting for a GPS lock!
+        if new_imu_data is not None:
+            self.last_imu_data = new_imu_data
+            self.last_yaw = new_imu_data['yaw']
 
         # Flags for telemetry (so the GUI knows when we get fresh data)
         gps_updated = new_P is not None
@@ -145,11 +152,12 @@ class Navigator:
 
         # ── 2. INITIALIZE EKF (Run once when we get our first data) ──
         if self.ekf is None:
-            if gps_updated and imu_updated:
+            # CHECK CACHED VARIABLES, NOT JUST THE INSTANTANEOUS FLAGS
+            if self.last_pos is not None and self.last_imu_data is not None:
                 # Initialize EKF with first GPS pos and IMU yaw (converted to radians)
-                self.ekf = GPS_IMU_EKF(new_P[0], new_P[1], math.radians(new_imu_data['yaw']))
-                self.last_pos = new_P
-                self.last_imu_data = new_imu_data
+                self.ekf = GPS_IMU_EKF(self.last_pos[0], self.last_pos[1], math.radians(self.last_imu_data['yaw']))
+            
+            # Still return waiting until the EKF actually initializes
             return {"status": "WAITING", "gps_updated": gps_updated, "imu_updated": imu_updated}
 
         # ── 3. EKF PREDICTION (Using IMU) ──
