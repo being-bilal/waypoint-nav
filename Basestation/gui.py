@@ -415,7 +415,10 @@ const pathChart = new Chart(document.getElementById('c-path'), {{
        backgroundColor: 'transparent', showLine: true, borderWidth: 1.5,
        pointRadius: 2, pointBackgroundColor: '#1a56db' }},
     {{ label: 'Target', data: [], backgroundColor: '#b45309', 
-       pointRadius: 6, pointStyle: 'rectRot', showLine: false }}
+       pointRadius: 6, pointStyle: 'rectRot', showLine: false }},
+    // ── NEW: Live ASV Triangle on the Dashboard ──
+    {{ label: 'ASV', data: [], backgroundColor: '#e74c3c', borderColor: '#c0392b',
+       pointRadius: 8, pointHoverRadius: 8, pointStyle: 'triangle', rotation: 0, showLine: false }}
   ]}},
   options: {{
     ...BASE,
@@ -495,12 +498,24 @@ async function poll() {{
     document.getElementById('hdr-hdg').textContent  = d.heading.toFixed(1) + '°';
     document.getElementById('hdr-wp').textContent   = d.active_wp;
     document.getElementById('hdr-dist').textContent = d.dist_to_waypoint.toFixed(1) + ' m';
+    
     if (d.target_lat !== 0) {{
       document.getElementById('hdr-tgt').textContent = d.target_lat.toFixed(5) + ', ' + d.target_lon.toFixed(5);
       pathChart.data.datasets[2].data = [toXY(d.target_lat, d.target_lon)];
     }}
+    
     if (d.gps_lat !== 0 || d.gps_lon !== 0) {{
-      pathChart.data.datasets[1].data.push(toXY(d.gps_lat, d.gps_lon));
+      const currentPos = toXY(d.gps_lat, d.gps_lon);
+      
+      // Update the trailing blue line
+      pathChart.data.datasets[1].data.push(currentPos);
+      
+      // ── Update the Live ASV Triangle ──
+      pathChart.data.datasets[3].data = [currentPos];
+      // Chart.js 0° points UP (+Y). Nav 0° points EAST (+X). 
+      // 90 - heading accurately maps Nav Frame to Chart Rotation.
+      pathChart.data.datasets[3].rotation = 90 - d.heading;
+      
       pathChart.update();
     }}
 
@@ -906,6 +921,7 @@ map.on('click', function(e) {{
 // ── Load default waypoints ─────────────────────────────────────────────
 defaultWps.forEach(([lat, lon]) => addWaypoint(lat, lon));
 
+
 // — Live Boat Position & Orientation —
 let boatMarker = null;
 
@@ -933,33 +949,7 @@ const targetIcon = L.divIcon({{
   iconSize: [12, 12],
   iconAnchor: [6, 6]
 }});
-// — Live Boat Position & Orientation —
-let boatMarker = null;
 
-// Use an SVG arrow pointing UP (North) by default, rather than a circle
-const boatIconHtml = `
-  <div id="boat-icon-container" style="transition: transform 0.2s linear; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
-    <svg width="24" height="24" viewBox="0 0 24 24" style="filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));">
-      <path d="M12 2L22 20L12 17L2 20L12 2Z" fill="#e74c3c" stroke="white" stroke-width="2"/>
-    </svg>
-  </div>
-`;
-
-const boatIcon = L.divIcon({{
-  className: '',
-  html: boatIconHtml,
-  iconSize: [24, 24],
-  iconAnchor: [12, 12]
-}});
-
-// — Target Point Marker —
-let targetMarker = null;
-const targetIcon = L.divIcon({{
-  className: '',
-  html: `<div style="background: #b45309; width: 12px; height: 12px; transform: rotate(45deg); border: 1.5px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
-  iconSize: [12, 12],
-  iconAnchor: [6, 6]
-}});
 
 async function pollTelemetryPos() {{
   try {{
@@ -982,8 +972,8 @@ async function pollTelemetryPos() {{
       // Rotate the boat icon based on heading
       const iconContainer = document.getElementById('boat-icon-container');
       if (iconContainer && d.heading !== undefined) {{
-        // Python will convert ${{...}} into ${...} so JavaScript can read the template literal
-        iconContainer.style.transform = `rotate(${{d.heading}}deg)`;
+        // CSS rotation: 0deg points UP. Our Nav 0 is EAST. 90 - heading fixes this!
+        iconContainer.style.transform = `rotate(${{90 - d.heading}}deg)`;
       }}
     }}
 
@@ -1004,10 +994,9 @@ async function pollTelemetryPos() {{
   }}
 }}
 
-
-
 // Kick off the continuous polling loop
 pollTelemetryPos();
+
 // ── Start Mission ──────────────────────────────────────────────────────
 async function startMission() {{
   const btn = document.getElementById('btn-start');

@@ -115,9 +115,9 @@ MAX_YAW_TORQUE        = 5.0                 # Max rotational torque (N·m) — a
 MAX_THRUST            = 5.2                 # Max thrust per motor (e.g. T200 @ 16V ≈ 5.2 kgf)
 
 # PID gains for steering
-STEERING_KP           = 0.05
-STEERING_KI           = 0.001
-STEERING_KD           = 0.01
+STEERING_KP           = 0.0014
+STEERING_KI           = 0.0006
+STEERING_KD           = 0.0002
 STEERING_MIN_OUT      = -1.0                # PID output lower bound (full reverse rotation)
 STEERING_MAX_OUT      = 1.0                 # PID output upper bound (full forward rotation)
 
