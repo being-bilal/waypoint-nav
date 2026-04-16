@@ -29,7 +29,7 @@ import logging      # Structured logging to info.log
 import gui          # The web-based dashboard module (serves HTML + /telemetry JSON endpoint)
 
 # ── Import all constants from the central config file ────────────────────────
-from constants import (
+from constants_base import (
     # Networking  (constants.py → NETWORKING section)
     ASV_IP, UDP_PORT_OUT, UDP_PORT_IN,        # vehicle IP, port to send waypoints, port to receive telemetry
     # Waypoint TX  (constants.py → WAYPOINT TRANSMISSION section)

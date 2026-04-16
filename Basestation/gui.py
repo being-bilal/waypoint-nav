@@ -495,7 +495,7 @@ async function poll() {{
     document.getElementById('hdr-hdg').textContent  = d.heading.toFixed(1) + '°';
     document.getElementById('hdr-wp').textContent   = d.active_wp;
     document.getElementById('hdr-dist').textContent = d.dist_to_waypoint.toFixed(1) + ' m';
-    if (d.target_lat !== 0) {{}
+    if (d.target_lat !== 0) {{
       document.getElementById('hdr-tgt').textContent = d.target_lat.toFixed(5) + ', ' + d.target_lon.toFixed(5);
       pathChart.data.datasets[2].data = [toXY(d.target_lat, d.target_lon)];
     }}
@@ -918,22 +918,21 @@ const boatIconHtml = `
   </div>
 `;
 
-const boatIcon = L.divIcon({
+const boatIcon = L.divIcon({{
   className: '',
   html: boatIconHtml,
   iconSize: [24, 24],
   iconAnchor: [12, 12]
-});
+}});
 
 // — Target Point Marker —
 let targetMarker = null;
-const targetIcon = L.divIcon({
+const targetIcon = L.divIcon({{
   className: '',
   html: `<div style="background: #b45309; width: 12px; height: 12px; transform: rotate(45deg); border: 1.5px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
   iconSize: [12, 12],
   iconAnchor: [6, 6]
-});
-
+}});
 // — Live Boat Position & Orientation —
 let boatMarker = null;
 
