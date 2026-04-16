@@ -165,10 +165,10 @@ class Navigator:
 
         # ── 3. EKF PREDICTION (Using IMU) ──
         if imu_updated:
-            self.last_imu_data = new_imu_data
-            # Convert yaw rate from deg/s to rad/s
+            # THE FIX: Force the EKF to use the drift-free absolute yaw from the Xsens
+            self.ekf.X[2] = math.radians(new_imu_data['yaw'])
+            
             yaw_rate_rad = math.radians(new_imu_data['yaw_rate'])
-            # Predict where we are based on velocity and yaw rate
             self.ekf.predict(self.estimated_velocity, yaw_rate_rad, dt)
 
         # ── 4. EKF UPDATE (Using GPS) ──
@@ -180,7 +180,7 @@ class Navigator:
             # --- THE FIX: GPS Velocity Deadband ---
             # If the GPS jitters by less than 0.4 meters, assume we are completely still.
             # This prevents stationary GPS drift from creating massive fake velocity spikes.
-            if dist_moved < 0.4:
+            if dist_moved < 2.5:
                 self.estimated_velocity = 0.0
             else:
                 self.estimated_velocity = dist_moved / dt
@@ -192,9 +192,11 @@ class Navigator:
             self.ekf.update(new_P[0], new_P[1])
 
         # ── 5. GET FILTERED STATE FOR NAVIGATION ──
-        ekf_x, ekf_y, ekf_yaw_deg = self.ekf.get_state()
-        P = np.array([ekf_x, ekf_y])   # Smooth, filtered position
-        actual_yaw = ekf_yaw_deg       # Smooth, filtered heading
+        ekf_x, ekf_y, _ = self.ekf.get_state()  # We ignore the 3rd variable (ekf_yaw_deg)
+        P = np.array([ekf_x, ekf_y])   
+        
+        # THE FIX: Use the absolute IMU yaw directly for steering
+        actual_yaw = self.last_yaw
         
         # A = start of the current path segment, B = end of the current path segment
         A = self.waypoints_local[self.current_wp_index]      

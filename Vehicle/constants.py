@@ -102,7 +102,7 @@ IMU_ACCEL_REMAP       = ('x', 'y', 'z')    # Default: no remapping
 # NAVIGATION  (nav.py)
 # ─────────────────────────────────────────────────────────────────────────────
 LOOK_AHEAD_DELTA      = 5.0                 # Look-ahead distance along the path (metres)
-WAYPOINT_FILE         = 'waypoints.json'    # Default waypoint file path
+WAYPOINT_FILE         = '/home/auv-jetson/Documents/waypoint-nav/Vehicle/waypoints.json'    # Default waypoint file path
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CONTROL / PID  (control.py)
