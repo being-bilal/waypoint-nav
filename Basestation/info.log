@@ -300,3 +300,7 @@
 2026-04-15 21:59:36 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
 2026-04-15 22:06:18 - [INFO] - Basestation stopped by user.
 2026-04-16 14:33:13 - [INFO] - Telemetry listener started on port 5006
+2026-04-16 14:37:20 - [INFO] - Telemetry listener started on port 5006
+2026-04-16 14:37:20 - [INFO] - Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-16 14:37:20 - [INFO] - NumExpr defaulting to 8 threads.
+2026-04-16 14:37:20 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
