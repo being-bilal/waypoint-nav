@@ -78,6 +78,7 @@ class SimpleXsens:
         config.append(xda.XsOutputConfiguration(xda.XsDataIdentifier.EulerAngles, hz))
         # Acceleration gives us calibrated accelerometer readings at the requested Hz
         config.append(xda.XsOutputConfiguration(xda.XsDataIdentifier.Acceleration, hz))
+        config.append(xda.XsOutputConfiguration(xda.XsDataIdentifier.RateOfTurn, hz))
 
         # Push the config to the device and switch back to measurement mode
         self.device.set_output_configuration(config)
