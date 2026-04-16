@@ -126,7 +126,7 @@ BASE_SURGE            = 0.3                 # Base forward speed [−1 to 1]  (0
 # ─────────────────────────────────────────────────────────────────────────────
 # NETWORKING / COMMS  (main.py)
 # ─────────────────────────────────────────────────────────────────────────────
-BASE_IP               = "10.45.93.15"           # Base station IP address
+BASE_IP               = "10.57.87.15"           # Base station IP address
 UDP_PORT_OUT          = 5006                # Port to send telemetry TO the base station
 UDP_PORT_IN           = 5005                # Port to receive waypoints FROM the base station
 
