@@ -78,6 +78,7 @@ class SimpleXsens:
         config.append(xda.XsOutputConfiguration(xda.XsDataIdentifier.EulerAngles, hz))
         # Acceleration gives us calibrated accelerometer readings at the requested Hz
         config.append(xda.XsOutputConfiguration(xda.XsDataIdentifier.Acceleration, hz))
+
         config.append(xda.XsOutputConfiguration(xda.XsDataIdentifier.RateOfTurn, hz))
 
         # Push the config to the device and switch back to measurement mode
@@ -123,8 +124,11 @@ class SimpleXsens:
                     # Extract gyroscope if this packet contains it
                     if hasattr(packet, 'contains_calibrated_gyr') and packet.contains_calibrated_gyr():
                         g = packet.calibrated_gyr()
-                        parent._gyr = (g[0], g[1], g[2])
+                        parent._gyro = (g[0], g[1], g[2])
 
+                    elif hasattr(packet, 'contains_calibrated_gyroscope_data') and packet.contains_calibrated_gyroscope_data():
+                        g = packet.calibrated_gyroscope_data()
+                        parent._gyro = (g[0], g[1], g[2])
         # Instantiate the callback and register it with the device
         self.cb = Callback()
         self.device.add_callback_handler(self.cb)   # Xsens will now call our callback
@@ -209,6 +213,6 @@ if __name__ == "__main__":
     try:
         for packet in stream_imu():   # blocks and yields packets indefinitely
             # Print the three Euler angles (already aligned to nav frame)
-            print(f"Roll: {packet['roll']:>6.1f} | Pitch: {packet['pitch']:>6.1f} | Yaw: {packet['yaw']:>6.1f}")
+            print(f"Roll: {packet['roll']:>6.1f} | Pitch: {packet['pitch']:>6.1f} | Yaw: {packet['yaw']:>6.1f} | Yaw Rate: {packet['yaw_rate']:>6.1f} deg/s")
     except KeyboardInterrupt:
         print("\nTest stopped by user.")
