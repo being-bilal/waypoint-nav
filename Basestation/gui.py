@@ -906,13 +906,60 @@ map.on('click', function(e) {{
 // ── Load default waypoints ─────────────────────────────────────────────
 defaultWps.forEach(([lat, lon]) => addWaypoint(lat, lon));
 
-// — Live Boat Position —
+// — Live Boat Position & Orientation —
 let boatMarker = null;
+
+// Use an SVG arrow pointing UP (North) by default, rather than a circle
+const boatIconHtml = `
+  <div id="boat-icon-container" style="transition: transform 0.2s linear; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+    <svg width="24" height="24" viewBox="0 0 24 24" style="filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));">
+      <path d="M12 2L22 20L12 17L2 20L12 2Z" fill="#e74c3c" stroke="white" stroke-width="2"/>
+    </svg>
+  </div>
+`;
+
+const boatIcon = L.divIcon({
+  className: '',
+  html: boatIconHtml,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12]
+});
+
+// — Target Point Marker —
+let targetMarker = null;
+const targetIcon = L.divIcon({
+  className: '',
+  html: `<div style="background: #b45309; width: 12px; height: 12px; transform: rotate(45deg); border: 1.5px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
+  iconSize: [12, 12],
+  iconAnchor: [6, 6]
+});
+
+// — Live Boat Position & Orientation —
+let boatMarker = null;
+
+// Use an SVG arrow pointing UP (North) by default, rather than a circle
+const boatIconHtml = `
+  <div id="boat-icon-container" style="transition: transform 0.2s linear; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+    <svg width="24" height="24" viewBox="0 0 24 24" style="filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));">
+      <path d="M12 2L22 20L12 17L2 20L12 2Z" fill="#e74c3c" stroke="white" stroke-width="2"/>
+    </svg>
+  </div>
+`;
+
 const boatIcon = L.divIcon({{
   className: '',
-  html: `<div style="background: #e74c3c; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
-  iconSize: [14, 14],
-  iconAnchor: [7, 7]
+  html: boatIconHtml,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12]
+}});
+
+// — Target Point Marker —
+let targetMarker = null;
+const targetIcon = L.divIcon({{
+  className: '',
+  html: `<div style="background: #b45309; width: 12px; height: 12px; transform: rotate(45deg); border: 1.5px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
+  iconSize: [12, 12],
+  iconAnchor: [6, 6]
 }});
 
 async function pollTelemetryPos() {{
@@ -920,26 +967,45 @@ async function pollTelemetryPos() {{
     const resp = await fetch('/telemetry');
     const d = await resp.json();
     
+    // 1. UPDATE BOAT POSITION & ORIENTATION
     if (d.gps_lat && d.gps_lat !== 0) {{
       if (!boatMarker) {{
-        boatMarker = L.marker([d.gps_lat, d.gps_lon], {icon: boatIcon}).addTo(map);
-        boatMarker.bindTooltip("Current Position", {permanent: false, direction: 'top'});
+        boatMarker = L.marker([d.gps_lat, d.gps_lon], {{icon: boatIcon, zIndexOffset: 1000}}).addTo(map);
+        boatMarker.bindTooltip("ASV Position", {{permanent: false, direction: 'top'}});
         
-        // Center the map on the boat if no default waypoints exist
         if (waypoints.length === 0) {{
           map.setView([d.gps_lat, d.gps_lon], 18);
         }}
-      } else {{
+      }} else {{
         boatMarker.setLatLng([d.gps_lat, d.gps_lon]);
       }}
+
+      // Rotate the boat icon based on heading
+      const iconContainer = document.getElementById('boat-icon-container');
+      if (iconContainer && d.heading !== undefined) {{
+        // Python will convert ${{...}} into ${...} so JavaScript can read the template literal
+        iconContainer.style.transform = `rotate(${{d.heading}}deg)`;
+      }}
     }}
-  } catch(e) {{
-    // Optional: console.warn("Telemetry poll failed:", e);
+
+    // 2. UPDATE TARGET POINT
+    if (d.target_lat && d.target_lat !== 0) {{
+      if (!targetMarker) {{
+        targetMarker = L.marker([d.target_lat, d.target_lon], {{icon: targetIcon}}).addTo(map);
+        targetMarker.bindTooltip("Look-Ahead Target", {{permanent: false, direction: 'right'}});
+      }} else {{
+        targetMarker.setLatLng([d.target_lat, d.target_lon]);
+      }}
+    }}
+
+  }} catch(e) {{
+    // console.warn("Telemetry poll failed:", e);
   }} finally {{
-    // Schedule the next poll 500ms AFTER this one completes or fails
     setTimeout(pollTelemetryPos, 500);
   }}
 }}
+
+
 
 // Kick off the continuous polling loop
 pollTelemetryPos();
