@@ -41,7 +41,7 @@ import matplotlib.pyplot as plt      # (available for offline plotting/debugging
 
 # Import constants from the central config file
 from constants import (GPS_CONNECTION_STRING, IMU_TARGET_PORT, IMU_HZ,   # sensor ports (for standalone mode)
-                       LOOK_AHEAD_DELTA, WAYPOINT_FILE, NAV_LOOP_RATE)  # nav algorithm tuning
+                       LOOK_AHEAD_DELTA, WAYPOINT_FILE, NAV_LOOP_RATE , ACCEPTANCE_RADIUS)  # nav algorithm tuning
 # Import sensor classes (used only in standalone __main__ mode)
 from gps import GPS
 from imu import SimpleXsens
@@ -78,7 +78,7 @@ class Navigator:
         # Look-ahead distance (metres) – how far ahead of our projection on the path
         # we place the target point T
         self.LOOK_AHEAD_DELTA = LOOK_AHEAD_DELTA
-
+        self.Acceptance_radius = ACCEPTANCE_RADIUS
         # ── State variables: last-known-good sensor readings ─────────────
         # GPS and IMU update at different rates and may have gaps, so we
         # cache the most recent valid reading and reuse it until a new one arrives
@@ -173,8 +173,10 @@ class Navigator:
         # s = how far along the path we've traveled (scalar projection of AP onto AB)
         s = np.dot(AP, AB_unit)
         
+        # NEW: Calculate straight-line distance to the target waypoint (B)
+        dist_to_wp = np.linalg.norm(B - P)
         # If s >= AB_length, we've passed waypoint B → switch to the next segment
-        if s >= AB_length:
+        if dist_to_wp <= self.ACCEPTANCE_RADIUS or s >= AB_length:
             print(f"\n--- Reached Waypoint {self.current_wp_index + 1}! Switching to next segment. ---")
             self.current_wp_index += 1   # advance to the next segment
             return {"status": "WAYPOINT_SWITCH"}
@@ -182,7 +184,9 @@ class Navigator:
         # ── Calculate the target point T (look-ahead) ────────────────────
         # T is a point on the path line, (s + Δ) metres from A
         T = A + (s + self.LOOK_AHEAD_DELTA) * AB_unit
-        
+        target_easting = T[0] + self.x_ref
+        target_northing = T[1] + self.y_ref
+        target_lat, target_lon = utm.to_latlon(target_easting, target_northing, self.zone_num, self.zone_let)
         # ── Calculate target heading ─────────────────────────────────────
         PT = T - P                                        # vector from P to T
         target_yaw_rad = np.arctan2(PT[1], PT[0])         # angle in radians (0°=East, 90°=North)
@@ -209,6 +213,8 @@ class Navigator:
             "yaw_error": yaw_error,               # how far off we are (degrees, [-180,180])
             "xtrack_error": cross_track_error,    # perpendicular distance from path (metres)
             "imu_data": self.last_imu_data        # full IMU packet for telemetry
+            "target_lat": target_lat,             # NEW: Target latitude
+            "target_lon": target_lon,             # NEW: Target longitude
         }
 
     # ─────────────────────────────────────────────────────────────────────

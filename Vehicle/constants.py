@@ -108,6 +108,8 @@ WAYPOINT_FILE         = 'waypoints.json'    # Default waypoint file path
 # CONTROL / PID  (control.py)
 # ─────────────────────────────────────────────────────────────────────────────
 PWM_NEUTRAL           = 1500                # Neutral ESC PWM value (microseconds)
+PWM_MAX               = 1600                # Max ESC PWM value (microseconds)
+PWM_MIN               = 1400                # Min ESC PWM value (microseconds)
 MAX_AXIAL_FORCE       = 10.0                # Max forward/reverse force (kgf) — adjust per thruster
 MAX_YAW_TORQUE        = 5.0                 # Max rotational torque (N·m) — adjust per boat width
 MAX_THRUST            = 5.2                 # Max thrust per motor (e.g. T200 @ 16V ≈ 5.2 kgf)
@@ -119,7 +121,7 @@ STEERING_KD           = 0.01
 STEERING_MIN_OUT      = -1.0                # PID output lower bound (full reverse rotation)
 STEERING_MAX_OUT      = 1.0                 # PID output upper bound (full forward rotation)
 
-BASE_SURGE            = 0.4                 # Base forward speed [−1 to 1]  (0.4 = 40%)
+BASE_SURGE            = 0.3                 # Base forward speed [−1 to 1]  (0.4 = 40%)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ACCELEROMETER  (accelerometer_data.py)
@@ -130,7 +132,7 @@ ACCEL_CALIBRATION_SAMPLES = 200             # Number of samples for bias calibra
 # ─────────────────────────────────────────────────────────────────────────────
 # NETWORKING / COMMS  (main.py)
 # ─────────────────────────────────────────────────────────────────────────────
-BASE_IP               = "192.168.0.109"         # Base station IP address
+BASE_IP               = "10.45.93.15"           # Base station IP address
 UDP_PORT_OUT          = 5006                # Port to send telemetry TO the base station
 UDP_PORT_IN           = 5005                # Port to receive waypoints FROM the base station
 
@@ -138,3 +140,5 @@ UDP_PORT_IN           = 5005                # Port to receive waypoints FROM the
 # NAVIGATION LOOP  (main.py)
 # ─────────────────────────────────────────────────────────────────────────────
 NAV_LOOP_RATE         = 0.01                # Main navigation loop sleep (seconds) — ~100 Hz
+ACCEPTANCE_RADIUS     = 2.0                 # Distance to waypoint to trigger switch (metres)
+

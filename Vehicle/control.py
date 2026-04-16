@@ -8,7 +8,8 @@ from constants import (
     STEERING_KP, STEERING_KI, STEERING_KD,  # PID gains for yaw steering
     STEERING_MIN_OUT, STEERING_MAX_OUT,  # PID output clamp range [-1, 1]
     BASE_SURGE,                          # Default forward speed (fraction, 0.4 = 40%)
-    GPS_CONNECTION_STRING, GPS_BAUD_RATE  # Pixhawk serial port (shared with GPS)
+    GPS_CONNECTION_STRING, GPS_BAUD_RATE ,# Pixhawk serial port (shared with GPS)
+    PWM_MAX, PWM_MIN 
 )
 
 # =============================================================================
@@ -152,7 +153,8 @@ class PixhawkBoatController:
             coeffs = np.array([2.22716503, -22.41358258,  135.44774899, 1535.90291842])
             pwm_value = float(np.array([thrust**3, thrust**2, thrust, 1]) @ coeffs)            
         
-        return int(round(pwm_value))  # PWM must be an integer (µs)
+        pwm_int = int(round(pwm_value))  # PWM must be an integer (µs)
+        return max(PWM_MIN, min(PWM_MAX, pwm_int))
 
     # ─────────────────────────────────────────────────────────────────────
     # MAVLINK METHODS  –  hardware setup commands sent to the Pixhawk

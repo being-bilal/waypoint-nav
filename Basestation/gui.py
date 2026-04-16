@@ -287,6 +287,10 @@ def _build_dashboard(waypoints, map_html):
   </div>
   <div class="divider"></div>
   <div class="status-badge" id="hdr-status">WAITING</div>
+  <div class="hstat">
+      <span class="hstat-label">Look-Ahead</span>
+      <span class="hstat-value" id="hdr-tgt">—</span>
+    </div>
   <div class="header-stats">
     <div class="hstat">
       <span class="hstat-label">Latitude</span>
@@ -401,6 +405,7 @@ const WP_XY  = {waypoints_js};
 const WP_RAW = {waypoints_raw};
 
 const pathChart = new Chart(document.getElementById('c-path'), {{
+
   type: 'scatter',
   data: {{ datasets: [
     {{ label: 'Planned', data: WP_XY, borderColor: '#bcc3d0',
@@ -408,7 +413,9 @@ const pathChart = new Chart(document.getElementById('c-path'), {{
        borderDash: [5,4], pointRadius: 4, pointBackgroundColor: '#bcc3d0' }},
     {{ label: 'Actual',  data: [], borderColor: '#1a56db',
        backgroundColor: 'transparent', showLine: true, borderWidth: 1.5,
-       pointRadius: 2, pointBackgroundColor: '#1a56db' }}
+       pointRadius: 2, pointBackgroundColor: '#1a56db' }},
+    {{ label: 'Target', data: [], backgroundColor: '#b45309', 
+       pointRadius: 6, pointStyle: 'rectRot', showLine: false }}
   ]}},
   options: {{
     ...BASE,
@@ -488,7 +495,10 @@ async function poll() {{
     document.getElementById('hdr-hdg').textContent  = d.heading.toFixed(1) + '°';
     document.getElementById('hdr-wp').textContent   = d.active_wp;
     document.getElementById('hdr-dist').textContent = d.dist_to_waypoint.toFixed(1) + ' m';
-
+    if (d.target_lat !== 0) {{}
+      document.getElementById('hdr-tgt').textContent = d.target_lat.toFixed(5) + ', ' + d.target_lon.toFixed(5);
+      pathChart.data.datasets[2].data = [toXY(d.target_lat, d.target_lon)];
+    }}
     if (d.gps_lat !== 0 || d.gps_lon !== 0) {{
       pathChart.data.datasets[1].data.push(toXY(d.gps_lat, d.gps_lon));
       pathChart.update();
@@ -896,6 +906,43 @@ map.on('click', function(e) {{
 // ── Load default waypoints ─────────────────────────────────────────────
 defaultWps.forEach(([lat, lon]) => addWaypoint(lat, lon));
 
+// — Live Boat Position —
+let boatMarker = null;
+const boatIcon = L.divIcon({{
+  className: '',
+  html: `<div style="background: #e74c3c; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
+  iconSize: [14, 14],
+  iconAnchor: [7, 7]
+}});
+
+async function pollTelemetryPos() {{
+  try {{
+    const resp = await fetch('/telemetry');
+    const d = await resp.json();
+    
+    if (d.gps_lat && d.gps_lat !== 0) {{
+      if (!boatMarker) {{
+        boatMarker = L.marker([d.gps_lat, d.gps_lon], {icon: boatIcon}).addTo(map);
+        boatMarker.bindTooltip("Current Position", {permanent: false, direction: 'top'});
+        
+        // Center the map on the boat if no default waypoints exist
+        if (waypoints.length === 0) {{
+          map.setView([d.gps_lat, d.gps_lon], 18);
+        }}
+      } else {{
+        boatMarker.setLatLng([d.gps_lat, d.gps_lon]);
+      }}
+    }}
+  } catch(e) {{
+    // Optional: console.warn("Telemetry poll failed:", e);
+  }} finally {{
+    // Schedule the next poll 500ms AFTER this one completes or fails
+    setTimeout(pollTelemetryPos, 500);
+  }}
+}}
+
+// Kick off the continuous polling loop
+pollTelemetryPos();
 // ── Start Mission ──────────────────────────────────────────────────────
 async function startMission() {{
   const btn = document.getElementById('btn-start');

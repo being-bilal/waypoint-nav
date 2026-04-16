@@ -157,6 +157,8 @@ def build_telemetry_packet(nav_data: dict, gps_obj, navigator) -> dict:
         "cross_track_error": nav_data.get("xtrack_error", 0.0),     # lateral error (m)
         "dist_to_waypoint":  round(dist, 3),                        # distance to target (m)
         "active_wp":         navigator.current_wp_index,            # current segment index
+        "target_lat":        nav_data.get("target_lat", 0.0),       # Target latitude
+        "target_lon":        nav_data.get("target_lon", 0.0),       # Target longitude
         "nav_status":        nav_data.get("status", "UNKNOWN"),     # status string
     }
     return packet

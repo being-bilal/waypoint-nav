@@ -78,6 +78,8 @@ telemetry = {
     "heading_error":     0.0,     # difference between target and actual heading (degrees)
     "cross_track_error": 0.0,     # perpendicular distance from the planned path (metres)
     "dist_to_waypoint":  0.0,     # distance to the look-ahead target point (metres)
+    "target_lat":        0.0,     # NEW: Look-ahead lat
+    "target_lon":        0.0,     # NEW: Look-ahead lon
     "active_wp":         0,       # current waypoint segment index (0-based)
     "nav_status":        "WAITING",  # status string: WAITING / NAVIGATING / DONE / ERROR
 }
@@ -166,6 +168,8 @@ def telemetry_listener():
             telemetry["heading_error"]     = pkt.get("heading_error",     0.0)   # heading error (°)
             telemetry["cross_track_error"] = pkt.get("cross_track_error", 0.0)   # lateral error (m)
             telemetry["dist_to_waypoint"]  = pkt.get("dist_to_waypoint",  0.0)   # distance to target (m)
+            telemetry["target_lat"]        = pkt.get("target_lat",        0.0)   # NEW
+            telemetry["target_lon"]        = pkt.get("target_lon",        0.0)
             telemetry["active_wp"]         = pkt.get("active_wp",         0)     # segment index
             telemetry["nav_status"]        = pkt.get("nav_status",        "UNKNOWN")  # status string
 

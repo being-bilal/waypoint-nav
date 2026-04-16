@@ -32,8 +32,8 @@ import sys
 
 # ─── Network Config (mirrored from project constants.py) ────────────────────
 # These MUST match Vehicle/constants.py and Basestation/constants.py
-VEHICLE_IP    = "192.168.0.104"
-BASE_IP       = "192.168.0.109"
+VEHICLE_IP    = "10.45.93.175"
+BASE_IP       = "10.45.93.15"
 
 # Port assignments (from constants):
 #   Base → Vehicle waypoints:   port 5005
