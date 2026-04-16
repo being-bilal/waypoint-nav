@@ -39,6 +39,7 @@ class SimpleXsens:
         self._lock = threading.Lock()
         self._euler = None    # (roll, pitch, yaw) as Python floats, or None
         self._accel = None    # (ax, ay, az)       as Python floats, or None
+        self._gyro = None     # (gx, gy, gz)       as Python floats, or None    
 
         # Scan all serial ports for connected Xsens MTi devices
         print(f"Scanning for Xsens devices... (Target: {target_port if target_port else 'Any'})")
@@ -118,6 +119,11 @@ class SimpleXsens:
                         a = packet.calibrated_acc()
                         parent._accel = (a[0], a[1], a[2])
 
+                    # Extract gyroscope if this packet contains it
+                    if hasattr(packet, 'contains_calibrated_gyr') and packet.contains_calibrated_gyr():
+                        g = packet.calibrated_gyr()
+                        parent._gyr = (g[0], g[1], g[2])
+
         # Instantiate the callback and register it with the device
         self.cb = Callback()
         self.device.add_callback_handler(self.cb)   # Xsens will now call our callback
@@ -138,12 +144,13 @@ class SimpleXsens:
         """
         with self._lock:
             # Need BOTH orientation AND acceleration to produce a complete packet
-            if self._euler is None or self._accel is None:
+            if self._euler is None or self._accel is None or self._gyro is None:
                 return None
 
             # Copy the cached Python floats (safe - no C++ access)
             roll_raw, pitch_raw, yaw_raw = self._euler
             ax_raw, ay_raw, az_raw = self._accel
+            gx_raw, gy_raw, gz_raw = self._gyro
 
         # ── Euler alignment (outside lock - pure Python math) ────────
         aligned_yaw = (IMU_YAW_SIGN * yaw_raw
@@ -159,6 +166,7 @@ class SimpleXsens:
 
         # ── Accelerometer remapping ──────────────────────────────────
         ax, ay, az = _remap_accel(ax_raw, ay_raw, az_raw)
+        yaw_rate = IMU_YAW_SIGN * gz_raw
 
         # Return a flat dict with all values now in the nav coordinate frame
         return {
@@ -168,6 +176,7 @@ class SimpleXsens:
             "roll":    aligned_roll,   # nav-frame roll  (degrees, [-180, 180])
             "pitch":   aligned_pitch,  # nav-frame pitch (degrees, [-180, 180])
             "yaw":     aligned_yaw,    # nav-frame yaw   (degrees, [-180, 180])
+            "yaw_rate": yaw_rate,       # nav-frame yaw rate (degrees/s)
         }
 
     def close(self):

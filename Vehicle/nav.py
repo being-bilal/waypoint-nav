@@ -43,8 +43,9 @@ import matplotlib.pyplot as plt      # (available for offline plotting/debugging
 from constants import (GPS_CONNECTION_STRING, IMU_TARGET_PORT, IMU_HZ,   # sensor ports (for standalone mode)
                        LOOK_AHEAD_DELTA, WAYPOINT_FILE, NAV_LOOP_RATE , ACCEPTANCE_RADIUS)  # nav algorithm tuning
 # Import sensor classes (used only in standalone __main__ mode)
-from gps import GPS
+from gps import GPS 
 from imu import SimpleXsens
+from ekf import GPS_IMU_EKF
 
 class Navigator:
     def __init__(self, gps, imu, waypoint_file=WAYPOINT_FILE):
@@ -56,6 +57,9 @@ class Navigator:
         print("Initializing Navigator...")
         self.gps = gps     # GPS sensor handle – we call gps.get() and gps.has_fix()
         self.imu = imu     # IMU sensor handle – we call imu.get_imu_packet()
+        self.ekf = None
+        self.last_time = time.time()
+        self.estimated_velocity = 0.0 # Will calculate from GPS diffs
         
         # Load waypoints from the JSON file as a list of (lat, lon) tuples
         self.waypoints_geo = self.load_waypoints(waypoint_file)
@@ -127,94 +131,109 @@ class Navigator:
             return {"status": "DONE"}
 
         # ── 1. Fetch new sensor data (may be None if no new reading yet) ─
-        new_P = self.get_local_position()       # current position in local (x, y), or None
-        new_imu_data = self.imu.get_imu_packet() # latest IMU packet, or None
+        new_P = self.get_local_position()       
+        new_imu_data = self.imu.get_imu_packet() 
         
-        gps_updated = False   # flag: did we get a FRESH gps reading this cycle?
-        imu_updated = False   # flag: did we get a FRESH imu reading this cycle?
+        current_time = time.time()
+        dt = current_time - self.last_time
+        self.last_time = current_time
+        if dt <= 0: dt = 0.01
 
-        # ── 2. Update cached state ONLY when we have genuinely new data ──
-        if new_P is not None:
-            self.last_pos = new_P    # cache the new position
-            gps_updated = True
+        # Flags for telemetry (so the GUI knows when we get fresh data)
+        gps_updated = new_P is not None
+        imu_updated = new_imu_data is not None
+
+        # ── 2. INITIALIZE EKF (Run once when we get our first data) ──
+        if self.ekf is None:
+            if gps_updated and imu_updated:
+                # Initialize EKF with first GPS pos and IMU yaw (converted to radians)
+                self.ekf = GPS_IMU_EKF(new_P[0], new_P[1], math.radians(new_imu_data['yaw']))
+                self.last_pos = new_P
+                self.last_imu_data = new_imu_data
+            return {"status": "WAITING", "gps_updated": gps_updated, "imu_updated": imu_updated}
+
+        # ── 3. EKF PREDICTION (Using IMU) ──
+        if imu_updated:
+            self.last_imu_data = new_imu_data
+            # Convert yaw rate from deg/s to rad/s
+            yaw_rate_rad = math.radians(new_imu_data['yaw_rate'])
+            # Predict where we are based on velocity and yaw rate
+            self.ekf.predict(self.estimated_velocity, yaw_rate_rad, dt)
+
+        # ── 4. EKF UPDATE (Using GPS) ──
+        if gps_updated:
+            # Calculate simple velocity for the prediction step (distance / time)
+            dist_moved = np.linalg.norm(new_P - self.last_pos)
+            self.estimated_velocity = dist_moved / dt
+            self.last_pos = new_P
             
-        if new_imu_data is not None:
-            self.last_yaw = new_imu_data['yaw']    # cache just the yaw for quick access
-            self.last_imu_data = new_imu_data       # cache the full packet (roll, pitch, accel too)
-            imu_updated = True
+            # Correct the EKF drift with absolute GPS coordinates
+            self.ekf.update(new_P[0], new_P[1])
 
-        # ── 3. Can't navigate until we have at least one GPS and one IMU reading ─
-        if self.last_pos is None or self.last_yaw is None:
-            return {
-                "status": "WAITING",        # tell the caller we're not ready yet
-                "gps_updated": gps_updated,  # whether GPS data arrived this cycle
-                "imu_updated": imu_updated   # whether IMU data arrived this cycle
-            }
-
-        # ── 4. PROCEED WITH NAVIGATION using last-known-good data ────────
-        P = self.last_pos           # current position as numpy array [x, y]
-        actual_yaw = self.last_yaw  # current heading from IMU (degrees, nav frame)
+        # ── 5. GET FILTERED STATE FOR NAVIGATION ──
+        ekf_x, ekf_y, ekf_yaw_deg = self.ekf.get_state()
+        P = np.array([ekf_x, ekf_y])   # Smooth, filtered position
+        actual_yaw = ekf_yaw_deg       # Smooth, filtered heading
         
         # A = start of the current path segment, B = end of the current path segment
-        A = self.waypoints_local[self.current_wp_index]      # waypoint we came FROM
-        B = self.waypoints_local[self.current_wp_index + 1]  # waypoint we're heading TO
+        A = self.waypoints_local[self.current_wp_index]      
+        B = self.waypoints_local[self.current_wp_index + 1]  
         
         # ── Vector math ──────────────────────────────────────────────────
-        AB = B - A                       # path vector (from A to B)
-        AP = P - A                       # vector from A to our current position P
-        AB_length = np.linalg.norm(AB)   # total length of the path segment in metres
+        AB = B - A                       
+        AP = P - A                       
+        AB_length = np.linalg.norm(AB)   
         
         # Guard: two identical waypoints would cause a division-by-zero
         if AB_length == 0:
             return {"status": "ERROR", "msg": "Identical waypoints"}
             
-        AB_unit = AB / AB_length         # unit vector along the path direction
+        AB_unit = AB / AB_length         
         
         # s = how far along the path we've traveled (scalar projection of AP onto AB)
         s = np.dot(AP, AB_unit)
         
-        # NEW: Calculate straight-line distance to the target waypoint (B)
+        # Calculate straight-line distance to the target waypoint (B)
         dist_to_wp = np.linalg.norm(B - P)
+        
         # If s >= AB_length, we've passed waypoint B → switch to the next segment
         if dist_to_wp <= self.ACCEPTANCE_RADIUS or s >= AB_length:
             print(f"\n--- Reached Waypoint {self.current_wp_index + 1}! Switching to next segment. ---")
-            self.current_wp_index += 1   # advance to the next segment
+            self.current_wp_index += 1   
             return {"status": "WAYPOINT_SWITCH"}
         
         # ── Calculate the target point T (look-ahead) ────────────────────
-        # T is a point on the path line, (s + Δ) metres from A
         T = A + (s + self.LOOK_AHEAD_DELTA) * AB_unit
         target_easting = T[0] + self.x_ref
         target_northing = T[1] + self.y_ref
         target_lat, target_lon = utm.to_latlon(target_easting, target_northing, self.zone_num, self.zone_let)
+        
         # ── Calculate target heading ─────────────────────────────────────
-        PT = T - P                                        # vector from P to T
-        target_yaw_rad = np.arctan2(PT[1], PT[0])         # angle in radians (0°=East, 90°=North)
-        target_yaw_deg = np.degrees(target_yaw_rad)       # convert to degrees
+        PT = T - P                                        
+        target_yaw_rad = np.arctan2(PT[1], PT[0])         
+        target_yaw_deg = np.degrees(target_yaw_rad)       
         
         # ── Calculate yaw error ──────────────────────────────────────────
-        yaw_error = target_yaw_deg - actual_yaw           # raw difference
-        yaw_error = (yaw_error + 180) % 360 - 180         # wrap to [-180°, +180°] (shortest turn)
+        yaw_error = target_yaw_deg - actual_yaw           
+        yaw_error = (yaw_error + 180) % 360 - 180         
         
         # ── Cross-track error ────────────────────────────────────────────
-        # The 2D cross product of AB_unit × AP gives the signed perpendicular
-        # distance from P to the path line. Positive = left of path, negative = right.
         cross_track_error = float(np.cross(AB_unit, AP))
 
         # ── Return all computed values ───────────────────────────────────
         return {
             "status": "NAVIGATING",
-            "gps_updated": gps_updated,           # True if GPS had a fresh reading
-            "imu_updated": imu_updated,           # True if IMU had a fresh reading
-            "pos": P,                             # current position [x, y] (metres)
-            "target": T,                          # look-ahead target point [x, y]
-            "target_yaw": target_yaw_deg,         # direction we SHOULD face (degrees)
-            "actual_yaw": actual_yaw,             # direction we ARE facing (degrees)
-            "yaw_error": yaw_error,               # how far off we are (degrees, [-180,180])
-            "xtrack_error": cross_track_error,    # perpendicular distance from path (metres)
-            "imu_data": self.last_imu_data        # full IMU packet for telemetry
-            "target_lat": target_lat,             # NEW: Target latitude
-            "target_lon": target_lon,             # NEW: Target longitude
+            "gps_updated": gps_updated,           
+            "imu_updated": imu_updated,           
+            "pos": P,                             
+            "target": T,                          
+            "target_yaw": target_yaw_deg,         
+            "actual_yaw": actual_yaw,             
+            "yaw_error": yaw_error,               
+            "xtrack_error": cross_track_error,    
+            "imu_data": self.last_imu_data,       # FIXED: Added missing comma
+            "target_lat": target_lat,             
+            "target_lon": target_lon,             
         }
 
     # ─────────────────────────────────────────────────────────────────────
