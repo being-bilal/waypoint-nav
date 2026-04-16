@@ -153,6 +153,9 @@ class Navigator:
         # ── 2. INITIALIZE EKF (Run once when we get our first data) ──
         if self.ekf is None:
             # CHECK CACHED VARIABLES, NOT JUST THE INSTANTANEOUS FLAGS
+            if gps_updated:
+                self.last_pos = new_P
+                
             if self.last_pos is not None and self.last_imu_data is not None:
                 # Initialize EKF with first GPS pos and IMU yaw (converted to radians)
                 self.ekf = GPS_IMU_EKF(self.last_pos[0], self.last_pos[1], math.radians(self.last_imu_data['yaw']))

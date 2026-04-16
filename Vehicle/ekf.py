@@ -23,8 +23,8 @@ class GPS_IMU_EKF:
         # 4. Measurement Noise (R) - how much we trust the GPS
         # Tune these: lower = trust GPS more, higher = trust GPS less
         self.R = np.array([
-            [2.0, 0],            # GPS x noise (variance in meters)
-            [0,   2.0]           # GPS y noise (variance in meters)
+            [10.0, 0],            # GPS x noise (variance in meters)
+            [0,   10.0]           # GPS y noise (variance in meters)
         ])
         
         # Measurement mapping matrix (H) - maps state to measurements [x, y]
