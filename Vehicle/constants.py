@@ -124,12 +124,6 @@ STEERING_MAX_OUT      = 1.0                 # PID output upper bound (full forwa
 BASE_SURGE            = 0.3                 # Base forward speed [−1 to 1]  (0.4 = 40%)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# ACCELEROMETER  (accelerometer_data.py)
-# ─────────────────────────────────────────────────────────────────────────────
-GRAVITY               = 9.81                # Gravitational acceleration (m/s²)
-ACCEL_CALIBRATION_SAMPLES = 200             # Number of samples for bias calibration
-
-# ─────────────────────────────────────────────────────────────────────────────
 # NETWORKING / COMMS  (main.py)
 # ─────────────────────────────────────────────────────────────────────────────
 BASE_IP               = "10.45.93.15"           # Base station IP address
