@@ -172,10 +172,20 @@ class Navigator:
             self.ekf.predict(self.estimated_velocity, yaw_rate_rad, dt)
 
         # ── 4. EKF UPDATE (Using GPS) ──
+        # ── 4. EKF UPDATE (Using GPS) ──
         if gps_updated:
-            # Calculate simple velocity for the prediction step (distance / time)
-            dist_moved = np.linalg.norm(new_P - self.last_pos)
-            self.estimated_velocity = dist_moved / dt
+            # Calculate distance moved BEFORE overwriting last_pos
+            dist_moved = float(np.linalg.norm(new_P - self.last_pos))
+            
+            # --- THE FIX: GPS Velocity Deadband ---
+            # If the GPS jitters by less than 0.4 meters, assume we are completely still.
+            # This prevents stationary GPS drift from creating massive fake velocity spikes.
+            if dist_moved < 0.4:
+                self.estimated_velocity = 0.0
+            else:
+                self.estimated_velocity = dist_moved / dt
+            
+            # Now update last_pos for the next cycle
             self.last_pos = new_P
             
             # Correct the EKF drift with absolute GPS coordinates
