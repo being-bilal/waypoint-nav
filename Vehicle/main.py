@@ -224,10 +224,12 @@ def main():
 
     # ── 6. MAIN LOOP  –  runs at ~100 Hz ────────────────────────────────
     try:
+        nav_armed = False
         while running:
             # Run one iteration of the navigation algorithm
             nav = navigator.calculate_navigation()
             status = nav.get("status")
+
 
             # ── DONE: all waypoints reached ──────────────────────────────
             if status == "DONE":
@@ -264,6 +266,10 @@ def main():
             elif status == "NAVIGATING":
                 # Feed the yaw error from the navigator into the PID controller
                 # → controller computes thrust allocation → sends PWM to Pixhawk
+                if not nav_armed:
+                    log.info("Arming Pixhawk for navigation...")
+                    controller.arm_vehicle()
+                    nav_armed = True
                 yaw_error = nav["yaw_error"]
                 pwm_left, pwm_right = controller.update(yaw_error)
 
@@ -301,25 +307,6 @@ def main():
         running = False
 
         log.info("Stopped by user.")
-
-        self.master.mav.command_long_send(
-            self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
-            0,          # confirmation
-            1,          # param1: Servo instance (Channel 1)
-            1500,   # param2: PWM value
-            0, 0, 0, 0, 0
-        )
-        
-        # Command Right Motor (Servo 3)
-        self.master.mav.command_long_send(
-            self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
-            0,          # confirmation
-            3,          # param1: Servo instance (Channel 3)
-            1500,  # param2: PWM value
-            0, 0, 0, 0, 0
-        )
 
     except Exception as e:
         log.error(f"Main loop error: {e}")

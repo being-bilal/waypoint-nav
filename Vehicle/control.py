@@ -161,70 +161,80 @@ class PixhawkBoatController:
     # ─────────────────────────────────────────────────────────────────────
 
     def set_pixhawk_passthrough(self):
-        """Set SERVO 1 and 3 to 0 (Disabled) so they accept DO_SET_SERVO commands."""
-        print("Configuring SERVO 1 and 3 for Direct MAVLink Override...")
-        # CRITICAL: To use DO_SET_SERVO, the servo function MUST be set to 0. 
-        # If it is set to 1 (RCPassThru), DO_SET_SERVO commands are ignored!
+        """Set SERVO 1 and 3 to RCPassThru so our RC Override commands go straight to ESCs."""
+        print("Setting SERVO 1 and 3 to Passthrough (RCPassThru)...")
+        # SERVO_FUNCTION = 1 means "RCPassThru" — the Pixhawk forwards RC Override
+        # values directly to the ESC without any autopilot mixing
         for i in [1, 3]:  # Channel 1 = left motor, Channel 3 = right motor
             self.master.mav.param_set_send(
                 self.master.target_system, self.master.target_component,
                 f"SERVO{i}_FUNCTION".encode('utf-8'),   # parameter name
-                0,                                       # value = 0 (Disabled)
+                1,                                       # value = RCPassThru
                 mavutil.mavlink.MAV_PARAM_TYPE_REAL32    # data type
             )
-        
-        # Request all data streams at 50 Hz
+        # Request all data streams at 50 Hz so we can receive sensor data back
         self.master.mav.request_data_stream_send(
             self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_DATA_STREAM_ALL, 50, 1   
+            mavutil.mavlink.MAV_DATA_STREAM_ALL, 50, 1   # stream_id, rate_hz, start=1
         )
 
     def arm_vehicle(self):
-        """Arm the Pixhawk and bypass pre-arm checks for companion computer control."""
-        print("Arming vehicle (forcing bypass of pre-arm checks)...")
-        # Set flight mode to "custom mode 0" (Manual)
+        """Arm the Pixhawk and catch rejection reasons."""
+        print("\nAttempting to arm vehicle...")
+        
+        # 1. Set mode to Manual (Mode 0)
         self.master.mav.set_mode_send(
             self.master.target_system,
             mavutil.mavlink.MAV_MODE_FLAG_CUSTOM_MODE_ENABLED, 0
         )
         time.sleep(0.5) 
         
-        # Send the ARM command with the Force flag (21196) 
-        # This forces the Pixhawk to arm even if GPS is slightly drifty indoors
+        # 2. Send the standard ARM command (Param1 = 1)
         self.master.mav.command_long_send(
             self.master.target_system, self.master.target_component,
             mavutil.mavlink.MAV_CMD_COMPONENT_ARM_DISARM,
             0,                  # confirmation count
             1,                  # param1 = 1 → ARM  
-            21196,              # param2 = 21196 → FORCE ARM (bypass safety checks)
-            0, 0, 0, 0, 0       # params 3–7
+            0, 0, 0, 0, 0, 0    # params 2-7
         )
-        print("Vehicle ARM Command Sent!")
-
-    def send_direct_pwm(self, pwm_left, pwm_right):
-        """
-        Directly sets the PWM output on the SERVO channels using DO_SET_SERVO.
-        This bypasses RC Failsafes completely.
-        """
-        # Command Left Motor (Servo 1)
-        self.master.mav.command_long_send(
-            self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
-            0,          # confirmation
-            1,          # param1: Servo instance (Channel 1)
-            pwm_left,   # param2: PWM value
-            0, 0, 0, 0, 0
-        )
+        print("Vehicle ARM Command Sent! Waiting for Pixhawk response...")
         
-        # Command Right Motor (Servo 3)
-        self.master.mav.command_long_send(
-            self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
-            0,          # confirmation
-            3,          # param1: Servo instance (Channel 3)
-            pwm_right,  # param2: PWM value
-            0, 0, 0, 0, 0
+        # 3. Catch the Acknowledgment (ACK) to see if it accepted or rejected
+        ack = self.master.recv_match(type='COMMAND_ACK', blocking=True, timeout=3.0)
+        
+        if ack and ack.command == mavutil.mavlink.MAV_CMD_COMPONENT_ARM_DISARM:
+            if ack.result == mavutil.mavlink.MAV_RESULT_ACCEPTED:
+                print("✅ Pixhawk successfully ARMED!\n")
+            else:
+                print(f"❌ Pixhawk REJECTED the arm command! (Error Code: {ack.result})")
+                print("Listening for Pre-Arm failure reason...")
+                
+                # The Pixhawk usually broadcasts a text string explaining WHY it rejected the arm
+                for _ in range(5):
+                    status = self.master.recv_match(type='STATUSTEXT', blocking=True, timeout=1.0)
+                    if status and "PreArm" in status.text:
+                        print(f"⚠️ REASON: {status.text}")
+        else:
+            print("⏳ No acknowledgment received from Pixhawk (Timeout).\n")
+
+    def send_rc_override(self, pwm_left, pwm_right):
+        """
+        Send RC Override commands to the Pixhawk.
+        This directly sets the PWM output on the SERVO channels.
+        """
+        # MAVLink expects 8 channels; 65535 = "ignore this channel"
+        rc_channels = [65535] * 8
+        rc_channels[0] = pwm_left   # Channel 1 → left motor ESC
+        rc_channels[2] = pwm_right  # Channel 3 → right motor ESC
+        
+        # Send the override command — the Pixhawk will output these PWM values
+        # on the corresponding SERVO pins
+        self.master.mav.rc_channels_override_send(
+            self.master.target_system, 
+            self.master.target_component,
+            *rc_channels   # unpack the 8 channel values as positional arguments
         )
+
     # ─────────────────────────────────────────────────────────────────────
     # MAIN UPDATE  –  called every loop iteration from main.py
     # ─────────────────────────────────────────────────────────────────────
@@ -250,8 +260,24 @@ class PixhawkBoatController:
         # pwm_left = self.invert_pwm(pwm_left)
 
         # 4. Send the PWM commands to the Pixhawk → ESCs → motors
-        self.send_direct_pwm(pwm_left, pwm_right)
+        self.send_rc_override(pwm_left, pwm_right)
 
         return pwm_left, pwm_right  # return for logging/telemetry
     
-    
+    def disarm_vehicle(self):
+        """Safely stop motors and disarm the Pixhawk on shutdown."""
+        print("\n[SAFETY] Stopping motors and disarming vehicle...")
+        
+        # 1. Force both motors to neutral (1500) immediately
+        self.send_direct_pwm(PWM_NEUTRAL, PWM_NEUTRAL)
+        time.sleep(0.2) # Give it a fraction of a second to register the PWM
+        
+        # 2. Send the DISARM command (Param1 = 0 means DISARM)
+        self.master.mav.command_long_send(
+            self.master.target_system, self.master.target_component,
+            mavutil.mavlink.MAV_CMD_COMPONENT_ARM_DISARM,
+            0,                  # confirmation count
+            0,                  # param1 = 0 → DISARM  
+            0, 0, 0, 0, 0, 0    # params 2-7
+        )
+        print("[SAFETY] Vehicle DISARMED.")
