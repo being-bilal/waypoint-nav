@@ -19,7 +19,7 @@ UDP_PORT_OUT      = 5005            # Port to SEND waypoints TO the vehicle
 UDP_PORT_IN       = 5006            # Port to RECEIVE telemetry FROM the vehicle
 
 # ─────────────────────────────────────────────────────────────────────────────
-# WAYPOINT TRANSMISSION  (main.py)
+# WAYPOINT TRANSMISSION  (main.py)c
 # ─────────────────────────────────────────────────────────────────────────────
 WP_SEND_RETRIES   = 5               # Number of times to re-send the waypoint packet
 WP_SEND_INTERVAL  = 0.2             # Seconds between each retry

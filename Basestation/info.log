@@ -373,3 +373,1408 @@
 2026-04-17 11:33:27 - [INFO] - Waypoints sent to 10.57.87.175:5005  (5 points)
 2026-04-17 11:33:27 - [INFO] - Waypoints sent after mission launch
 2026-04-17 11:34:04 - [INFO] - Basestation stopped by user.
+2026-04-18 00:26:11 - [INFO] - Telemetry listener started on port 5006
+2026-04-18 00:26:11 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 00:26:26 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 00:26:26 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-18 00:26:27 - [INFO] - Waypoints sent to 10.57.87.175:5005  (5 points)
+2026-04-18 00:26:27 - [INFO] - Waypoints sent after mission launch
+2026-04-18 00:37:14 - [INFO] - Basestation stopped by user.
+2026-04-18 00:37:15 - [INFO] - Telemetry listener started on port 5006
+2026-04-18 00:37:15 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 00:37:21 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 00:37:21 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-18 00:37:22 - [INFO] - Waypoints sent to 10.57.87.175:5005  (5 points)
+2026-04-18 00:37:22 - [INFO] - Waypoints sent after mission launch
+2026-04-18 00:44:28 - [INFO] - Basestation stopped by user.
+2026-04-18 00:44:28 - [INFO] - ============================================================
+2026-04-18 00:44:28 - [INFO] - Basestation starting up
+2026-04-18 00:44:28 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 00:44:28 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 00:44:28 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:44:28 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:44:28 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:44:28 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:44:28 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:44:28 - [INFO] - Starting telemetry listener thread...
+2026-04-18 00:44:28 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 00:44:28 - [INFO] - Telemetry listener thread started (tid=6145765376)
+2026-04-18 00:44:28 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 00:44:28 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 00:44:28 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 00:44:28 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 00:44:28 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 00:44:28 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 00:44:43 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 00:44:43 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 00:44:43 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:44:43 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:44:43 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:44:43 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:44:43 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:44:43 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 00:44:43 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 00:44:43 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 00:44:43 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 00:44:43 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 00:44:43 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 00:44:43 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 00:44:43 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 00:44:43 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 00:44:44 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 00:44:44 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 00:44:44 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 00:44:44 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 00:44:44 - [INFO] - Waypoints dispatched to vehicle in 1.02s
+2026-04-18 00:46:52 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 00:46:52 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 00:46:52 - [INFO] - Basestation stopped cleanly
+2026-04-18 00:46:52 - [INFO] - ============================================================
+2026-04-18 00:46:53 - [INFO] - ============================================================
+2026-04-18 00:46:53 - [INFO] - Basestation starting up
+2026-04-18 00:46:53 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 00:46:53 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 00:46:53 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:46:53 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:46:53 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:46:53 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:46:53 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:46:53 - [INFO] - Starting telemetry listener thread...
+2026-04-18 00:46:53 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 00:46:53 - [INFO] - Telemetry listener thread started (tid=6107656192)
+2026-04-18 00:46:53 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 00:46:53 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 00:46:53 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 00:46:53 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 00:46:53 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 00:46:53 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 00:46:58 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 00:46:58 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 00:46:58 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:46:58 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:46:58 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:46:58 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:46:58 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:46:58 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 00:46:58 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 00:46:58 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 00:46:58 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 00:46:58 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 00:46:58 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 00:46:58 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 00:46:58 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 00:46:58 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 00:46:58 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 00:46:58 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 00:46:59 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 00:46:59 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 00:46:59 - [INFO] - Waypoints dispatched to vehicle in 1.02s
+2026-04-18 00:48:33 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 00:48:33 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 00:48:33 - [INFO] - Basestation stopped cleanly
+2026-04-18 00:48:33 - [INFO] - ============================================================
+2026-04-18 00:48:34 - [INFO] - ============================================================
+2026-04-18 00:48:34 - [INFO] - Basestation starting up
+2026-04-18 00:48:34 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 00:48:34 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 00:48:34 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:48:34 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:48:34 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:48:34 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:48:34 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:48:34 - [INFO] - Starting telemetry listener thread...
+2026-04-18 00:48:34 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 00:48:34 - [INFO] - Telemetry listener thread started (tid=6151729152)
+2026-04-18 00:48:34 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 00:48:34 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 00:48:34 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 00:48:34 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 00:48:34 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 00:48:34 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 00:50:39 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 00:50:39 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 00:50:39 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:50:39 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:50:39 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:50:39 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:50:39 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:50:39 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 00:50:39 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 00:50:39 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 00:50:39 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 00:50:39 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 00:50:39 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 00:50:39 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 00:50:39 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 00:50:39 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 00:50:39 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 00:50:40 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 00:50:40 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 00:50:40 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 00:50:40 - [INFO] - Waypoints dispatched to vehicle in 1.03s
+2026-04-18 00:53:28 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 00:53:28 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 00:53:28 - [INFO] - Basestation stopped cleanly
+2026-04-18 00:53:28 - [INFO] - ============================================================
+2026-04-18 00:53:38 - [INFO] - ============================================================
+2026-04-18 00:53:38 - [INFO] - Basestation starting up
+2026-04-18 00:53:38 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 00:53:38 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 00:53:38 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:53:38 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:53:38 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:53:38 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:53:38 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:53:38 - [INFO] - Starting telemetry listener thread...
+2026-04-18 00:53:38 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 00:53:38 - [INFO] - Telemetry listener thread started (tid=6173700096)
+2026-04-18 00:53:38 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 00:53:38 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 00:53:38 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 00:53:38 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 00:53:38 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 00:53:38 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 00:53:43 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 00:53:43 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 00:53:43 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:53:43 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:53:43 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:53:43 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:53:43 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:53:43 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 00:53:43 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 00:53:43 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 00:53:43 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 00:53:43 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 00:53:43 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 00:53:43 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 00:53:43 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 00:53:43 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 00:53:43 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 00:53:43 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 00:53:44 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 00:53:44 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 00:53:44 - [INFO] - Waypoints dispatched to vehicle in 1.02s
+2026-04-18 00:58:48 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 00:58:48 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 00:58:48 - [INFO] - Basestation stopped cleanly
+2026-04-18 00:58:48 - [INFO] - ============================================================
+2026-04-18 00:58:49 - [INFO] - ============================================================
+2026-04-18 00:58:49 - [INFO] - Basestation starting up
+2026-04-18 00:58:49 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 00:58:49 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 00:58:49 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 00:58:49 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 00:58:49 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 00:58:49 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 00:58:49 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 00:58:49 - [INFO] - Starting telemetry listener thread...
+2026-04-18 00:58:49 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 00:58:49 - [INFO] - Telemetry listener thread started (tid=6150434816)
+2026-04-18 00:58:49 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 00:58:49 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 00:58:49 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 00:58:49 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 00:58:49 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 00:58:49 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:02:26 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:02:26 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:02:26 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:02:26 - [INFO] - ============================================================
+2026-04-18 01:02:27 - [INFO] - ============================================================
+2026-04-18 01:02:27 - [INFO] - Basestation starting up
+2026-04-18 01:02:27 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:02:27 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:02:27 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:02:27 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:02:27 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:02:27 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:02:27 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:02:27 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:02:27 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:02:27 - [INFO] - Telemetry listener thread started (tid=6186397696)
+2026-04-18 01:02:27 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:02:27 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:02:27 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:02:27 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:02:27 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:02:27 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:02:36 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:02:36 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:02:36 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:02:36 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:02:36 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:02:36 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:02:36 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:02:36 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:02:36 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:02:36 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:02:36 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:02:36 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:02:36 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:02:36 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:02:36 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:02:37 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:02:37 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:02:37 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:02:37 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:02:37 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:02:37 - [INFO] - Waypoints dispatched to vehicle in 1.02s
+2026-04-18 01:06:46 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:06:46 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:06:46 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:06:46 - [INFO] - ============================================================
+2026-04-18 01:06:47 - [INFO] - ============================================================
+2026-04-18 01:06:47 - [INFO] - Basestation starting up
+2026-04-18 01:06:47 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:06:47 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:06:47 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:06:47 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:06:47 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:06:47 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:06:47 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:06:47 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:06:47 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:06:47 - [INFO] - Telemetry listener thread started (tid=6146699264)
+2026-04-18 01:06:47 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:06:47 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:06:47 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:06:47 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:06:47 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:06:47 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:07:04 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:07:04 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:07:04 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:07:04 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:07:04 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:07:04 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:07:04 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:07:04 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:07:04 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:07:04 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:07:04 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:07:04 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:07:04 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:07:04 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:07:04 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:07:04 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:07:04 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:07:04 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:07:05 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:07:05 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:07:05 - [INFO] - Waypoints dispatched to vehicle in 1.02s
+2026-04-18 01:22:49 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:22:49 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:22:49 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:22:49 - [INFO] - ============================================================
+2026-04-18 01:22:57 - [INFO] - ============================================================
+2026-04-18 01:22:57 - [INFO] - Basestation starting up
+2026-04-18 01:22:57 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:22:57 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:22:57 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:22:57 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:22:57 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:22:57 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:22:57 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:22:57 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:22:57 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:22:57 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:22:57 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:22:57 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:22:57 - [INFO] - Telemetry listener thread started (tid=6108868608)
+2026-04-18 01:22:57 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:22:57 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:22:57 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:22:57 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:22:57 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:22:57 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:23:00 - [ERROR] - No telemetry data received for 3.0s (threshold 3.0s)
+2026-04-18 01:23:01 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:23:01 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:23:01 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:23:01 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:23:01 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:23:01 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:23:01 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:23:01 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:23:01 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:23:01 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:23:01 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:23:01 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:23:01 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:23:01 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:23:01 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:23:01 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:23:01 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:23:02 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:23:02 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:23:02 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:23:02 - [INFO] - Waypoints dispatched to vehicle in 1.02s
+2026-04-18 01:27:28 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:27:28 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:27:28 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:27:28 - [INFO] - ============================================================
+2026-04-18 01:27:29 - [INFO] - ============================================================
+2026-04-18 01:27:29 - [INFO] - Basestation starting up
+2026-04-18 01:27:29 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:27:29 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:27:29 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:27:29 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:27:29 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:27:29 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:27:29 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:27:29 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:27:29 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:27:29 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:27:29 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:27:29 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:27:29 - [INFO] - Telemetry listener thread started (tid=6184677376)
+2026-04-18 01:27:29 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:27:29 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:27:29 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:27:29 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:27:29 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:27:29 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:27:34 - [ERROR] - No telemetry data received for 5.0s (threshold 5.0s)
+2026-04-18 01:27:36 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:27:36 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:27:36 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:27:36 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:27:36 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:27:36 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:27:36 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:27:36 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:27:36 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:27:36 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:27:36 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:27:36 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:27:36 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:27:36 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:27:36 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:27:36 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:27:36 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:27:37 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:27:37 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:27:37 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:27:39 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 01:27:39 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 01:34:25 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:34:25 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:34:25 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:34:25 - [INFO] - ============================================================
+2026-04-18 01:34:26 - [INFO] - ============================================================
+2026-04-18 01:34:26 - [INFO] - Basestation starting up
+2026-04-18 01:34:26 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:34:26 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:34:26 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:34:26 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:34:26 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:34:26 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:34:26 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:34:26 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:34:26 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:34:26 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:34:26 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:34:26 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:34:26 - [INFO] - Telemetry listener thread started (tid=6142521344)
+2026-04-18 01:34:26 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:34:26 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:34:26 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:34:26 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:34:26 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:34:26 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:34:29 - [ERROR] - No telemetry data received for 3.0s (threshold 3.0s)
+2026-04-18 01:34:34 - [ERROR] - No telemetry data received for 8.0s (threshold 3.0s)
+2026-04-18 01:34:36 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:34:36 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:34:36 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:34:36 - [INFO] - ============================================================
+2026-04-18 01:34:37 - [INFO] - ============================================================
+2026-04-18 01:34:37 - [INFO] - Basestation starting up
+2026-04-18 01:34:37 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:34:37 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:34:37 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:34:37 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:34:37 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:34:37 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:34:37 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:34:37 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:34:37 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:34:37 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:34:37 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:34:37 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:34:37 - [INFO] - Telemetry listener thread started (tid=6148534272)
+2026-04-18 01:34:37 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:34:37 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:34:37 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:34:37 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:34:37 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:34:37 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:34:40 - [ERROR] - No telemetry data received for 3.0s (threshold 3.0s)
+2026-04-18 01:34:45 - [ERROR] - No telemetry data received for 8.0s (threshold 3.0s)
+2026-04-18 01:34:50 - [ERROR] - No telemetry data received for 13.0s (threshold 3.0s)
+2026-04-18 01:34:55 - [ERROR] - No telemetry data received for 18.0s (threshold 3.0s)
+2026-04-18 01:35:00 - [ERROR] - No telemetry data received for 23.0s (threshold 3.0s)
+2026-04-18 01:35:05 - [ERROR] - No telemetry data received for 28.0s (threshold 3.0s)
+2026-04-18 01:35:10 - [ERROR] - No telemetry data received for 33.0s (threshold 3.0s)
+2026-04-18 01:35:15 - [ERROR] - No telemetry data received for 38.0s (threshold 3.0s)
+2026-04-18 01:35:20 - [ERROR] - No telemetry data received for 43.1s (threshold 3.0s)
+2026-04-18 01:35:25 - [ERROR] - No telemetry data received for 48.1s (threshold 3.0s)
+2026-04-18 01:35:30 - [ERROR] - No telemetry data received for 53.1s (threshold 3.0s)
+2026-04-18 01:35:35 - [ERROR] - No telemetry data received for 58.1s (threshold 3.0s)
+2026-04-18 01:35:40 - [ERROR] - No telemetry data received for 63.1s (threshold 3.0s)
+2026-04-18 01:35:45 - [ERROR] - No telemetry data received for 68.1s (threshold 3.0s)
+2026-04-18 01:35:50 - [ERROR] - No telemetry data received for 73.1s (threshold 3.0s)
+2026-04-18 01:35:55 - [ERROR] - No telemetry data received for 78.1s (threshold 3.0s)
+2026-04-18 01:36:00 - [ERROR] - No telemetry data received for 83.1s (threshold 3.0s)
+2026-04-18 01:36:05 - [ERROR] - No telemetry data received for 88.1s (threshold 3.0s)
+2026-04-18 01:36:10 - [ERROR] - No telemetry data received for 93.1s (threshold 3.0s)
+2026-04-18 01:36:15 - [ERROR] - No telemetry data received for 98.1s (threshold 3.0s)
+2026-04-18 01:36:20 - [ERROR] - No telemetry data received for 103.1s (threshold 3.0s)
+2026-04-18 01:36:25 - [ERROR] - No telemetry data received for 108.1s (threshold 3.0s)
+2026-04-18 01:36:30 - [ERROR] - No telemetry data received for 113.1s (threshold 3.0s)
+2026-04-18 01:36:35 - [ERROR] - No telemetry data received for 118.1s (threshold 3.0s)
+2026-04-18 01:36:40 - [ERROR] - No telemetry data received for 123.1s (threshold 3.0s)
+2026-04-18 01:36:45 - [ERROR] - No telemetry data received for 128.1s (threshold 3.0s)
+2026-04-18 01:36:50 - [ERROR] - No telemetry data received for 133.1s (threshold 3.0s)
+2026-04-18 01:36:55 - [ERROR] - No telemetry data received for 138.2s (threshold 3.0s)
+2026-04-18 01:37:00 - [ERROR] - No telemetry data received for 143.2s (threshold 3.0s)
+2026-04-18 01:37:05 - [ERROR] - No telemetry data received for 148.2s (threshold 3.0s)
+2026-04-18 01:37:07 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:37:07 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:37:07 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:37:07 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:37:07 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:37:07 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:37:07 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:37:07 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:37:07 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:37:07 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:37:07 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:37:07 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:37:07 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:37:07 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:37:07 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:37:07 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:37:07 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:37:08 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:37:08 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:37:08 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:37:10 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 01:37:10 - [INFO] - Waypoints dispatched to vehicle in 3.04s
+2026-04-18 01:37:10 - [ERROR] - No telemetry data received for 153.2s (threshold 3.0s)
+2026-04-18 01:37:15 - [ERROR] - No telemetry data received for 158.2s (threshold 3.0s)
+2026-04-18 01:37:17 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:37:20 - [ERROR] - No telemetry data received for 163.2s (threshold 3.0s)
+2026-04-18 01:37:24 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:37:25 - [ERROR] - No telemetry data received for 168.2s (threshold 3.0s)
+2026-04-18 01:37:30 - [ERROR] - No telemetry data received for 173.2s (threshold 3.0s)
+2026-04-18 01:37:31 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:37:35 - [ERROR] - No telemetry data received for 178.2s (threshold 3.0s)
+2026-04-18 01:37:38 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:37:40 - [ERROR] - No telemetry data received for 183.2s (threshold 3.0s)
+2026-04-18 01:37:45 - [ERROR] - No telemetry data received for 188.2s (threshold 3.0s)
+2026-04-18 01:37:45 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:37:50 - [ERROR] - No telemetry data received for 193.2s (threshold 3.0s)
+2026-04-18 01:37:52 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:37:55 - [ERROR] - No telemetry data received for 198.2s (threshold 3.0s)
+2026-04-18 01:37:59 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:38:00 - [ERROR] - No telemetry data received for 203.2s (threshold 3.0s)
+2026-04-18 01:38:05 - [ERROR] - No telemetry data received for 208.2s (threshold 3.0s)
+2026-04-18 01:38:06 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:38:10 - [ERROR] - No telemetry data received for 213.2s (threshold 3.0s)
+2026-04-18 01:38:13 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:38:15 - [ERROR] - No telemetry data received for 218.2s (threshold 3.0s)
+2026-04-18 01:38:20 - [ERROR] - No telemetry data received for 223.2s (threshold 3.0s)
+2026-04-18 01:38:20 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:38:25 - [ERROR] - No telemetry data received for 228.3s (threshold 3.0s)
+2026-04-18 01:38:27 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:38:30 - [ERROR] - No telemetry data received for 233.3s (threshold 3.0s)
+2026-04-18 01:38:34 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:38:35 - [ERROR] - No telemetry data received for 238.3s (threshold 3.0s)
+2026-04-18 01:38:40 - [ERROR] - No telemetry data received for 243.3s (threshold 3.0s)
+2026-04-18 01:38:41 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:38:45 - [ERROR] - No telemetry data received for 248.3s (threshold 3.0s)
+2026-04-18 01:38:48 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:38:50 - [ERROR] - No telemetry data received for 253.3s (threshold 3.0s)
+2026-04-18 01:38:55 - [ERROR] - No telemetry data received for 258.3s (threshold 3.0s)
+2026-04-18 01:38:55 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:00 - [ERROR] - No telemetry data received for 263.3s (threshold 3.0s)
+2026-04-18 01:39:02 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:05 - [ERROR] - No telemetry data received for 268.3s (threshold 3.0s)
+2026-04-18 01:39:09 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:10 - [ERROR] - No telemetry data received for 273.3s (threshold 3.0s)
+2026-04-18 01:39:15 - [ERROR] - No telemetry data received for 278.3s (threshold 3.0s)
+2026-04-18 01:39:16 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:20 - [ERROR] - No telemetry data received for 283.3s (threshold 3.0s)
+2026-04-18 01:39:23 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:25 - [ERROR] - No telemetry data received for 288.3s (threshold 3.0s)
+2026-04-18 01:39:30 - [ERROR] - No telemetry data received for 293.3s (threshold 3.0s)
+2026-04-18 01:39:31 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:35 - [ERROR] - No telemetry data received for 298.3s (threshold 3.0s)
+2026-04-18 01:39:38 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:40 - [ERROR] - No telemetry data received for 303.3s (threshold 3.0s)
+2026-04-18 01:39:45 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:45 - [ERROR] - No telemetry data received for 308.3s (threshold 3.0s)
+2026-04-18 01:39:50 - [ERROR] - No telemetry data received for 313.4s (threshold 3.0s)
+2026-04-18 01:39:52 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:39:55 - [ERROR] - No telemetry data received for 318.4s (threshold 3.0s)
+2026-04-18 01:39:59 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:40:00 - [ERROR] - No telemetry data received for 323.4s (threshold 3.0s)
+2026-04-18 01:40:05 - [ERROR] - No telemetry data received for 328.4s (threshold 3.0s)
+2026-04-18 01:40:06 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:40:10 - [ERROR] - No telemetry data received for 333.4s (threshold 3.0s)
+2026-04-18 01:40:13 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:40:15 - [ERROR] - No telemetry data received for 338.4s (threshold 3.0s)
+2026-04-18 01:40:20 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:40:20 - [ERROR] - No telemetry data received for 343.4s (threshold 3.0s)
+2026-04-18 01:40:23 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:40:23 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:40:23 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:40:23 - [INFO] - ============================================================
+2026-04-18 01:40:24 - [INFO] - ============================================================
+2026-04-18 01:40:24 - [INFO] - Basestation starting up
+2026-04-18 01:40:24 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:40:24 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:40:24 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:40:24 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:40:24 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:40:24 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:40:24 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:40:24 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:40:24 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:40:24 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:40:24 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:40:24 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:40:24 - [INFO] - Telemetry listener thread started (tid=6144684032)
+2026-04-18 01:40:24 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:40:24 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:40:24 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:40:24 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:40:24 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:40:24 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:40:29 - [ERROR] - No telemetry data received for 5.0s (threshold 5.0s)
+2026-04-18 01:40:32 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:40:32 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:40:32 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:40:32 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:40:32 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:40:32 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:40:32 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:40:32 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:40:32 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:40:32 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:40:32 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:40:32 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:40:32 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:40:32 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:40:32 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:40:32 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:40:32 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:40:32 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:40:33 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:40:33 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:40:35 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 01:40:35 - [INFO] - Waypoints dispatched to vehicle in 3.04s
+2026-04-18 01:40:59 - [ERROR] - No telemetry data received for 35.0s (threshold 5.0s)
+2026-04-18 01:41:07 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:41:29 - [ERROR] - No telemetry data received for 65.1s (threshold 5.0s)
+2026-04-18 01:41:39 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:41:59 - [ERROR] - No telemetry data received for 95.1s (threshold 5.0s)
+2026-04-18 01:42:11 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:42:29 - [ERROR] - No telemetry data received for 125.1s (threshold 5.0s)
+2026-04-18 01:42:43 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:42:59 - [ERROR] - No telemetry data received for 155.2s (threshold 5.0s)
+2026-04-18 01:43:15 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:43:16 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:43:16 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:43:16 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:43:16 - [INFO] - ============================================================
+2026-04-18 01:43:18 - [INFO] - ============================================================
+2026-04-18 01:43:18 - [INFO] - Basestation starting up
+2026-04-18 01:43:18 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:43:18 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:43:18 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:43:18 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:43:18 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:43:18 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:43:18 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:43:18 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:43:18 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:43:18 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:43:18 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:43:18 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:43:18 - [INFO] - Telemetry listener thread started (tid=6180777984)
+2026-04-18 01:43:18 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:43:18 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:43:18 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:43:18 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:43:18 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:43:18 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:43:23 - [ERROR] - No telemetry data received for 5.0s (threshold 5.0s)
+2026-04-18 01:43:26 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:43:26 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:43:26 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:43:26 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:43:26 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:43:26 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:43:26 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:43:26 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:43:26 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:43:26 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:43:26 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:43:26 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:43:26 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:43:26 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:43:26 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:43:26 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:43:27 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:43:27 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:43:27 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:43:27 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:43:29 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 01:43:29 - [INFO] - Waypoints dispatched to vehicle in 3.04s
+2026-04-18 01:43:53 - [ERROR] - No telemetry data received for 35.0s (threshold 5.0s)
+2026-04-18 01:44:01 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:44:23 - [ERROR] - No telemetry data received for 65.1s (threshold 5.0s)
+2026-04-18 01:44:33 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:44:53 - [ERROR] - No telemetry data received for 95.1s (threshold 5.0s)
+2026-04-18 01:45:05 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:45:23 - [ERROR] - No telemetry data received for 125.1s (threshold 5.0s)
+2026-04-18 01:45:37 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:45:53 - [ERROR] - No telemetry data received for 155.2s (threshold 5.0s)
+2026-04-18 01:46:09 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:46:23 - [ERROR] - No telemetry data received for 185.2s (threshold 5.0s)
+2026-04-18 01:46:41 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:46:53 - [ERROR] - No telemetry data received for 215.2s (threshold 5.0s)
+2026-04-18 01:47:13 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:47:23 - [ERROR] - No telemetry data received for 245.3s (threshold 5.0s)
+2026-04-18 01:47:45 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:47:53 - [ERROR] - No telemetry data received for 275.3s (threshold 5.0s)
+2026-04-18 01:48:18 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:48:23 - [ERROR] - No telemetry data received for 305.3s (threshold 5.0s)
+2026-04-18 01:48:50 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:48:53 - [ERROR] - No telemetry data received for 335.3s (threshold 5.0s)
+2026-04-18 01:49:22 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:49:23 - [ERROR] - No telemetry data received for 365.4s (threshold 5.0s)
+2026-04-18 01:49:53 - [ERROR] - No telemetry data received for 395.4s (threshold 5.0s)
+2026-04-18 01:49:54 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:50:23 - [ERROR] - No telemetry data received for 425.4s (threshold 5.0s)
+2026-04-18 01:50:26 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:50:53 - [ERROR] - No telemetry data received for 455.5s (threshold 5.0s)
+2026-04-18 01:50:58 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:51:02 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:51:02 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:51:02 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:51:02 - [INFO] - ============================================================
+2026-04-18 01:51:03 - [INFO] - ============================================================
+2026-04-18 01:51:03 - [INFO] - Basestation starting up
+2026-04-18 01:51:03 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:51:03 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:51:03 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:51:03 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:51:03 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:51:03 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:51:03 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:51:03 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:51:03 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:51:03 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:51:03 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:51:03 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:51:03 - [INFO] - Telemetry listener thread started (tid=6177419264)
+2026-04-18 01:51:03 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:51:03 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:51:03 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:51:03 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:51:03 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:51:03 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:51:08 - [ERROR] - No telemetry data received for 5.0s (threshold 5.0s)
+2026-04-18 01:51:14 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:51:14 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:51:14 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:51:14 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:51:14 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:51:14 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:51:14 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:51:14 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:51:14 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:51:14 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:51:14 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:51:14 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:51:14 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:51:14 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:51:14 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:51:14 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:51:14 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:51:14 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:51:15 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:51:15 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:51:17 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 01:51:17 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 01:51:38 - [ERROR] - No telemetry data received for 35.0s (threshold 5.0s)
+2026-04-18 01:51:49 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:52:09 - [ERROR] - No telemetry data received for 65.1s (threshold 5.0s)
+2026-04-18 01:52:21 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:52:39 - [ERROR] - No telemetry data received for 95.1s (threshold 5.0s)
+2026-04-18 01:52:53 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:53:09 - [ERROR] - No telemetry data received for 125.1s (threshold 5.0s)
+2026-04-18 01:53:25 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:53:39 - [ERROR] - No telemetry data received for 155.2s (threshold 5.0s)
+2026-04-18 01:53:57 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:54:09 - [ERROR] - No telemetry data received for 185.2s (threshold 5.0s)
+2026-04-18 01:54:29 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:54:39 - [ERROR] - No telemetry data received for 215.2s (threshold 5.0s)
+2026-04-18 01:55:01 - [ERROR] - Vehicle host 10.57.87.175 (ASV_IP) still unreachable — ICMP ping failed; UDP may have been sent but the vehicle is not responding on the network.
+2026-04-18 01:55:09 - [ERROR] - No telemetry data received for 245.3s (threshold 5.0s)
+2026-04-18 01:55:25 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:55:25 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:55:25 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:55:25 - [INFO] - ============================================================
+2026-04-18 01:55:31 - [INFO] - ============================================================
+2026-04-18 01:55:31 - [INFO] - Basestation starting up
+2026-04-18 01:55:31 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:55:31 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:55:31 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:55:31 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:55:31 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:55:31 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:55:31 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:55:31 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:55:31 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:55:31 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:55:31 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:55:31 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:55:31 - [INFO] - Telemetry listener thread started (tid=6152974336)
+2026-04-18 01:55:31 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:55:31 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:55:31 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:55:31 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:55:31 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:55:31 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:55:36 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 01:55:39 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:55:39 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:55:39 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:55:39 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:55:39 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:55:39 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:55:39 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:55:39 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:55:39 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:55:39 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:55:39 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:55:39 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:55:39 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:55:39 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:55:39 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:55:39 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:55:39 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:55:39 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:55:40 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:55:40 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:55:42 - [ERROR] - Cannot reach the vehicle at 10.57.87.175 after sending waypoints. The vehicle may be off, asleep, or not on this Wi-Fi. Check power and network.
+2026-04-18 01:55:42 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 01:56:06 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 01:56:14 - [ERROR] - Still cannot reach the vehicle at 10.57.87.175. It may be off, out of range, or on another network.
+2026-04-18 01:56:36 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 01:56:46 - [ERROR] - Still cannot reach the vehicle at 10.57.87.175. It may be off, out of range, or on another network.
+2026-04-18 01:57:06 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 01:57:09 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:57:09 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:57:09 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:57:09 - [INFO] - ============================================================
+2026-04-18 01:57:11 - [INFO] - ============================================================
+2026-04-18 01:57:11 - [INFO] - Basestation starting up
+2026-04-18 01:57:11 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:57:11 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:57:11 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:57:11 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:57:11 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:57:11 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:57:11 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:57:11 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:57:11 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:57:11 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:57:11 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:57:11 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:57:11 - [INFO] - Telemetry listener thread started (tid=6188118016)
+2026-04-18 01:57:11 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:57:11 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:57:11 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:57:11 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:57:11 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:57:11 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:57:16 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 01:57:16 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 01:57:16 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 01:57:16 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:57:16 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:57:16 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:57:16 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:57:16 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:57:16 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 01:57:16 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:57:16 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 01:57:16 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 01:57:16 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 01:57:16 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 01:57:16 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 01:57:16 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 01:57:17 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 01:57:17 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 01:57:17 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 01:57:17 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 01:57:17 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 01:57:20 - [ERROR] - Cannot reach the vehicle at 10.57.87.175 after sending waypoints. The vehicle may be off, asleep, or not on this Wi-Fi. Check power and network.
+2026-04-18 01:57:20 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 01:57:46 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 01:57:52 - [ERROR] - Still cannot reach the vehicle at 10.57.87.175. It may be off, out of range, or on another network.
+2026-04-18 01:58:16 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 01:58:24 - [ERROR] - Still cannot reach the vehicle at 10.57.87.175. It may be off, out of range, or on another network.
+2026-04-18 01:58:46 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 01:58:47 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 01:58:47 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 01:58:47 - [INFO] - Basestation stopped cleanly
+2026-04-18 01:58:47 - [INFO] - ============================================================
+2026-04-18 01:58:52 - [INFO] - ============================================================
+2026-04-18 01:58:52 - [INFO] - Basestation starting up
+2026-04-18 01:58:52 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 01:58:52 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 01:58:52 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 01:58:52 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 01:58:52 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 01:58:52 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 01:58:52 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 01:58:52 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 01:58:52 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 01:58:52 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 01:58:52 - [INFO] - Starting telemetry listener thread...
+2026-04-18 01:58:52 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 01:58:52 - [INFO] - Telemetry listener thread started (tid=6146142208)
+2026-04-18 01:58:52 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 01:58:52 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 01:58:52 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 01:58:52 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 01:58:52 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 01:58:52 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 01:58:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 01:59:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 01:59:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:00:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:00:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:01:04 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:01:04 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:01:04 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:01:04 - [INFO] - ============================================================
+2026-04-18 02:01:05 - [INFO] - ============================================================
+2026-04-18 02:01:05 - [INFO] - Basestation starting up
+2026-04-18 02:01:05 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:01:05 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:01:05 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:01:05 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:01:05 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:01:05 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:01:05 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:01:05 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:01:05 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:01:05 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:01:05 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:01:05 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:01:05 - [INFO] - Telemetry listener thread started (tid=6139359232)
+2026-04-18 02:01:05 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:01:05 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:01:05 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:01:05 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:01:05 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:01:06 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:01:11 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 02:01:13 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 02:01:13 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 02:01:13 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:01:13 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:01:13 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:01:13 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:01:13 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:01:13 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 02:01:13 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 02:01:13 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 02:01:13 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 02:01:13 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 02:01:13 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 02:01:13 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 02:01:13 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 02:01:13 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 02:01:13 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 02:01:13 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 02:01:14 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 02:01:14 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 02:01:16 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 02:01:16 - [INFO] - Waypoints dispatched to vehicle in 3.06s
+2026-04-18 02:01:41 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 02:01:48 - [ERROR] - Still cannot reach the vehicle at 10.57.87.175. It may be off, out of range, or on another network.
+2026-04-18 02:02:11 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 02:02:20 - [ERROR] - Still cannot reach the vehicle at 10.57.87.175. It may be off, out of range, or on another network.
+2026-04-18 02:02:41 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 02:02:52 - [ERROR] - Still cannot reach the vehicle at 10.57.87.175. It may be off, out of range, or on another network.
+2026-04-18 02:03:11 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 02:03:24 - [ERROR] - Still cannot reach the vehicle at 10.57.87.175. It may be off, out of range, or on another network.
+2026-04-18 02:03:41 - [ERROR] - Lost contact with the vehicle — no telemetry updates for a little while. Check that the vehicle is on, in range, and on the same Wi-Fi as this computer.
+2026-04-18 02:03:51 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:03:51 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:03:51 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:03:51 - [INFO] - ============================================================
+2026-04-18 02:03:52 - [INFO] - ============================================================
+2026-04-18 02:03:52 - [INFO] - Basestation starting up
+2026-04-18 02:03:52 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:03:52 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:03:52 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:03:52 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:03:52 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:03:52 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:03:52 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:03:52 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:03:52 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:03:52 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:03:52 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:03:52 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:03:52 - [INFO] - Telemetry listener thread started (tid=6111539200)
+2026-04-18 02:03:52 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:03:52 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:03:52 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:03:52 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:03:52 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:03:52 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:03:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:03:58 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 02:03:58 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 02:03:58 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:03:58 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:03:58 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:03:58 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:03:58 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:03:58 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 02:03:58 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 02:03:58 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 02:03:58 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 02:03:58 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 02:03:58 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 02:03:58 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 02:03:58 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 02:03:58 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 02:03:58 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 02:03:58 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 02:03:59 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 02:03:59 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 02:04:01 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 02:04:01 - [INFO] - Waypoints dispatched to vehicle in 3.04s
+2026-04-18 02:04:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:04:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:05:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:05:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:06:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:06:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:07:24 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:07:24 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:07:24 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:07:24 - [INFO] - ============================================================
+2026-04-18 02:07:25 - [INFO] - ============================================================
+2026-04-18 02:07:25 - [INFO] - Basestation starting up
+2026-04-18 02:07:25 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:07:25 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:07:25 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:07:25 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:07:25 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:07:25 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:07:25 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:07:25 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:07:25 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:07:25 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:07:25 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:07:25 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:07:25 - [INFO] - Telemetry listener thread started (tid=6187626496)
+2026-04-18 02:07:25 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:07:25 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:07:25 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:07:25 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:07:25 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:07:25 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:07:30 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:08:00 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:08:30 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:09:00 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:09:30 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:10:00 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:10:30 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:11:00 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:11:30 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:12:00 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:12:15 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:12:15 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:12:15 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:12:15 - [INFO] - ============================================================
+2026-04-18 02:12:16 - [INFO] - ============================================================
+2026-04-18 02:12:16 - [INFO] - Basestation starting up
+2026-04-18 02:12:16 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:12:16 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:12:16 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:12:16 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:12:16 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:12:16 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:12:16 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:12:16 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:12:16 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:12:16 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:12:16 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:12:16 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:12:16 - [INFO] - Telemetry listener thread started (tid=6116093952)
+2026-04-18 02:12:16 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:12:16 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:12:16 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:12:16 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:12:16 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:12:16 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:12:21 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:12:25 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 02:12:25 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 02:12:25 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:12:25 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:12:25 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:12:25 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:12:25 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:12:25 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 02:12:25 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 02:12:25 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 02:12:25 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 02:12:25 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 02:12:25 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 02:12:25 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 02:12:25 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 02:12:26 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 02:12:26 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 02:12:26 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 02:12:26 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 02:12:26 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 02:12:29 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 02:12:29 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 02:12:51 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:13:01 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:13:21 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:13:33 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:13:51 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:14:05 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:14:21 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:14:37 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:14:51 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:15:09 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:15:18 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:15:18 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:15:18 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:15:18 - [INFO] - ============================================================
+2026-04-18 02:15:20 - [INFO] - ============================================================
+2026-04-18 02:15:20 - [INFO] - Basestation starting up
+2026-04-18 02:15:20 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:15:20 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:15:20 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:15:20 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:15:20 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:15:20 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:15:20 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:15:20 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:15:20 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:15:20 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:15:20 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:15:20 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:15:20 - [INFO] - Telemetry listener thread started (tid=6176010240)
+2026-04-18 02:15:20 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:15:20 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:15:20 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:15:20 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:15:20 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:15:20 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:15:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:15:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:16:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:16:35 - [INFO] - User submitted 6 waypoints via GUI
+2026-04-18 02:16:35 - [INFO] - Mission start triggered by user — 6 waypoints received from GUI
+2026-04-18 02:16:35 - [INFO] -   User WP[0]: 27.9146943, 78.0766462
+2026-04-18 02:16:35 - [INFO] -   User WP[1]: 27.9147186, 78.0767689
+2026-04-18 02:16:35 - [INFO] -   User WP[2]: 27.9146578, 78.0767635
+2026-04-18 02:16:35 - [INFO] -   User WP[3]: 27.9146173, 78.0766914
+2026-04-18 02:16:35 - [INFO] -   User WP[4]: 27.9146599, 78.0766381
+2026-04-18 02:16:35 - [INFO] -   User WP[5]: 27.9146647, 78.0766921
+2026-04-18 02:16:35 - [INFO] - Preparing to send 6 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 02:16:35 - [INFO] -   WP[0]: lat=27.9146943  lon=78.0766462
+2026-04-18 02:16:35 - [INFO] -   WP[1]: lat=27.9147186  lon=78.0767689
+2026-04-18 02:16:35 - [INFO] -   WP[2]: lat=27.9146578  lon=78.0767635
+2026-04-18 02:16:35 - [INFO] -   WP[3]: lat=27.9146173  lon=78.0766914
+2026-04-18 02:16:35 - [INFO] -   WP[4]: lat=27.9146599  lon=78.0766381
+2026-04-18 02:16:35 - [INFO] -   WP[5]: lat=27.9146647  lon=78.0766921
+2026-04-18 02:16:35 - [INFO] - Waypoint packet encoded — 279 bytes
+2026-04-18 02:16:35 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 02:16:35 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 02:16:36 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 02:16:36 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 02:16:36 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 02:16:36 - [INFO] - All waypoint TX attempts complete — 6 points sent
+2026-04-18 02:16:38 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 02:16:38 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 02:16:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:17:10 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:17:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:17:42 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:17:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:18:14 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:18:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:18:46 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:18:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:19:18 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:19:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:19:50 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:19:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:20:08 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:20:08 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:20:08 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:20:08 - [INFO] - ============================================================
+2026-04-18 02:20:09 - [INFO] - ============================================================
+2026-04-18 02:20:09 - [INFO] - Basestation starting up
+2026-04-18 02:20:09 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:20:09 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:20:09 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:20:09 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:20:09 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:20:09 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:20:09 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:20:09 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:20:09 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:20:09 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:20:09 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:20:09 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:20:09 - [INFO] - Telemetry listener thread started (tid=6141325312)
+2026-04-18 02:20:09 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:20:09 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:20:09 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:20:09 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:20:09 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:20:09 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:20:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:20:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:21:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:21:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:22:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:22:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:23:02 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 02:23:02 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 02:23:02 - [INFO] -   User WP[0]: 27.9146584, 78.0765282
+2026-04-18 02:23:02 - [INFO] -   User WP[1]: 27.9146987, 78.0766609
+2026-04-18 02:23:02 - [INFO] -   User WP[2]: 27.9145305, 78.0765141
+2026-04-18 02:23:02 - [INFO] -   User WP[3]: 27.9146584, 78.0765282
+2026-04-18 02:23:02 - [INFO] -   User WP[4]: 27.9145073, 78.0766911
+2026-04-18 02:23:02 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 02:23:02 - [INFO] -   WP[0]: lat=27.9146584  lon=78.0765282
+2026-04-18 02:23:02 - [INFO] -   WP[1]: lat=27.9146987  lon=78.0766609
+2026-04-18 02:23:02 - [INFO] -   WP[2]: lat=27.9145305  lon=78.0765141
+2026-04-18 02:23:02 - [INFO] -   WP[3]: lat=27.9146584  lon=78.0765282
+2026-04-18 02:23:02 - [INFO] -   WP[4]: lat=27.9145073  lon=78.0766911
+2026-04-18 02:23:02 - [INFO] - Waypoint packet encoded — 239 bytes
+2026-04-18 02:23:02 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 02:23:02 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 02:23:02 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 02:23:02 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 02:23:02 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 02:23:03 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 02:23:05 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 02:23:05 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 02:23:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:23:37 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:23:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:24:06 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:24:06 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:24:06 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:24:06 - [INFO] - ============================================================
+2026-04-18 02:24:07 - [INFO] - ============================================================
+2026-04-18 02:24:07 - [INFO] - Basestation starting up
+2026-04-18 02:24:07 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:24:07 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:24:07 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:24:07 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:24:07 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:24:07 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:24:07 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:24:07 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:24:07 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:24:07 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:24:07 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:24:07 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:24:07 - [INFO] - Telemetry listener thread started (tid=6109278208)
+2026-04-18 02:24:07 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:24:07 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:24:07 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:24:07 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:24:07 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:24:07 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:24:12 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:24:42 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:25:12 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:25:42 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:25:49 - [INFO] - User submitted 4 waypoints via GUI
+2026-04-18 02:25:49 - [INFO] - Mission start triggered by user — 4 waypoints received from GUI
+2026-04-18 02:25:49 - [INFO] -   User WP[0]: 27.9145861, 78.0762157
+2026-04-18 02:25:49 - [INFO] -   User WP[1]: 27.9147355, 78.0766207
+2026-04-18 02:25:49 - [INFO] -   User WP[2]: 27.9151242, 78.0763927
+2026-04-18 02:25:49 - [INFO] -   User WP[3]: 27.9147746, 78.0760192
+2026-04-18 02:25:49 - [INFO] - Preparing to send 4 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 02:25:49 - [INFO] -   WP[0]: lat=27.9145861  lon=78.0762157
+2026-04-18 02:25:49 - [INFO] -   WP[1]: lat=27.9147355  lon=78.0766207
+2026-04-18 02:25:49 - [INFO] -   WP[2]: lat=27.9151242  lon=78.0763927
+2026-04-18 02:25:49 - [INFO] -   WP[3]: lat=27.9147746  lon=78.0760192
+2026-04-18 02:25:49 - [INFO] - Waypoint packet encoded — 199 bytes
+2026-04-18 02:25:49 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 02:25:49 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 02:25:50 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 02:25:50 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 02:25:50 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 02:25:50 - [INFO] - All waypoint TX attempts complete — 4 points sent
+2026-04-18 02:25:52 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 02:25:52 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 02:26:12 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:26:24 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:26:42 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:26:56 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:27:12 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:27:28 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:27:42 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:28:00 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:28:12 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:28:32 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 02:28:42 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:28:43 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:28:43 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:28:43 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:28:43 - [INFO] - ============================================================
+2026-04-18 02:28:45 - [INFO] - ============================================================
+2026-04-18 02:28:45 - [INFO] - Basestation starting up
+2026-04-18 02:28:45 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:28:45 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:28:45 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:28:45 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:28:45 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:28:45 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:28:45 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:28:45 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:28:45 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:28:45 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:28:45 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:28:45 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:28:45 - [INFO] - Telemetry listener thread started (tid=6109949952)
+2026-04-18 02:28:45 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:28:45 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:28:45 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:28:45 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:28:45 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:28:45 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:28:50 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:29:20 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:29:50 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:30:20 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:30:50 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:31:20 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:31:50 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:32:20 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:32:50 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:32:57 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:32:57 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:32:57 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:32:57 - [INFO] - ============================================================
+2026-04-18 02:36:27 - [INFO] - ============================================================
+2026-04-18 02:36:27 - [INFO] - Basestation starting up
+2026-04-18 02:36:27 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:36:27 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:36:27 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:36:27 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:36:27 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:36:27 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:36:27 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:36:27 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:36:27 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:36:27 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:36:27 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:36:27 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:36:27 - [INFO] - Telemetry listener thread started (tid=6325039104)
+2026-04-18 02:36:27 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:36:27 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:36:27 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:36:27 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:36:27 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:36:32 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:37:02 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:37:32 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:38:02 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:38:20 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:38:20 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:38:20 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:38:20 - [INFO] - ============================================================
+2026-04-18 02:41:00 - [INFO] - ============================================================
+2026-04-18 02:41:00 - [INFO] - Basestation starting up
+2026-04-18 02:41:00 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:41:00 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:41:00 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:41:00 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:41:00 - [INFO] - Default waypoints loaded: 0 points
+2026-04-18 02:41:00 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:41:00 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:41:00 - [INFO] - Telemetry listener thread started (tid=6150549504)
+2026-04-18 02:41:00 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:41:00 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:41:00 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:41:00 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:41:00 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:41:05 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:41:35 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 02:41:45 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:41:45 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:41:45 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:41:45 - [INFO] - ============================================================
+2026-04-18 02:41:46 - [INFO] - ============================================================
+2026-04-18 02:41:46 - [INFO] - Basestation starting up
+2026-04-18 02:41:46 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:41:46 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:41:46 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:41:46 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:41:46 - [INFO] - Default waypoints loaded: 0 points
+2026-04-18 02:41:46 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:41:46 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:41:46 - [INFO] - Telemetry listener thread started (tid=6141669376)
+2026-04-18 02:41:46 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:41:46 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:41:46 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:41:46 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:41:46 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:41:48 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:41:48 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:41:48 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:41:48 - [INFO] - ============================================================
+2026-04-18 02:42:15 - [INFO] - ============================================================
+2026-04-18 02:42:15 - [INFO] - Basestation starting up
+2026-04-18 02:42:15 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 02:42:15 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 02:42:15 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 02:42:15 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 02:42:15 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 02:42:15 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 02:42:15 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 02:42:15 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 02:42:15 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 02:42:15 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 02:42:15 - [INFO] - Starting telemetry listener thread...
+2026-04-18 02:42:15 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 02:42:15 - [INFO] - Telemetry listener thread started (tid=6179729408)
+2026-04-18 02:42:15 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 02:42:15 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 02:42:15 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 02:42:15 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 02:42:15 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 02:42:15 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 02:42:17 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 02:42:17 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 02:42:17 - [INFO] - Basestation stopped cleanly
+2026-04-18 02:42:17 - [INFO] - ============================================================
