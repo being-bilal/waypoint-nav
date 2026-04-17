@@ -108,8 +108,8 @@ WAYPOINT_FILE         = '/home/auv-jetson/Documents/waypoint-nav/Vehicle/waypoin
 # CONTROL / PID  (control.py)
 # ─────────────────────────────────────────────────────────────────────────────
 PWM_NEUTRAL           = 1500                # Neutral ESC PWM value (microseconds)
-PWM_MAX               = 1600                # Max ESC PWM value (microseconds)
-PWM_MIN               = 1400                # Min ESC PWM value (microseconds)
+PWM_MAX               = 1600             # Max ESC PWM value (microseconds)
+PWM_MIN               = 1400              # Min ESC PWM value (microseconds)
 MAX_AXIAL_FORCE       = 10.0                # Max forward/reverse force (kgf) — adjust per thruster
 MAX_YAW_TORQUE        = 5.0                 # Max rotational torque (N·m) — adjust per boat width
 MAX_THRUST            = 5.2                 # Max thrust per motor (e.g. T200 @ 16V ≈ 5.2 kgf)

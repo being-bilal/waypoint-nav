@@ -299,7 +299,27 @@ def main():
 
     except KeyboardInterrupt:
         running = False
+
         log.info("Stopped by user.")
+
+        self.master.mav.command_long_send(
+            self.master.target_system, self.master.target_component,
+            mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
+            0,          # confirmation
+            1,          # param1: Servo instance (Channel 1)
+            1500,   # param2: PWM value
+            0, 0, 0, 0, 0
+        )
+        
+        # Command Right Motor (Servo 3)
+        self.master.mav.command_long_send(
+            self.master.target_system, self.master.target_component,
+            mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
+            0,          # confirmation
+            3,          # param1: Servo instance (Channel 3)
+            1500,  # param2: PWM value
+            0, 0, 0, 0, 0
+        )
 
     except Exception as e:
         log.error(f"Main loop error: {e}")

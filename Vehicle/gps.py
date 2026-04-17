@@ -48,34 +48,39 @@ class GPS:
     # ─────────────────────────────────────────────────────────────────────
     # BACKGROUND LOOP  –  runs in its own thread, continuously reads GPS
     # ─────────────────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────────────────────────────────
+    # BACKGROUND LOOP  –  runs in its own thread, continuously reads GPS
+    # ─────────────────────────────────────────────────────────────────────
     def _run(self):
         # Keep looping until someone calls stop() which sets the event
         while not self._stop_event.is_set():
             try:
-                # recv_match blocks until a message of the given type arrives
-                # GPS_RAW_INT is the standard MAVLink GPS message
-                # timeout=1.0 prevents it from blocking forever if no GPS data
-                msg = self.master.recv_match(type='GLOBAL_POSITION_INT', blocking=True, timeout=1.0)
+                # Listen for BOTH message types simultaneously
+                msg = self.master.recv_match(
+                    type=['GLOBAL_POSITION_INT', 'GPS_RAW_INT'], 
+                    blocking=True, 
+                    timeout=1.0
+                )
                 
                 if msg is None:
                     continue  # timeout fired, no message yet → try again
 
-                # Update the shared state under lock so `get()` always sees
-                # a consistent set of values (not half-updated)
+                # Update the shared state under lock
                 with self._lock:
-                    # MAVLink sends lat/lon as integers: degrees × 1e7
-                    # e.g. lat=279147310 → 27.9147310°
-                    if msg.get_type() == "GLOBAL_POSITION_INT":
-                        self.lat        = msg.lat / 1e7    # convert to decimal degrees
-                        self.lon        = msg.lon / 1e7    # convert to decimal degrees
-                        # Altitude is in millimetres in the MAVLink message
-                        self.alt        = msg.alt / 1000.0  # convert mm → metres
-                        self.fix_type   = msg.fix_type      # 0=none, 3=3D fix, 5=RTK float, etc.
-                        self.satellites = msg.satellites_visible  # how many sats the receiver sees
+                    if msg.get_type() == 'GLOBAL_POSITION_INT':
+                        # Use the Pixhawk's smooth, EKF-fused coordinates
+                        self.lat = msg.lat / 1e7    
+                        self.lon = msg.lon / 1e7    
+                        self.alt = msg.alt / 1000.0 
+                        
+                    elif msg.get_type() == 'GPS_RAW_INT':
+                        # Keep pulling fix quality and satellites from the raw message
+                        self.fix_type   = msg.fix_type      
+                        self.satellites = msg.satellites_visible  
+
             except Exception as e:
                 print(f"Error reading GPS: {e}")
                 time.sleep(0.1)  # brief pause before retrying to avoid a tight error loop
-
     # ─────────────────────────────────────────────────────────────────────
     # PUBLIC API  –  called by nav.py / main.py from the main thread
     # ─────────────────────────────────────────────────────────────────────
