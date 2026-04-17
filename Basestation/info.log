@@ -313,3 +313,63 @@
 2026-04-16 18:19:27 - [INFO] - User selected 5 waypoints - sending to vehicle
 2026-04-16 18:19:28 - [INFO] - Waypoints sent to 10.57.87.175:5005  (5 points)
 2026-04-16 18:19:28 - [INFO] - Waypoints sent after mission launch
+2026-04-17 10:53:10 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 10:53:11 - [INFO] - NumExpr defaulting to 10 threads.
+2026-04-17 10:53:11 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 10:53:52 - [INFO] - User submitted 6 waypoints via GUI
+2026-04-17 10:53:52 - [INFO] - User selected 6 waypoints - sending to vehicle
+2026-04-17 10:53:53 - [INFO] - Waypoints sent to 10.57.87.175:5005  (6 points)
+2026-04-17 10:53:53 - [INFO] - Waypoints sent after mission launch
+2026-04-17 11:04:20 - [INFO] - Basestation stopped by user.
+2026-04-17 11:04:21 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:04:21 - [INFO] - NumExpr defaulting to 10 threads.
+2026-04-17 11:04:21 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:05:05 - [INFO] - User submitted 6 waypoints via GUI
+2026-04-17 11:05:05 - [INFO] - User selected 6 waypoints - sending to vehicle
+2026-04-17 11:05:06 - [INFO] - Waypoints sent to 10.57.87.175:5005  (6 points)
+2026-04-17 11:05:06 - [INFO] - Waypoints sent after mission launch
+2026-04-17 11:05:32 - [INFO] - Basestation stopped by user.
+2026-04-17 11:05:32 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:05:33 - [INFO] - NumExpr defaulting to 10 threads.
+2026-04-17 11:05:33 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:17:21 - [INFO] - Basestation stopped by user.
+2026-04-17 11:17:22 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:17:22 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:18:05 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-17 11:18:05 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-17 11:18:06 - [INFO] - Waypoints sent to 10.57.87.175:5005  (5 points)
+2026-04-17 11:18:06 - [INFO] - Waypoints sent after mission launch
+2026-04-17 11:19:21 - [INFO] - Basestation stopped by user.
+2026-04-17 11:19:22 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:19:22 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:19:36 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-17 11:19:36 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-17 11:19:37 - [INFO] - Waypoints sent to 10.57.87.175:5005  (5 points)
+2026-04-17 11:19:37 - [INFO] - Waypoints sent after mission launch
+2026-04-17 11:21:20 - [INFO] - Basestation stopped by user.
+2026-04-17 11:21:21 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:21:21 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:29:42 - [INFO] - Basestation stopped by user.
+2026-04-17 11:29:43 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:29:43 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:30:18 - [INFO] - Basestation stopped by user.
+2026-04-17 11:30:20 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:30:20 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:30:38 - [INFO] - Basestation stopped by user.
+2026-04-17 11:30:39 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:30:39 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:31:00 - [INFO] - Basestation stopped by user.
+2026-04-17 11:31:01 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:31:01 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:31:26 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-17 11:31:26 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-17 11:31:27 - [INFO] - Waypoints sent to 10.57.87.175:5005  (5 points)
+2026-04-17 11:31:27 - [INFO] - Waypoints sent after mission launch
+2026-04-17 11:32:25 - [INFO] - Basestation stopped by user.
+2026-04-17 11:32:26 - [INFO] - Telemetry listener started on port 5006
+2026-04-17 11:32:26 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-17 11:33:26 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-17 11:33:26 - [INFO] - User selected 5 waypoints - sending to vehicle
+2026-04-17 11:33:27 - [INFO] - Waypoints sent to 10.57.87.175:5005  (5 points)
+2026-04-17 11:33:27 - [INFO] - Waypoints sent after mission launch
+2026-04-17 11:34:04 - [INFO] - Basestation stopped by user.
