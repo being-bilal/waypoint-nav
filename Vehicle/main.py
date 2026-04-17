@@ -307,10 +307,12 @@ def main():
         running = False
 
         log.info("Stopped by user.")
+        controller.disarm_vehicle()
 
     except Exception as e:
         log.error(f"Main loop error: {e}")
         running = False
+        controller.disarm_vehicle()
 
     finally:
         # ── Cleanup: release all hardware resources ──────────────────────
@@ -319,7 +321,7 @@ def main():
         imu.close()          # release the Xsens serial port
         telem_sock.close()   # close the UDP socket
         log.info("All resources released. Goodbye.")
-
+        controller.disarm_vehicle()
 
 # ── Entry point ──────────────────────────────────────────────────────────────
 if __name__ == "__main__":
