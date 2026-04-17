@@ -2,6 +2,8 @@ import numpy as np
 import json
 import logging
 import threading
+import base64
+import os
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 logging.basicConfig(
@@ -11,43 +13,99 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-_telemetry_ref   = {}          # shared dict written by telemetry listener, read by /telemetry
-_dashboard_html  = ""          # cached HTML for the monitoring dashboard
-_planning_html   = ""          # cached HTML for the waypoint planning page
-_mission_started = False       # flips to True after the user clicks Start Mission
-_on_waypoints_cb = None        # callback function: called with [(lat,lon), ...] when user submits
-_waypoints_event = threading.Event()  # signalled when waypoints are submitted
+_telemetry_ref   = {}
+_dashboard_html  = ""
+_planning_html   = ""
+_mission_started = False
+_on_waypoints_cb = None
+_waypoints_event = threading.Event()
+
+# ── Embed the Andromeida logo as base64 PNG ──────────────────────────────────
+_LOGO_B64 = ""  # empty string = no logo loaded yet
+
+def _load_logo():
+    global _LOGO_B64
+    logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.PNG")
+    if os.path.exists(logo_path):
+        with open(logo_path, "rb") as f:
+            _LOGO_B64 = base64.b64encode(f.read()).decode()
+    else:
+        _LOGO_B64 = ""
+        print("[GUI] Warning: logo.PNG not found next to script")
+
+def _logo_img(height=140):
+    if _LOGO_B64:
+        return f'<img src="data:image/png;base64,{_LOGO_B64}" alt="Andromeida" style="height:{height}px;width:auto;display:block;" />'
+    return ""
+
+# ── Shared tile-layer JS (Leaflet) ───────────────────────────────────────────
+_TILE_LAYERS_JS = """
+const tileLayers = {
+  'OpenStreetMap': L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    { attribution: '&copy; OpenStreetMap contributors', maxZoom: 22 }
+  ),
+  'Satellite (Esri)': L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    { attribution: 'Tiles &copy; Esri', maxZoom: 22 }
+  ),
+  'Esri Topo': L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+    { attribution: 'Tiles &copy; Esri', maxZoom: 22 }
+  ),
+  'Esri Street': L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+    { attribution: 'Tiles &copy; Esri', maxZoom: 22 }
+  ),
+  'CartoDB Light': L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    { attribution: '&copy; OpenStreetMap contributors &copy; CARTO', subdomains: 'abcd', maxZoom: 22 }
+  ),
+  'CartoDB Dark': L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    { attribution: '&copy; OpenStreetMap contributors &copy; CARTO', subdomains: 'abcd', maxZoom: 22 }
+  ),
+  'OpenTopoMap': L.tileLayer(
+    'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    { attribution: 'Map data: &copy; OpenStreetMap contributors | Map style: &copy; OpenTopoMap (CC-BY-SA)', maxZoom: 17 }
+  )
+};
+tileLayers['OpenStreetMap'].addTo(map);
+L.control.layers(tileLayers, null, { position: 'topright', collapsed: true }).addTo(map);
+"""
+
+_LEAFLET_CSS = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>'
+_LEAFLET_JS  = '<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>'
+
+_TILE_CONTROL_CSS = """
+  .leaflet-control-layers {
+    font-family: var(--mono) !important;
+    font-size: 11px !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  }
+  .leaflet-control-layers-toggle { background-color: var(--white) !important; }
+  .leaflet-control-layers-expanded {
+    padding: 8px 12px !important;
+    background: var(--white) !important;
+    color: var(--text) !important;
+  }
+  .leaflet-control-layers label {
+    font-family: var(--mono) !important;
+    font-size: 11px !important;
+    color: var(--text-mid) !important;
+    letter-spacing: 0.04em !important;
+  }
+  .leaflet-control-layers-separator {
+    border-top: 1px solid var(--border) !important;
+    margin: 6px 0 !important;
+  }
+"""
 
 
-def _build_map_html(waypoints):
-    import folium
-    m = folium.Map(
-        location=[waypoints[0][0], waypoints[0][1]],
-        zoom_start=20,
-        tiles="CartoDB positron"
-    )
-    folium.Marker(
-        [waypoints[0][0], waypoints[0][1]], popup="Start",
-        icon=folium.Icon(color="green", icon="play", prefix="fa")
-    ).add_to(m)
-    folium.Marker(
-        [waypoints[-1][0], waypoints[-1][1]], popup="End",
-        icon=folium.Icon(color="red", icon="flag", prefix="fa")
-    ).add_to(m)
-    for i, (lat, lon) in enumerate(waypoints):
-        folium.CircleMarker(
-            [lat, lon], radius=5, color="#1a56db",
-            fill=True, fill_color="#1a56db", fill_opacity=0.7,
-            popup=f"WP {i}"
-        ).add_to(m)
-    folium.PolyLine(
-        waypoints, color="#1a56db", weight=2,
-        dash_array="6 4", tooltip="Planned path"
-    ).add_to(m)
-    return m._repr_html_()
-
-
-def _build_dashboard(waypoints, map_html):
+def _build_dashboard(waypoints, _map_html_unused=None):
+    """Build the monitoring dashboard with a native Leaflet map (supports tile switching)."""
     R    = 6378137
     lat0 = waypoints[0][0]
     lon0 = waypoints[0][1]
@@ -59,7 +117,9 @@ def _build_dashboard(waypoints, map_html):
 
     waypoints_js  = json.dumps(wp_xy)
     waypoints_raw = json.dumps(waypoints)
-    map_escaped   = map_html.replace("\\", "\\\\").replace("`", "\\`")
+    center_lat    = waypoints[0][0]
+    center_lon    = waypoints[0][1]
+    logo_html     = _logo_img(height=140)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -69,6 +129,7 @@ def _build_dashboard(waypoints, map_html):
 <title>ASV Ground Control Station</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+{_LEAFLET_CSS}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root {{
@@ -115,9 +176,11 @@ def _build_dashboard(waypoints, map_html):
     flex-shrink: 0;
   }}
 
+  .logo-img {{ height: 32px; width: auto; display: block; flex-shrink: 0; }}
+
   .logo-block {{
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 10px;
   }}
 
@@ -168,8 +231,6 @@ def _build_dashboard(waypoints, map_html):
     padding: 0 20px;
     border-left: 1px solid var(--border);
   }}
-
-  .hstat:last-child {{ border-right: none; }}
 
   .hstat-label {{
     font-family: var(--mono);
@@ -223,8 +284,7 @@ def _build_dashboard(waypoints, map_html):
 
   /* MAP */
   #panel-map {{ flex-direction: column; }}
-  #map-container {{ flex: 1; }}
-  #map-container > * {{ width: 100% !important; height: 100% !important; }}
+  #map {{ flex: 1; }}
 
   /* GRAPHS */
   #panel-graphs {{
@@ -276,14 +336,19 @@ def _build_dashboard(waypoints, map_html):
   }}
 
   .card canvas {{ flex: 1; min-height: 0; }}
+
+  {_TILE_CONTROL_CSS}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo-block">
-    <span class="logo">ASV · GCS</span>
-    <span class="logo-sub">Ground Control Station</span>
+    {logo_html}
+    <div style="display:flex;flex-direction:column;gap:1px;">
+      <span class="logo">ASV · GCS</span>
+      <span class="logo-sub">Ground Control Station</span>
+    </div>
   </div>
   <div class="divider"></div>
   <div class="status-badge" id="hdr-status">WAITING</div>
@@ -321,7 +386,7 @@ def _build_dashboard(waypoints, map_html):
 </div>
 
 <div class="panel active" id="panel-map">
-  <div id="map-container"></div>
+  <div id="map"></div>
 </div>
 
 <div class="panel" id="panel-graphs">
@@ -362,19 +427,70 @@ def _build_dashboard(waypoints, map_html):
   </div>
 </div>
 
+{_LEAFLET_JS}
 <script>
-document.getElementById('map-container').innerHTML = `{map_escaped}`;
-const mapEl = document.getElementById('map-container').firstElementChild;
-if (mapEl) {{ mapEl.style.cssText = 'width:100%;height:100%;border:none;'; }}
+// ── Dashboard Leaflet Map ──────────────────────────────────────────────
+const WP_RAW = {waypoints_raw};
+const WP_XY  = {waypoints_js};
+
+const map = L.map('map', {{ zoomControl: true }}).setView([{center_lat}, {center_lon}], 19);
+
+{_TILE_LAYERS_JS}
+
+// Draw planned path
+const plannedCoords = WP_RAW.map(w => [w[0], w[1]]);
+L.polyline(plannedCoords, {{ color: '#bcc3d0', weight: 2, dashArray: '6 4' }}).addTo(map);
+
+// Waypoint markers
+WP_RAW.forEach(([lat, lon], i) => {{
+  const isFirst = i === 0;
+  const isLast  = i === WP_RAW.length - 1;
+  if (isFirst || isLast) {{
+    L.marker([lat, lon], {{
+      icon: L.divIcon({{
+        className: '',
+        html: `<div style="background:${{isFirst ? '#1a7a4a' : '#c0392b'}};color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">${{isFirst ? 'S' : 'E'}}</div>`,
+        iconSize: [22, 22], iconAnchor: [11, 11]
+      }})
+    }}).addTo(map).bindPopup(isFirst ? 'Start' : 'End');
+  }} else {{
+    L.circleMarker([lat, lon], {{
+      radius: 5, color: '#1a56db', fillColor: '#1a56db', fillOpacity: 0.7, weight: 1.5
+    }}).addTo(map).bindPopup(`WP ${{i}}`);
+  }}
+}});
+
+// ── Live boat marker (arrow) ───────────────────────────────────────────
+let boatMarker = null;
+let targetMarker = null;
+let actualPath = [];
+let actualPolyline = L.polyline([], {{ color: '#1a56db', weight: 2 }}).addTo(map);
+
+const boatIcon = L.divIcon({{
+  className: '',
+  html: `<div id="boat-icon-container" style="transition:transform 0.2s linear;width:24px;height:24px;display:flex;align-items:center;justify-content:center;">
+    <svg width="24" height="24" viewBox="0 0 24 24" style="filter:drop-shadow(0px 2px 3px rgba(0,0,0,0.4));">
+      <path d="M12 2L22 20L12 17L2 20L12 2Z" fill="#e74c3c" stroke="white" stroke-width="2"/>
+    </svg>
+  </div>`,
+  iconSize: [24, 24], iconAnchor: [12, 12]
+}});
+
+const targetIcon = L.divIcon({{
+  className: '',
+  html: `<div style="background:#b45309;width:12px;height:12px;transform:rotate(45deg);border:1.5px solid white;box-shadow:0 2px 4px rgba(0,0,0,0.3);"></div>`,
+  iconSize: [12, 12], iconAnchor: [6, 6]
+}});
 
 function switchTab(name, btn) {{
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + name).classList.add('active');
   btn.classList.add('active');
-  if (name === 'map') window.dispatchEvent(new Event('resize'));
+  if (name === 'map') {{ setTimeout(() => map.invalidateSize(), 50); }}
 }}
 
+// ── Chart.js setup ─────────────────────────────────────────────────────
 const GRID = '#edf0f5';
 const TICK = {{ color: '#8a94a6', font: {{ family: 'IBM Plex Mono', size: 10 }} }};
 const SCALE = {{
@@ -401,11 +517,7 @@ function pushLabel(chart, lbl) {{
   if (chart.data.labels.length > MAX) chart.data.labels.shift();
 }}
 
-const WP_XY  = {waypoints_js};
-const WP_RAW = {waypoints_raw};
-
 const pathChart = new Chart(document.getElementById('c-path'), {{
-
   type: 'scatter',
   data: {{ datasets: [
     {{ label: 'Planned', data: WP_XY, borderColor: '#bcc3d0',
@@ -414,9 +526,8 @@ const pathChart = new Chart(document.getElementById('c-path'), {{
     {{ label: 'Actual',  data: [], borderColor: '#1a56db',
        backgroundColor: 'transparent', showLine: true, borderWidth: 1.5,
        pointRadius: 2, pointBackgroundColor: '#1a56db' }},
-    {{ label: 'Target', data: [], backgroundColor: '#b45309', 
+    {{ label: 'Target', data: [], backgroundColor: '#b45309',
        pointRadius: 6, pointStyle: 'rectRot', showLine: false }},
-    // ── NEW: Live ASV Triangle on the Dashboard ──
     {{ label: 'ASV', data: [], backgroundColor: '#e74c3c', borderColor: '#c0392b',
        pointRadius: 8, pointHoverRadius: 8, pointStyle: 'triangle', rotation: 0, showLine: false }}
   ]}},
@@ -498,25 +609,43 @@ async function poll() {{
     document.getElementById('hdr-hdg').textContent  = d.heading.toFixed(1) + '°';
     document.getElementById('hdr-wp').textContent   = d.active_wp;
     document.getElementById('hdr-dist').textContent = d.dist_to_waypoint.toFixed(1) + ' m';
-    
+
     if (d.target_lat !== 0) {{
       document.getElementById('hdr-tgt').textContent = d.target_lat.toFixed(5) + ', ' + d.target_lon.toFixed(5);
       pathChart.data.datasets[2].data = [toXY(d.target_lat, d.target_lon)];
+      // Update target marker on Leaflet map
+      if (!targetMarker) {{
+        targetMarker = L.marker([d.target_lat, d.target_lon], {{icon: targetIcon}}).addTo(map);
+        targetMarker.bindTooltip("Look-Ahead Target", {{permanent: false, direction: 'right'}});
+      }} else {{
+        targetMarker.setLatLng([d.target_lat, d.target_lon]);
+      }}
     }}
-    
+
     if (d.gps_lat !== 0 || d.gps_lon !== 0) {{
       const currentPos = toXY(d.gps_lat, d.gps_lon);
-      
-      // Update the trailing blue line
+
+      // Chart.js: actual path + ASV triangle
       pathChart.data.datasets[1].data.push(currentPos);
-      
-      // ── Update the Live ASV Triangle ──
       pathChart.data.datasets[3].data = [currentPos];
-      // Chart.js 0° points UP (+Y). Nav 0° points EAST (+X). 
-      // 90 - heading accurately maps Nav Frame to Chart Rotation.
       pathChart.data.datasets[3].rotation = 90 - d.heading;
-      
       pathChart.update();
+
+      // Leaflet map: live boat position & heading
+      if (!boatMarker) {{
+        boatMarker = L.marker([d.gps_lat, d.gps_lon], {{icon: boatIcon, zIndexOffset: 1000}}).addTo(map);
+        boatMarker.bindTooltip("ASV Position", {{permanent: false, direction: 'top'}});
+      }} else {{
+        boatMarker.setLatLng([d.gps_lat, d.gps_lon]);
+      }}
+      const iconContainer = document.getElementById('boat-icon-container');
+      if (iconContainer && d.heading !== undefined) {{
+        iconContainer.style.transform = `rotate(${{90 - d.heading}}deg)`;
+      }}
+
+      // Leaflet map: draw actual trail
+      actualPath.push([d.gps_lat, d.gps_lon]);
+      actualPolyline.setLatLngs(actualPath);
     }}
 
     pushLabel(headingChart, ts);
@@ -547,17 +676,9 @@ poll();
 </html>"""
 
 
-# =============================================================================
-# WAYPOINT PLANNING PAGE  –  interactive Leaflet map for selecting waypoints
-# =============================================================================
 def _build_planning_html(default_center, default_waypoints):
-    """
-    Returns a full HTML page with an interactive Leaflet map.
-    The user clicks to place waypoints, then clicks 'Start Mission'
-    to POST them to /start.
-    """
-    # Convert default waypoints to JSON for the JS code
     default_wp_js = json.dumps([[lat, lon] for lat, lon in default_waypoints])
+    logo_html = _logo_img(height=140)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -567,8 +688,7 @@ def _build_planning_html(default_center, default_waypoints):
 <title>ASV · Mission Planner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+{_LEAFLET_CSS}
 <style>
   :root {{
     --white:     #ffffff;
@@ -607,6 +727,12 @@ def _build_planning_html(default_center, default_waypoints):
     gap: 16px;
     flex-shrink: 0;
     z-index: 1000;
+  }}
+
+  .logo-block {{
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }}
 
   .logo {{
@@ -788,13 +914,20 @@ def _build_planning_html(default_center, default_waypoints):
     font-weight: 600;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   }}
+
+  {_TILE_CONTROL_CSS}
 </style>
 </head>
 <body>
 
 <header>
-  <span class="logo">ASV · MISSION PLANNER</span>
-  <span class="logo-sub">Click the map to place waypoints</span>
+  <div class="logo-block">
+    {logo_html}
+    <div style="display:flex;flex-direction:column;gap:1px;">
+      <span class="logo">ASV · MISSION PLANNER</span>
+      <span class="logo-sub">Click the map to place waypoints</span>
+    </div>
+  </div>
 </header>
 
 <div class="main-area">
@@ -815,22 +948,17 @@ def _build_planning_html(default_center, default_waypoints):
   <div id="map"></div>
 </div>
 
+{_LEAFLET_JS}
 <script>
-// ── State ──────────────────────────────────────────────────────────────
-const waypoints = [];   // array of {{lat, lon, marker, idx}}
+const waypoints = [];
 let polyline = null;
 const defaultWps = {default_wp_js};
 
-// ── Map setup ──────────────────────────────────────────────────────────
 const center = defaultWps.length > 0 ? defaultWps[0] : [27.9147, 78.0766];
 const map = L.map('map', {{ zoomControl: true }}).setView(center, 18);
 
-L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
-  attribution: '&copy; OpenStreetMap contributors',
-  maxZoom: 22
-}}).addTo(map);
+{_TILE_LAYERS_JS}
 
-// ── Custom numbered icon ───────────────────────────────────────────────
 function wpIcon(n) {{
   return L.divIcon({{
     className: '',
@@ -840,48 +968,39 @@ function wpIcon(n) {{
   }});
 }}
 
-// ── Add a waypoint ─────────────────────────────────────────────────────
 function addWaypoint(lat, lon) {{
   const idx = waypoints.length;
   const marker = L.marker([lat, lon], {{ icon: wpIcon(idx + 1), draggable: true }}).addTo(map);
-
-  // Drag updates the coordinates
   marker.on('dragend', function() {{
     const pos = marker.getLatLng();
     const wp = waypoints.find(w => w.marker === marker);
     if (wp) {{ wp.lat = pos.lat; wp.lon = pos.lng; }}
     updateUI();
   }});
-
   waypoints.push({{ lat, lon, marker }});
   updateUI();
 }}
 
-// ── Remove a waypoint by index ─────────────────────────────────────────
 function removeWaypoint(idx) {{
   if (idx < 0 || idx >= waypoints.length) return;
   map.removeLayer(waypoints[idx].marker);
   waypoints.splice(idx, 1);
-  // Re-number all remaining markers
   waypoints.forEach((wp, i) => {{ wp.marker.setIcon(wpIcon(i + 1)); }});
   updateUI();
 }}
 
-// ── Clear all ──────────────────────────────────────────────────────────
 function clearAll() {{
   waypoints.forEach(wp => map.removeLayer(wp.marker));
   waypoints.length = 0;
   updateUI();
 }}
 
-// ── Redraw the sidebar list, polyline, and button state ────────────────
 function updateUI() {{
   const list = document.getElementById('wp-list');
   const empty = document.getElementById('wp-empty');
   const count = document.getElementById('wp-count');
   const btn   = document.getElementById('btn-start');
 
-  // Rebuild the sidebar list
   list.querySelectorAll('.wp-item').forEach(el => el.remove());
 
   if (waypoints.length === 0) {{
@@ -903,7 +1022,6 @@ function updateUI() {{
   count.textContent = waypoints.length + ' waypoint' + (waypoints.length !== 1 ? 's' : '');
   btn.disabled = waypoints.length < 2;
 
-  // Redraw the path polyline
   if (polyline) map.removeLayer(polyline);
   if (waypoints.length >= 2) {{
     polyline = L.polyline(
@@ -913,19 +1031,16 @@ function updateUI() {{
   }}
 }}
 
-// ── Map click → add waypoint ───────────────────────────────────────────
 map.on('click', function(e) {{
   addWaypoint(e.latlng.lat, e.latlng.lng);
 }});
 
-// ── Load default waypoints ─────────────────────────────────────────────
 defaultWps.forEach(([lat, lon]) => addWaypoint(lat, lon));
 
-
-// — Live Boat Position & Orientation —
+// ── Live telemetry on planning map ────────────────────────────────────
 let boatMarker = null;
+let targetMarker = null;
 
-// Use an SVG arrow pointing UP (North) by default, rather than a circle
 const boatIconHtml = `
   <div id="boat-icon-container" style="transition: transform 0.2s linear; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
     <svg width="24" height="24" viewBox="0 0 24 24" style="filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));">
@@ -933,51 +1048,30 @@ const boatIconHtml = `
     </svg>
   </div>
 `;
-
-const boatIcon = L.divIcon({{
-  className: '',
-  html: boatIconHtml,
-  iconSize: [24, 24],
-  iconAnchor: [12, 12]
-}});
-
-// — Target Point Marker —
-let targetMarker = null;
+const boatIcon = L.divIcon({{ className: '', html: boatIconHtml, iconSize: [24, 24], iconAnchor: [12, 12] }});
 const targetIcon = L.divIcon({{
   className: '',
   html: `<div style="background: #b45309; width: 12px; height: 12px; transform: rotate(45deg); border: 1.5px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
-  iconSize: [12, 12],
-  iconAnchor: [6, 6]
+  iconSize: [12, 12], iconAnchor: [6, 6]
 }});
-
 
 async function pollTelemetryPos() {{
   try {{
     const resp = await fetch('/telemetry');
     const d = await resp.json();
-    
-    // 1. UPDATE BOAT POSITION & ORIENTATION
     if (d.gps_lat && d.gps_lat !== 0) {{
       if (!boatMarker) {{
         boatMarker = L.marker([d.gps_lat, d.gps_lon], {{icon: boatIcon, zIndexOffset: 1000}}).addTo(map);
         boatMarker.bindTooltip("ASV Position", {{permanent: false, direction: 'top'}});
-        
-        if (waypoints.length === 0) {{
-          map.setView([d.gps_lat, d.gps_lon], 18);
-        }}
+        if (waypoints.length === 0) {{ map.setView([d.gps_lat, d.gps_lon], 18); }}
       }} else {{
         boatMarker.setLatLng([d.gps_lat, d.gps_lon]);
       }}
-
-      // Rotate the boat icon based on heading
       const iconContainer = document.getElementById('boat-icon-container');
       if (iconContainer && d.heading !== undefined) {{
-        // CSS rotation: 0deg points UP. Our Nav 0 is EAST. 90 - heading fixes this!
         iconContainer.style.transform = `rotate(${{90 - d.heading}}deg)`;
       }}
     }}
-
-    // 2. UPDATE TARGET POINT
     if (d.target_lat && d.target_lat !== 0) {{
       if (!targetMarker) {{
         targetMarker = L.marker([d.target_lat, d.target_lon], {{icon: targetIcon}}).addTo(map);
@@ -986,23 +1080,16 @@ async function pollTelemetryPos() {{
         targetMarker.setLatLng([d.target_lat, d.target_lon]);
       }}
     }}
-
-  }} catch(e) {{
-    // console.warn("Telemetry poll failed:", e);
-  }} finally {{
+  }} catch(e) {{}} finally {{
     setTimeout(pollTelemetryPos, 500);
   }}
 }}
-
-// Kick off the continuous polling loop
 pollTelemetryPos();
 
-// ── Start Mission ──────────────────────────────────────────────────────
 async function startMission() {{
   const btn = document.getElementById('btn-start');
   btn.disabled = true;
   btn.textContent = 'SENDING...';
-
   const wps = waypoints.map(wp => [wp.lat, wp.lon]);
   try {{
     const resp = await fetch('/start', {{
@@ -1014,7 +1101,6 @@ async function startMission() {{
       btn.textContent = 'MISSION STARTED ✓';
       btn.style.background = '#1a7a4a';
       btn.style.borderColor = '#1a7a4a';
-      // Redirect to the dashboard after a brief delay
       setTimeout(() => {{ window.location.href = '/dashboard'; }}, 800);
     }} else {{
       btn.textContent = 'ERROR — RETRY';
@@ -1033,24 +1119,19 @@ async function startMission() {{
 
 
 # =============================================================================
-# HTTP HANDLER  –  serves planning page, dashboard, and API endpoints
+# HTTP HANDLER
 # =============================================================================
 class _Handler(BaseHTTPRequestHandler):
-    def log_message(self, *a): pass  # suppress default HTTP logs
+    def log_message(self, *a): pass
 
     def do_GET(self):
         if self.path == '/telemetry':
-            # JSON API endpoint polled by the dashboard every 200ms
             body = json.dumps(_telemetry_ref).encode()
             self._respond(200, 'application/json', body)
-
         elif self.path == '/dashboard':
-            # The monitoring dashboard (shown after mission starts)
             body = _dashboard_html.encode()
             self._respond(200, 'text/html; charset=utf-8', body)
-
         else:
-            # Root path '/' → show the planning page (or dashboard if mission already started)
             if _mission_started:
                 body = _dashboard_html.encode()
             else:
@@ -1061,7 +1142,6 @@ class _Handler(BaseHTTPRequestHandler):
         global _mission_started, _dashboard_html
 
         if self.path == '/start':
-            # Read the POST body
             length = int(self.headers.get('Content-Length', 0))
             raw = self.rfile.read(length)
             try:
@@ -1075,17 +1155,12 @@ class _Handler(BaseHTTPRequestHandler):
 
                 logging.info("User submitted %d waypoints via GUI", len(wps))
 
-                # Rebuild the dashboard with the user-selected waypoints
-                map_html = _build_map_html(wps)
-                _dashboard_html = _build_dashboard(wps, map_html)
-
+                _dashboard_html = _build_dashboard(wps)
                 _mission_started = True
 
-                # Call the callback so main.py can send waypoints to the vehicle
                 if _on_waypoints_cb:
                     _on_waypoints_cb(wps)
 
-                # Signal the event so main.py's blocking wait can proceed
                 _waypoints_event.set()
 
                 self._respond(200, 'application/json',
@@ -1107,40 +1182,27 @@ class _Handler(BaseHTTPRequestHandler):
 
 
 # =============================================================================
-# PUBLIC API  –  called by main.py
+# PUBLIC API
 # =============================================================================
 def show(waypoints, telemetry, port=8080, on_waypoints=None):
-    """
-    Start the GUI HTTP server.
-
-    :param waypoints: Default waypoints to pre-load on the planning map
-    :param telemetry: Shared telemetry dict (updated by telemetry listener)
-    :param port: HTTP port for the web server
-    :param on_waypoints: Callback function(wps) called when user submits waypoints.
-                         If None, the planning page is skipped and the dashboard
-                         is shown immediately with the provided waypoints.
-    """
     global _telemetry_ref, _dashboard_html, _planning_html
     global _mission_started, _on_waypoints_cb
 
-    _telemetry_ref  = telemetry
+    _load_logo()
+
+    _telemetry_ref   = telemetry
     _on_waypoints_cb = on_waypoints
 
     if on_waypoints is not None:
-        # Planning mode: show the interactive waypoint selector first
         _mission_started = False
         center = waypoints[0] if waypoints else (27.9147, 78.0766)
-        _planning_html = _build_planning_html(center, waypoints)
-        # Pre-build a dashboard with default waypoints (will be rebuilt on /start)
-        map_html = _build_map_html(waypoints)
-        _dashboard_html = _build_dashboard(waypoints, map_html)
+        _planning_html  = _build_planning_html(center, waypoints)
+        _dashboard_html = _build_dashboard(waypoints)
         logging.info("Planning mode - open http://localhost:%d to select waypoints", port)
         print(f"[GUI] Open -> http://localhost:{port}  (select waypoints on the map)")
     else:
-        # Direct mode: skip planning, go straight to monitoring dashboard
         _mission_started = True
-        map_html = _build_map_html(waypoints)
-        _dashboard_html = _build_dashboard(waypoints, map_html)
+        _dashboard_html = _build_dashboard(waypoints)
         logging.info("Dashboard running at http://localhost:%d", port)
         print(f"[GUI] Open -> http://localhost:{port}")
 
@@ -1148,8 +1210,4 @@ def show(waypoints, telemetry, port=8080, on_waypoints=None):
 
 
 def wait_for_waypoints(timeout=None):
-    """
-    Block until the user submits waypoints from the planning page.
-    Returns True if waypoints were received, False on timeout.
-    """
     return _waypoints_event.wait(timeout=timeout)
