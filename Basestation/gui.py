@@ -50,15 +50,15 @@ const tileLayers = {
   ),
   'Satellite (Esri)': L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Tiles &copy; Esri', maxZoom: 12 }
+    { attribution: 'Tiles &copy; Esri', maxZoom: 18 }
   ),
   'Esri Topo': L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Tiles &copy; Esri', maxZoom: 12 }
+    { attribution: 'Tiles &copy; Esri', maxZoom: 18 }
   ),
   'Esri Street': L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Tiles &copy; Esri', maxZoom: 12 }
+    { attribution: 'Tiles &copy; Esri', maxZoom: 18 }
   ),
   'CartoDB Light': L.tileLayer(
     'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
@@ -136,7 +136,7 @@ def _build_dashboard(waypoints, _map_html_unused=None):
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ASV Ground Control Station</title>
+<title>Ground Control Station</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 {_LEAFLET_CSS}
@@ -532,7 +532,7 @@ def _build_dashboard(waypoints, _map_html_unused=None):
   <div class="logo-block">
     {logo_html}
     <div style="display:flex;flex-direction:column;gap:1px;">
-      <span class="logo">ASV · GCS</span>
+      <span class="logo">GCS</span>
       <span class="logo-sub">Ground Control Station</span>
     </div>
   </div>
@@ -1343,7 +1343,7 @@ def _build_planning_html(default_center, default_waypoints):
   <div class="logo-block">
     {logo_html}
     <div style="display:flex;flex-direction:column;gap:1px;">
-      <span class="logo">ASV · MISSION PLANNER</span>
+      <span class="logo">MISSION PLANNER</span>
       <span class="logo-sub">Click the map to place waypoints</span>
     </div>
   </div>
