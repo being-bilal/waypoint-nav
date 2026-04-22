@@ -2276,3 +2276,843 @@
 2026-04-18 19:37:39 - [ERROR] - vehicle unreachable. It may be off or out of range.
 2026-04-18 19:38:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
 2026-04-18 19:38:11 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:38:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:38:43 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:39:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:39:15 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:39:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:39:47 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:40:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:40:19 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:40:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:40:51 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:41:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:41:23 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:41:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:41:55 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:42:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:42:27 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:42:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:42:59 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:43:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:43:31 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:43:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:43:48 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 19:43:48 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 19:43:48 - [INFO] - Basestation stopped cleanly
+2026-04-18 19:43:48 - [INFO] - ============================================================
+2026-04-18 19:43:49 - [INFO] - ============================================================
+2026-04-18 19:43:49 - [INFO] - Basestation starting up
+2026-04-18 19:43:49 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 19:43:49 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 19:43:49 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 19:43:49 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 19:43:49 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 19:43:49 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 19:43:49 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 19:43:49 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 19:43:49 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 19:43:49 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 19:43:49 - [INFO] - Starting telemetry listener thread...
+2026-04-18 19:43:49 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 19:43:49 - [INFO] - Telemetry listener thread started (tid=6152450048)
+2026-04-18 19:43:49 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 19:43:49 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 19:43:49 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 19:43:49 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 19:43:49 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 19:43:49 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 19:43:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:44:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:44:54 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 19:44:54 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 19:44:54 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 19:44:54 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 19:44:54 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 19:44:54 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 19:44:54 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 19:44:54 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 19:44:54 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 19:44:54 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 19:44:54 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 19:44:54 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 19:44:54 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 19:44:54 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 19:44:54 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 19:44:54 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 19:44:54 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 19:44:54 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 19:44:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:44:54 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 19:44:55 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 19:44:57 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 19:44:57 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 19:45:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:45:29 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:45:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:46:01 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:46:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:46:33 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:46:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:47:05 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:47:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:47:37 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:47:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:48:09 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:48:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:48:41 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:48:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:49:13 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:49:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:49:45 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:49:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:50:17 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:50:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:50:49 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 19:50:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:50:59 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 19:50:59 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 19:50:59 - [INFO] - Basestation stopped cleanly
+2026-04-18 19:50:59 - [INFO] - ============================================================
+2026-04-18 19:52:18 - [INFO] - ============================================================
+2026-04-18 19:52:18 - [INFO] - Basestation starting up
+2026-04-18 19:52:18 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 19:52:18 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 19:52:18 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 19:52:18 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 19:52:18 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 19:52:18 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 19:52:18 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 19:52:18 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 19:52:18 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 19:52:18 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 19:52:18 - [INFO] - Starting telemetry listener thread...
+2026-04-18 19:52:18 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 19:52:18 - [INFO] - Telemetry listener thread started (tid=6146306048)
+2026-04-18 19:52:18 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 19:52:18 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 19:52:18 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 19:52:18 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 19:52:18 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 19:52:18 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 19:52:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:52:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:53:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:53:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:54:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:54:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:55:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:55:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:56:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:56:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:57:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:57:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:58:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:58:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:59:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 19:59:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:00:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:00:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:01:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:01:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:02:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:02:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:03:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:03:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:04:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:04:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:05:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:05:53 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:06:23 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:06:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:07:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:07:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:08:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:08:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:09:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:09:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:10:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:10:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:11:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:11:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:12:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:12:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:13:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:13:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:14:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:14:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:15:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:15:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:16:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:16:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:17:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:17:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:18:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:18:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:19:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:19:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:20:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:20:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:21:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:21:54 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:22:24 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:22:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:23:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:23:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:24:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:24:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:25:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:25:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:26:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:26:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:27:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:27:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:28:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:28:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:29:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:29:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:30:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:30:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:31:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:31:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:32:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:32:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:33:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:33:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:34:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:34:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:35:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:35:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:36:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:36:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:37:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:37:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:38:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:38:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:39:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:39:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:40:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:40:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:41:21 - [INFO] - User submitted 7 waypoints via GUI
+2026-04-18 20:41:21 - [INFO] - Mission start triggered by user — 7 waypoints received from GUI
+2026-04-18 20:41:21 - [INFO] -   User WP[0]: 27.9145684, 78.0759448
+2026-04-18 20:41:21 - [INFO] -   User WP[1]: 27.9144866, 78.0767897
+2026-04-18 20:41:21 - [INFO] -   User WP[2]: 27.9146098, 78.0767883
+2026-04-18 20:41:21 - [INFO] -   User WP[3]: 27.9146004, 78.0761030
+2026-04-18 20:41:21 - [INFO] -   User WP[4]: 27.9142899, 78.0761339
+2026-04-18 20:41:21 - [INFO] -   User WP[5]: 27.9144321, 78.0759045
+2026-04-18 20:41:21 - [INFO] -   User WP[6]: 27.9145672, 78.0759448
+2026-04-18 20:41:21 - [INFO] - Preparing to send 7 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 20:41:21 - [INFO] -   WP[0]: lat=27.9145684  lon=78.0759448
+2026-04-18 20:41:21 - [INFO] -   WP[1]: lat=27.9144866  lon=78.0767897
+2026-04-18 20:41:21 - [INFO] -   WP[2]: lat=27.9146098  lon=78.0767883
+2026-04-18 20:41:21 - [INFO] -   WP[3]: lat=27.9146004  lon=78.0761030
+2026-04-18 20:41:21 - [INFO] -   WP[4]: lat=27.9142899  lon=78.0761339
+2026-04-18 20:41:21 - [INFO] -   WP[5]: lat=27.9144321  lon=78.0759045
+2026-04-18 20:41:21 - [INFO] -   WP[6]: lat=27.9145672  lon=78.0759448
+2026-04-18 20:41:21 - [INFO] - Waypoint packet encoded — 319 bytes
+2026-04-18 20:41:21 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 20:41:21 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 20:41:21 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 20:41:21 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 20:41:21 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 20:41:22 - [INFO] - All waypoint TX attempts complete — 7 points sent
+2026-04-18 20:41:24 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 20:41:24 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 20:41:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:41:56 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:41:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:42:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:42:28 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:42:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:43:00 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:43:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:43:32 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:43:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:44:04 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:44:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:44:36 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:44:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:45:08 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:45:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:45:40 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:45:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:46:12 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:46:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:46:44 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:46:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:47:16 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:47:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:47:48 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 20:47:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 20:48:48 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:00:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:01:00 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:01:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:01:32 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:01:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:02:04 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:02:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:02:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:02:36 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:03:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:03:08 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:03:34 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:03:40 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:04:05 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:04:12 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:04:35 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:04:44 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:20:04 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:20:16 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:35:35 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 21:35:49 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 21:51:07 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 22:06:22 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 22:36:37 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 22:56:30 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:05:59 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:08:52 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:09:03 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:09:24 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:09:24 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:09:24 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:09:24 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:09:24 - [INFO] - ============================================================
+2026-04-18 23:09:27 - [INFO] - ============================================================
+2026-04-18 23:09:27 - [INFO] - Basestation starting up
+2026-04-18 23:09:27 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:09:27 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:09:27 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:09:27 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:09:27 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 23:09:27 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 23:09:27 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 23:09:27 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 23:09:27 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 23:09:27 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 23:09:27 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:09:27 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:09:27 - [INFO] - Telemetry listener thread started (tid=6184890368)
+2026-04-18 23:09:27 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:09:27 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:09:27 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:09:27 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:09:27 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:09:27 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:09:32 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:09:34 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 23:09:34 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 23:09:34 - [INFO] -   User WP[0]: 27.9147310, 78.0766382
+2026-04-18 23:09:34 - [INFO] -   User WP[1]: 27.9147516, 78.0768118
+2026-04-18 23:09:34 - [INFO] -   User WP[2]: 27.9146165, 78.0767982
+2026-04-18 23:09:34 - [INFO] -   User WP[3]: 27.9146257, 78.0765990
+2026-04-18 23:09:34 - [INFO] -   User WP[4]: 27.9147310, 78.0766382
+2026-04-18 23:09:34 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 23:09:34 - [INFO] -   WP[0]: lat=27.9147310  lon=78.0766382
+2026-04-18 23:09:34 - [INFO] -   WP[1]: lat=27.9147516  lon=78.0768118
+2026-04-18 23:09:34 - [INFO] -   WP[2]: lat=27.9146165  lon=78.0767982
+2026-04-18 23:09:34 - [INFO] -   WP[3]: lat=27.9146257  lon=78.0765990
+2026-04-18 23:09:34 - [INFO] -   WP[4]: lat=27.9147310  lon=78.0766382
+2026-04-18 23:09:34 - [INFO] - Waypoint packet encoded — 163 bytes
+2026-04-18 23:09:34 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 23:09:35 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 23:09:35 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 23:09:35 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 23:09:35 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 23:09:35 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 23:09:37 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 23:09:37 - [INFO] - Waypoints dispatched to vehicle in 3.04s
+2026-04-18 23:10:02 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:10:09 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:10:32 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:10:41 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:11:02 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:11:13 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:11:32 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:11:35 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:11:35 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:11:35 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:11:35 - [INFO] - ============================================================
+2026-04-18 23:11:35 - [INFO] - ============================================================
+2026-04-18 23:11:35 - [INFO] - Basestation starting up
+2026-04-18 23:11:35 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:11:35 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:11:35 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:11:35 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:11:35 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 23:11:35 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 23:11:35 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 23:11:35 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 23:11:35 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 23:11:35 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 23:11:35 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:11:35 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:11:35 - [INFO] - Telemetry listener thread started (tid=6146043904)
+2026-04-18 23:11:35 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:11:35 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:11:35 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:11:35 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:11:35 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:11:35 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:11:40 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:12:02 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:12:02 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:12:02 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:12:02 - [INFO] - ============================================================
+2026-04-18 23:12:02 - [INFO] - ============================================================
+2026-04-18 23:12:02 - [INFO] - Basestation starting up
+2026-04-18 23:12:02 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:12:02 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:12:02 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:12:02 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:12:02 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 23:12:02 - [INFO] -   Default WP[0]: 27.9147310, 78.0766382
+2026-04-18 23:12:02 - [INFO] -   Default WP[1]: 27.9147516, 78.0768118
+2026-04-18 23:12:02 - [INFO] -   Default WP[2]: 27.9146165, 78.0767982
+2026-04-18 23:12:02 - [INFO] -   Default WP[3]: 27.9146257, 78.0765990
+2026-04-18 23:12:02 - [INFO] -   Default WP[4]: 27.9147310, 78.0766382
+2026-04-18 23:12:02 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:12:02 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:12:02 - [INFO] - Telemetry listener thread started (tid=6152646656)
+2026-04-18 23:12:02 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:12:02 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:12:02 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:12:02 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:12:02 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:12:02 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:12:07 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:12:37 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:13:07 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:13:37 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:14:07 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:14:07 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:14:07 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:14:07 - [INFO] - ============================================================
+2026-04-18 23:14:08 - [INFO] - ============================================================
+2026-04-18 23:14:08 - [INFO] - Basestation starting up
+2026-04-18 23:14:08 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:14:08 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:14:08 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:14:08 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:14:08 - [INFO] - Default waypoints loaded: 1 points
+2026-04-18 23:14:08 - [INFO] -   Default WP[0]: 28.5460335, 77.1861470
+2026-04-18 23:14:08 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:14:08 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:14:08 - [INFO] - Telemetry listener thread started (tid=6143356928)
+2026-04-18 23:14:08 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:14:08 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:14:08 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:14:08 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:14:08 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:14:08 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:14:13 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:14:43 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:15:13 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:15:24 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:15:24 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:15:24 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:15:24 - [INFO] - ============================================================
+2026-04-18 23:15:24 - [INFO] - ============================================================
+2026-04-18 23:15:24 - [INFO] - Basestation starting up
+2026-04-18 23:15:24 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:15:24 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:15:24 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:15:24 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:15:24 - [INFO] - Default waypoints loaded: 2 points
+2026-04-18 23:15:24 - [INFO] -   Default WP[0]: 28.5460335, 77.1861470
+2026-04-18 23:15:24 - [INFO] -   Default WP[1]: 28.5457608, 77.1861488
+2026-04-18 23:15:24 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:15:24 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:15:24 - [INFO] - Telemetry listener thread started (tid=6120189952)
+2026-04-18 23:15:24 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:15:24 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:15:24 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:15:24 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:15:24 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:15:24 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:15:29 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:15:59 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:16:29 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:16:59 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:17:23 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:17:23 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:17:23 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:17:23 - [INFO] - ============================================================
+2026-04-18 23:17:25 - [INFO] - ============================================================
+2026-04-18 23:17:25 - [INFO] - Basestation starting up
+2026-04-18 23:17:25 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:17:25 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:17:25 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:17:25 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:17:25 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 23:17:25 - [INFO] -   Default WP[0]: 28.5460335, 77.1861470
+2026-04-18 23:17:25 - [INFO] -   Default WP[1]: 28.5460188, 77.1860562
+2026-04-18 23:17:25 - [INFO] -   Default WP[2]: 28.5457396, 77.1860576
+2026-04-18 23:17:25 - [INFO] -   Default WP[3]: 28.5457408, 77.1861890
+2026-04-18 23:17:25 - [INFO] -   Default WP[4]: 28.5460335, 77.1861470
+2026-04-18 23:17:25 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:17:25 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:17:25 - [INFO] - Telemetry listener thread started (tid=6173569024)
+2026-04-18 23:17:25 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:17:25 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:17:25 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:17:25 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:17:25 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:17:25 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:17:30 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:18:00 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:18:01 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:18:01 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:18:01 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:18:01 - [INFO] - ============================================================
+2026-04-18 23:18:02 - [INFO] - ============================================================
+2026-04-18 23:18:02 - [INFO] - Basestation starting up
+2026-04-18 23:18:02 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:18:02 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:18:02 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:18:02 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:18:02 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 23:18:02 - [INFO] -   Default WP[0]: 28.5460341, 77.1861903
+2026-04-18 23:18:02 - [INFO] -   Default WP[1]: 28.5460188, 77.1860562
+2026-04-18 23:18:02 - [INFO] -   Default WP[2]: 28.5457396, 77.1860576
+2026-04-18 23:18:02 - [INFO] -   Default WP[3]: 28.5457408, 77.1861890
+2026-04-18 23:18:02 - [INFO] -   Default WP[4]: 28.5460341, 77.1861903
+2026-04-18 23:18:02 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:18:02 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:18:02 - [INFO] - Telemetry listener thread started (tid=6186725376)
+2026-04-18 23:18:02 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:18:02 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:18:02 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:18:02 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:18:02 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:18:02 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:18:07 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:18:29 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 23:18:29 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 23:18:29 - [INFO] -   User WP[0]: 28.5460341, 77.1861903
+2026-04-18 23:18:29 - [INFO] -   User WP[1]: 28.5460188, 77.1860562
+2026-04-18 23:18:29 - [INFO] -   User WP[2]: 28.5457396, 77.1860576
+2026-04-18 23:18:29 - [INFO] -   User WP[3]: 28.5457408, 77.1861890
+2026-04-18 23:18:29 - [INFO] -   User WP[4]: 28.5460341, 77.1861903
+2026-04-18 23:18:29 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 23:18:29 - [INFO] -   WP[0]: lat=28.5460341  lon=77.1861903
+2026-04-18 23:18:29 - [INFO] -   WP[1]: lat=28.5460188  lon=77.1860562
+2026-04-18 23:18:29 - [INFO] -   WP[2]: lat=28.5457396  lon=77.1860576
+2026-04-18 23:18:29 - [INFO] -   WP[3]: lat=28.5457408  lon=77.1861890
+2026-04-18 23:18:29 - [INFO] -   WP[4]: lat=28.5460341  lon=77.1861903
+2026-04-18 23:18:29 - [INFO] - Waypoint packet encoded — 165 bytes
+2026-04-18 23:18:29 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 23:18:29 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 23:18:29 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 23:18:29 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 23:18:29 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 23:18:30 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 23:18:32 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 23:18:32 - [INFO] - Waypoints dispatched to vehicle in 3.04s
+2026-04-18 23:18:37 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:19:04 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:19:07 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:19:36 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:19:37 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:20:07 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:20:08 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:20:37 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:20:40 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:21:07 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:21:12 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:21:37 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:21:44 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:22:07 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:22:16 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:22:18 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:22:18 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:22:18 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:22:18 - [INFO] - ============================================================
+2026-04-18 23:22:20 - [INFO] - ============================================================
+2026-04-18 23:22:20 - [INFO] - Basestation starting up
+2026-04-18 23:22:20 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:22:20 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:22:20 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:22:20 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:22:20 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 23:22:20 - [INFO] -   Default WP[0]: 28.5460341, 77.1861903
+2026-04-18 23:22:20 - [INFO] -   Default WP[1]: 28.5460188, 77.1860562
+2026-04-18 23:22:20 - [INFO] -   Default WP[2]: 28.5457396, 77.1860576
+2026-04-18 23:22:20 - [INFO] -   Default WP[3]: 28.5457408, 77.1861890
+2026-04-18 23:22:20 - [INFO] -   Default WP[4]: 28.5460341, 77.1861903
+2026-04-18 23:22:20 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:22:20 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:22:20 - [INFO] - Telemetry listener thread started (tid=6111277056)
+2026-04-18 23:22:20 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:22:20 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:22:20 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:22:20 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:22:20 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:22:20 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:22:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:22:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:23:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:23:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:24:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:24:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:25:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:25:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:26:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:26:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:27:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:27:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:28:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:28:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:29:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:29:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:30:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:30:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:31:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:31:55 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:32:25 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:32:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:33:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:33:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:34:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:34:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:35:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:35:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:36:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:36:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:37:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:37:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:38:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:38:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:39:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:39:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:40:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:40:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:41:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:41:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:42:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:42:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:43:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:43:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:44:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:44:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:45:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:45:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:46:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:46:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:47:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:47:56 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:48:26 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:48:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:49:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:49:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:50:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:50:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:51:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:51:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:52:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:52:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:53:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:53:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:54:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:54:57 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:55:22 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 23:55:22 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 23:55:22 - [INFO] -   User WP[0]: 28.5460341, 77.1861903
+2026-04-18 23:55:22 - [INFO] -   User WP[1]: 28.5460188, 77.1860562
+2026-04-18 23:55:22 - [INFO] -   User WP[2]: 28.5457396, 77.1860576
+2026-04-18 23:55:22 - [INFO] -   User WP[3]: 28.5457408, 77.1861890
+2026-04-18 23:55:22 - [INFO] -   User WP[4]: 28.5460341, 77.1861903
+2026-04-18 23:55:22 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 23:55:22 - [INFO] -   WP[0]: lat=28.5460341  lon=77.1861903
+2026-04-18 23:55:22 - [INFO] -   WP[1]: lat=28.5460188  lon=77.1860562
+2026-04-18 23:55:22 - [INFO] -   WP[2]: lat=28.5457396  lon=77.1860576
+2026-04-18 23:55:22 - [INFO] -   WP[3]: lat=28.5457408  lon=77.1861890
+2026-04-18 23:55:22 - [INFO] -   WP[4]: lat=28.5460341  lon=77.1861903
+2026-04-18 23:55:22 - [INFO] - Waypoint packet encoded — 165 bytes
+2026-04-18 23:55:22 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 23:55:22 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 23:55:23 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 23:55:23 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 23:55:23 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 23:55:23 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 23:55:25 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 23:55:25 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 23:55:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:55:37 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-18 23:55:37 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-18 23:55:37 - [INFO] - Basestation stopped cleanly
+2026-04-18 23:55:37 - [INFO] - ============================================================
+2026-04-18 23:55:38 - [INFO] - ============================================================
+2026-04-18 23:55:38 - [INFO] - Basestation starting up
+2026-04-18 23:55:38 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-18 23:55:38 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-18 23:55:38 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-18 23:55:38 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-18 23:55:38 - [INFO] - Default waypoints loaded: 5 points
+2026-04-18 23:55:38 - [INFO] -   Default WP[0]: 28.5460341, 77.1861903
+2026-04-18 23:55:38 - [INFO] -   Default WP[1]: 28.5460188, 77.1860562
+2026-04-18 23:55:38 - [INFO] -   Default WP[2]: 28.5457396, 77.1860576
+2026-04-18 23:55:38 - [INFO] -   Default WP[3]: 28.5457408, 77.1861890
+2026-04-18 23:55:38 - [INFO] -   Default WP[4]: 28.5460341, 77.1861903
+2026-04-18 23:55:38 - [INFO] - Starting telemetry listener thread...
+2026-04-18 23:55:38 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-18 23:55:38 - [INFO] - Telemetry listener thread started (tid=6145536000)
+2026-04-18 23:55:38 - [INFO] - Starting GUI thread on port 8080...
+2026-04-18 23:55:38 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-18 23:55:38 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-18 23:55:38 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-18 23:55:38 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-18 23:55:38 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-18 23:55:43 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:55:51 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-18 23:55:51 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-18 23:55:51 - [INFO] -   User WP[0]: 28.5460341, 77.1861903
+2026-04-18 23:55:51 - [INFO] -   User WP[1]: 28.5460188, 77.1860562
+2026-04-18 23:55:51 - [INFO] -   User WP[2]: 28.5457396, 77.1860576
+2026-04-18 23:55:51 - [INFO] -   User WP[3]: 28.5457408, 77.1861890
+2026-04-18 23:55:51 - [INFO] -   User WP[4]: 28.5460341, 77.1861903
+2026-04-18 23:55:51 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-18 23:55:51 - [INFO] -   WP[0]: lat=28.5460341  lon=77.1861903
+2026-04-18 23:55:51 - [INFO] -   WP[1]: lat=28.5460188  lon=77.1860562
+2026-04-18 23:55:51 - [INFO] -   WP[2]: lat=28.5457396  lon=77.1860576
+2026-04-18 23:55:51 - [INFO] -   WP[3]: lat=28.5457408  lon=77.1861890
+2026-04-18 23:55:51 - [INFO] -   WP[4]: lat=28.5460341  lon=77.1861903
+2026-04-18 23:55:51 - [INFO] - Waypoint packet encoded — 165 bytes
+2026-04-18 23:55:51 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-18 23:55:52 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-18 23:55:52 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-18 23:55:52 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-18 23:55:52 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-18 23:55:52 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-18 23:55:54 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-18 23:55:54 - [INFO] - Waypoints dispatched to vehicle in 3.05s
+2026-04-18 23:56:13 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:56:26 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:56:43 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:56:58 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:57:13 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:57:31 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:57:43 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:58:03 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:58:13 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:58:35 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:58:43 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:59:07 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:59:13 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-18 23:59:39 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-18 23:59:43 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:00:11 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:00:13 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:00:43 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:00:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:01:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:01:15 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:01:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:01:47 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:02:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:02:19 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:02:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:02:51 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:03:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:03:23 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:03:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:03:55 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:04:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:04:27 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:04:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:04:59 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:05:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:05:31 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:05:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:06:03 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:06:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:06:35 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:06:44 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:07:07 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:07:14 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:07:39 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:22:45 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:23:12 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:38:16 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 00:53:44 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 00:53:46 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 01:54:18 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 01:54:18 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 02:53:46 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 02:53:48 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 03:24:17 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 03:24:22 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 03:54:49 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 04:09:57 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 04:55:20 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 05:10:30 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 05:38:27 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 05:40:13 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 05:55:33 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 06:11:30 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 06:26:49 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 06:57:04 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 18:46:22 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 18:46:37 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 18:46:52 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 18:47:09 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 18:47:22 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 18:47:41 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 18:47:52 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 18:48:13 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 18:48:22 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 18:48:45 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 18:48:52 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 18:49:17 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-19 18:49:22 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-19 18:49:33 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-19 18:49:33 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-19 18:49:33 - [INFO] - Basestation stopped cleanly
+2026-04-19 18:49:33 - [INFO] - ============================================================
+2026-04-22 18:46:43 - [INFO] - ============================================================
+2026-04-22 18:46:43 - [INFO] - Basestation starting up
+2026-04-22 18:46:43 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-22 18:46:43 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-22 18:46:43 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-22 18:46:43 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-22 18:46:43 - [INFO] - Default waypoints loaded: 5 points
+2026-04-22 18:46:43 - [INFO] -   Default WP[0]: 28.5460341, 77.1861903
+2026-04-22 18:46:43 - [INFO] -   Default WP[1]: 28.5460188, 77.1860562
+2026-04-22 18:46:43 - [INFO] -   Default WP[2]: 28.5457396, 77.1860576
+2026-04-22 18:46:43 - [INFO] -   Default WP[3]: 28.5457408, 77.1861890
+2026-04-22 18:46:43 - [INFO] -   Default WP[4]: 28.5460341, 77.1861903
+2026-04-22 18:46:43 - [INFO] - Starting telemetry listener thread...
+2026-04-22 18:46:43 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-22 18:46:43 - [INFO] - Telemetry listener thread started (tid=6119337984)
+2026-04-22 18:46:43 - [INFO] - Starting GUI thread on port 8080...
+2026-04-22 18:46:43 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-22 18:46:43 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-22 18:46:43 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-22 18:46:43 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-22 18:46:43 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-22 18:46:48 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-22 18:46:57 - [INFO] - User submitted 5 waypoints via GUI
+2026-04-22 18:46:57 - [INFO] - Mission start triggered by user — 5 waypoints received from GUI
+2026-04-22 18:46:57 - [INFO] -   User WP[0]: 28.5460341, 77.1861903
+2026-04-22 18:46:57 - [INFO] -   User WP[1]: 28.5460341, 77.1860549
+2026-04-22 18:46:57 - [INFO] -   User WP[2]: 28.5457396, 77.1860576
+2026-04-22 18:46:57 - [INFO] -   User WP[3]: 28.5457408, 77.1861890
+2026-04-22 18:46:57 - [INFO] -   User WP[4]: 28.5460341, 77.1861903
+2026-04-22 18:46:57 - [INFO] - Preparing to send 5 waypoints to 10.57.87.175:5005  (retries=5, interval=0.20s)
+2026-04-22 18:46:57 - [INFO] -   WP[0]: lat=28.5460341  lon=77.1861903
+2026-04-22 18:46:57 - [INFO] -   WP[1]: lat=28.5460341  lon=77.1860549
+2026-04-22 18:46:57 - [INFO] -   WP[2]: lat=28.5457396  lon=77.1860576
+2026-04-22 18:46:57 - [INFO] -   WP[3]: lat=28.5457408  lon=77.1861890
+2026-04-22 18:46:57 - [INFO] -   WP[4]: lat=28.5460341  lon=77.1861903
+2026-04-22 18:46:57 - [INFO] - Waypoint packet encoded — 180 bytes
+2026-04-22 18:46:57 - [INFO] - Waypoint TX attempt 1/5 → 10.57.87.175:5005
+2026-04-22 18:46:57 - [INFO] - Waypoint TX attempt 2/5 → 10.57.87.175:5005
+2026-04-22 18:46:57 - [INFO] - Waypoint TX attempt 3/5 → 10.57.87.175:5005
+2026-04-22 18:46:57 - [INFO] - Waypoint TX attempt 4/5 → 10.57.87.175:5005
+2026-04-22 18:46:57 - [INFO] - Waypoint TX attempt 5/5 → 10.57.87.175:5005
+2026-04-22 18:46:58 - [INFO] - All waypoint TX attempts complete — 5 points sent
+2026-04-22 18:47:00 - [ERROR] - Waypoints sent but vehicle host 10.57.87.175 (ASV_IP) appears unreachable — ICMP ping failed; UDP datagrams were transmitted but the vehicle may be down or on another network.
+2026-04-22 18:47:00 - [INFO] - Waypoints dispatched to vehicle in 3.06s
+2026-04-22 18:47:18 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-22 18:47:32 - [ERROR] - vehicle unreachable. It may be off or out of range.

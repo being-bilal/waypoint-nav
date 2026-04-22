@@ -50,15 +50,15 @@ const tileLayers = {
   ),
   'Satellite (Esri)': L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Tiles &copy; Esri', maxZoom: 18 }
+    { attribution: 'Tiles &copy; Esri', maxZoom: 20 }
   ),
   'Esri Topo': L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Tiles &copy; Esri', maxZoom: 18 }
+    { attribution: 'Tiles &copy; Esri', maxZoom: 20 }
   ),
   'Esri Street': L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Tiles &copy; Esri', maxZoom: 18 }
+    { attribution: 'Tiles &copy; Esri', maxZoom: 20 }
   ),
   'CartoDB Light': L.tileLayer(
     'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
@@ -532,7 +532,7 @@ def _build_dashboard(waypoints, _map_html_unused=None):
   <div class="logo-block">
     {logo_html}
     <div style="display:flex;flex-direction:column;gap:1px;">
-      <span class="logo">GCS</span>
+      <span class="logo">AUV | GCS</span>
       <span class="logo-sub">Ground Control Station</span>
     </div>
   </div>
