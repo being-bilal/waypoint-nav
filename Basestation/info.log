@@ -3116,3 +3116,58 @@
 2026-04-22 18:47:00 - [INFO] - Waypoints dispatched to vehicle in 3.06s
 2026-04-22 18:47:18 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
 2026-04-22 18:47:32 - [ERROR] - vehicle unreachable. It may be off or out of range.
+2026-04-22 22:36:04 - [INFO] - ============================================================
+2026-04-22 22:36:04 - [INFO] - Basestation starting up
+2026-04-22 22:36:04 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-22 22:36:04 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-22 22:36:04 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-22 22:36:04 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-22 22:36:04 - [INFO] - Default waypoints loaded: 5 points
+2026-04-22 22:36:04 - [INFO] -   Default WP[0]: 28.5460341, 77.1861903
+2026-04-22 22:36:04 - [INFO] -   Default WP[1]: 28.5460188, 77.1860562
+2026-04-22 22:36:04 - [INFO] -   Default WP[2]: 28.5457396, 77.1860576
+2026-04-22 22:36:04 - [INFO] -   Default WP[3]: 28.5457408, 77.1861890
+2026-04-22 22:36:04 - [INFO] -   Default WP[4]: 28.5460341, 77.1861903
+2026-04-22 22:36:04 - [INFO] - Starting telemetry listener thread...
+2026-04-22 22:36:04 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-22 22:36:04 - [INFO] - Telemetry listener thread started (tid=6182645760)
+2026-04-22 22:36:04 - [INFO] - Starting GUI thread on port 8080...
+2026-04-22 22:36:04 - [CRITICAL] - Failed to bind telemetry socket on port 5006: [Errno 48] Address already in use
+2026-04-22 22:36:04 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-22 22:36:04 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-22 22:36:04 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-22 22:36:15 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-22 22:36:15 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-22 22:36:15 - [INFO] - Basestation stopped cleanly
+2026-04-22 22:36:15 - [INFO] - ============================================================
+2026-04-22 22:36:16 - [INFO] - ============================================================
+2026-04-22 22:36:16 - [INFO] - Basestation starting up
+2026-04-22 22:36:16 - [INFO] - Sensor status — GPS: lat=0.0000000 lon=0.0000000 alt=0.00m fix=NO FIX sats=0
+2026-04-22 22:36:16 - [INFO] - Sensor status — IMU: roll=0.00° pitch=0.00° yaw=0.00°  accel=(0.000, 0.000, 0.000)
+2026-04-22 22:36:16 - [INFO] - Sensor status — NAV: heading=0.00° desired_bearing=0.00° heading_error=0.00° XTE=0.00m dist_to_waypoint=0.0m active_wp=0 nav_status=WAITING target_lat=0.0000000 target_lon=0.0000000
+2026-04-22 22:36:16 - [INFO] - Config — vehicle: 10.57.87.175  TX port: 5005  RX port: 5006  GUI port: 8080
+2026-04-22 22:36:16 - [INFO] - Default waypoints loaded: 5 points
+2026-04-22 22:36:16 - [INFO] -   Default WP[0]: 28.5460341, 77.1861903
+2026-04-22 22:36:16 - [INFO] -   Default WP[1]: 28.5460188, 77.1860562
+2026-04-22 22:36:16 - [INFO] -   Default WP[2]: 28.5457396, 77.1860576
+2026-04-22 22:36:16 - [INFO] -   Default WP[3]: 28.5457408, 77.1861890
+2026-04-22 22:36:16 - [INFO] -   Default WP[4]: 28.5460341, 77.1861903
+2026-04-22 22:36:16 - [INFO] - Starting telemetry listener thread...
+2026-04-22 22:36:16 - [INFO] - Telemetry listener thread starting — binding to 0.0.0.0:5006
+2026-04-22 22:36:16 - [INFO] - Telemetry listener thread started (tid=6150778880)
+2026-04-22 22:36:16 - [INFO] - Starting GUI thread on port 8080...
+2026-04-22 22:36:16 - [INFO] - Telemetry socket bound successfully on port 5006
+2026-04-22 22:36:16 - [INFO] - GUI thread started — open http://localhost:8080 in your browser
+2026-04-22 22:36:16 - [INFO] - Telemetry listener ready — timeout=1.0s, buffer=4096 bytes
+2026-04-22 22:36:16 - [INFO] - Basestation ready — press Ctrl+C to stop
+2026-04-22 22:36:16 - [INFO] - Planning mode - open http://localhost:8080 to select waypoints
+2026-04-22 22:36:21 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-22 22:36:51 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-22 22:37:21 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-22 22:37:51 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-22 22:38:21 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-22 22:38:51 - [ERROR] - Lost contact with the vehicle. Check that the vehicle is on and in range.
+2026-04-22 22:38:56 - [INFO] - KeyboardInterrupt received — shutting down
+2026-04-22 22:38:56 - [INFO] - Shutdown stats — telemetry packets received: 0  bad: 0
+2026-04-22 22:38:56 - [INFO] - Basestation stopped cleanly
+2026-04-22 22:38:56 - [INFO] - ============================================================

@@ -1,51 +1,29 @@
-# =============================================================================
-# BASESTATION MAIN.PY  –  Ground Control Station Entry Point
-# =============================================================================
-# Communication flow with the Vehicle (both on the same Wi-Fi network):
-#
-#   ┌──────────────┐    UDP :5005    ┌──────────────┐
-#   │  Base Station │ ─────────────→ │   Vehicle     │   (waypoints)
-#   │  (this file)  │ ←───────────── │  (Vehicle/)   │   (telemetry)
-#   └──────────────┘    UDP :5006    └──────────────┘
-#
-#   1. On startup, base station sends waypoints to the vehicle on port 5005.
-#   2. Vehicle starts navigating and streams telemetry back on port 5006.
-#   3. The telemetry listener thread parses each packet and updates the
-#      shared `telemetry` dict that the GUI reads via HTTP polling.
-#   4. The GUI web server (gui.py) runs on localhost:8080 and serves a
-#      live dashboard with map, charts, and header stats.
-#
-# IMPORTANT – Port agreement:
-#   Vehicle.UDP_PORT_IN  = 5005  ←  Basestation.UDP_PORT_OUT = 5005
-#   Vehicle.UDP_PORT_OUT = 5006  →  Basestation.UDP_PORT_IN  = 5006
-# =============================================================================
+import socket       
+import threading    
+import json         
+import time         
+import logging      
+import platform     
+import shutil      
+import subprocess  
+import webbrowser
+import gui          
 
-import socket       # UDP networking for sending waypoints and receiving telemetry
-import threading    # Background threads for telemetry listener and GUI server
-import json         # Serialising waypoint packets and parsing telemetry JSON
-import time         # Sleep in the main loop and between waypoint retries
-import logging      # Structured logging to info.log
-import platform     # ICMP ping command differs by OS
-import shutil       # Locate ping binary
-import subprocess   # Run ICMP probe after waypoint TX
-
-import gui          # The web-based dashboard module (serves HTML + /telemetry JSON endpoint)
-
-# ── Import all constants from the central config file ────────────────────────
+# Import all constants from the central config file 
 from constants_base import (
-    # Networking  (constants.py → NETWORKING section)
+    # Networking  
     ASV_IP, UDP_PORT_OUT, UDP_PORT_IN,        # vehicle IP, port to send waypoints, port to receive telemetry
-    # Waypoint TX  (constants.py → WAYPOINT TRANSMISSION section)
+    # Waypoint TX  
     WP_SEND_RETRIES, WP_SEND_INTERVAL,       # how many times to re-send and the delay between sends
-    # Telemetry RX  (constants.py → TELEMETRY LISTENER section)
+    # Telemetry RX  
     TELEM_RECV_TIMEOUT, TELEM_BUFFER_SIZE,    # socket timeout and max UDP datagram size
-    # GUI  (constants.py → GUI section)
+    # GUI  
     GUI_HTTP_PORT,                            # HTTP port for the dashboard (default 8080)
-    # Default waypoints  (constants.py → DEFAULT WAYPOINTS section)
+    # Default waypoints  
     DEFAULT_WAYPOINTS,                        # list of (lat, lon) tuples
 )
 
-# ── Logging setup ────────────────────────────────────────────────────────────
+# Logging setup 
 logging.basicConfig(
     filename="info.log",
     level=logging.INFO,
@@ -54,16 +32,15 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-# ── Shared telemetry state ───────────────────────────────────────────────────
 telemetry = {
-    # ── GPS fields ───────────────────────────────────────────────────────
+    # GPS fields
     "gps_lat":           0.0,
     "gps_lon":           0.0,
     "gps_alt":           0.0,
     "gps_fix":           0,
     "gps_sats":          0,
 
-    # ── IMU fields ───────────────────────────────────────────────────────
+    # IMU fields 
     "roll":              0.0,
     "pitch":             0.0,
     "yaw":               0.0,
@@ -71,7 +48,7 @@ telemetry = {
     "accel_y":           0.0,
     "accel_z":           0.0,
 
-    # ── Navigation fields ────────────────────────────────────────────────
+    # Navigation fields
     "heading":           0.0,
     "desired_bearing":   0.0,
     "heading_error":     0.0,
@@ -83,9 +60,9 @@ telemetry = {
     "nav_status":        "WAITING",
 }
 
-running = True   # global flag — set to False to stop all threads gracefully
+running = True   
 
-# ── Telemetry tracking (for change-detection logging) ───────────────────────
+# ── Telemetry tracking 
 _last_nav_status = None   # detect nav_status transitions (e.g. WAITING → NAVIGATING)
 _last_active_wp  = None   # detect waypoint advances
 _last_gps_fix    = None   # detect GPS fix quality changes
@@ -93,20 +70,17 @@ _packet_count    = 0      # total packets received — logged periodically
 _bad_packet_count = 0     # total malformed packets received
 _last_periodic_log = 0.0  # timestamp of last periodic telemetry log
 
-# Telemetry gap: ERROR repeats every ALERT_INTERVAL_S while no valid packet for TELEMETRY_GAP_THRESHOLD_S
 TELEMETRY_GAP_THRESHOLD_S = 5.0
 ALERT_INTERVAL_S = 30.0
 _listener_start_mono = None
 _last_valid_telemetry_mono = None
 _last_telemetry_gap_error_log_mono = None
-
 _vehicle_watch_started = False
 _vehicle_watch_lock = threading.Lock()
 _vehicle_unreachable_error_active = False
 
 
 def log_sensor_status_at_startup():
-    """Log current telemetry dict (sensor fields) once at program start — values are defaults until RX."""
     fix_names = {0: "NO FIX", 3: "3D FIX", 5: "RTK FLOAT", 6: "RTK FIXED"}
     gf = telemetry["gps_fix"]
     fix_label = fix_names.get(gf, f"UNKNOWN ({gf})")
@@ -144,7 +118,6 @@ def log_sensor_status_at_startup():
 
 
 def _check_telemetry_gap():
-    """While no valid telemetry for TELEMETRY_GAP_THRESHOLD_S, log ERROR every ALERT_INTERVAL_S."""
     global _last_telemetry_gap_error_log_mono
     now = time.monotonic()
     ref = (
@@ -169,11 +142,6 @@ def _check_telemetry_gap():
 
 
 def _vehicle_host_reachable_icmp(ip):
-    """
-    Best-effort ICMP ping to the vehicle IP (ASV_IP from constants_base).
-    Returns True if ping succeeds, False if it fails, None if ping could not be run.
-    UDP does not confirm delivery; this is a separate L3 reachability hint.
-    """
     ping_bin = shutil.which("ping")
     if not ping_bin:
         return None
@@ -198,7 +166,6 @@ def _vehicle_host_reachable_icmp(ip):
 
 
 def _vehicle_unreachable_watch_loop():
-    """Background: ICMP ping ASV_IP every ALERT_INTERVAL_S; ERROR while host is unreachable."""
     global _vehicle_unreachable_error_active
     while running:
         time.sleep(ALERT_INTERVAL_S)
@@ -219,7 +186,6 @@ def _vehicle_unreachable_watch_loop():
 
 
 def _start_vehicle_unreachable_watch_if_needed():
-    """Start a single daemon thread after first waypoint send to repeat unreachable ERRORs."""
     global _vehicle_watch_started
     with _vehicle_watch_lock:
         if _vehicle_watch_started:
@@ -232,15 +198,8 @@ def _start_vehicle_unreachable_watch_if_needed():
     ).start()
 
 
-# =============================================================================
-# WAYPOINT SENDER  – pushes waypoints to the Vehicle over UDP
-# =============================================================================
+# WAYPOINT SENDER 
 def send_waypoints(waypoints):
-    """
-    Sends a 'waypoints' JSON packet to the vehicle.
-    UDP is unreliable (no delivery guarantee), so we send multiple copies
-    spaced WP_SEND_INTERVAL seconds apart.
-    """
     global _vehicle_unreachable_error_active
     log.info(
         "Preparing to send %d waypoints to %s:%d  (retries=%d, interval=%.2fs)",
@@ -286,9 +245,7 @@ def send_waypoints(waypoints):
     log.debug("Waypoint TX socket closed")
 
 
-# =============================================================================
-# TELEMETRY LISTENER  – receives navigation state from the Vehicle over UDP
-# =============================================================================
+# TELEMETRY LISTENER 
 def telemetry_listener():
     """
     Runs in a background thread. Binds to UDP port 5006 and continuously
@@ -324,15 +281,13 @@ def telemetry_listener():
         try:
             data, addr = sock.recvfrom(TELEM_BUFFER_SIZE)
             _packet_count += 1
-
-            # ── Log first-ever packet (confirms comms link is up) ────────
             if _packet_count == 1:
                 log.info("First telemetry packet received from %s:%d — comms link established", addr[0], addr[1])
 
 
             pkt = json.loads(data.decode())
 
-            # ── Update shared telemetry dict ─────────────────────────────
+            # Update shared telemetry dict 
             telemetry["gps_lat"]  = pkt.get("gps_lat",  0.0)
             telemetry["gps_lon"]  = pkt.get("gps_lon",  0.0)
             telemetry["gps_alt"]  = pkt.get("gps_alt",  0.0)
@@ -362,7 +317,6 @@ def telemetry_listener():
             if had_gap_errors:
                 log.info("Telemetry stream resumed after gap (valid packet received)")
 
-            # ── Log nav_status transitions ───────────────────────────────
             current_status = telemetry["nav_status"]
             if current_status != _last_nav_status:
                 log.info(
@@ -372,7 +326,7 @@ def telemetry_listener():
                 )
                 _last_nav_status = current_status
 
-            # ── Log waypoint advances ────────────────────────────────────
+            # Log waypoint advances 
             current_wp = telemetry["active_wp"]
             if current_wp != _last_active_wp:
                 log.info(
@@ -383,7 +337,7 @@ def telemetry_listener():
                 )
                 _last_active_wp = current_wp
 
-            # ── Log GPS fix quality changes ──────────────────────────────
+            # Log GPS fix quality changes 
             current_fix = telemetry["gps_fix"]
             if current_fix != _last_gps_fix:
                 fix_names = {0: "NO FIX", 3: "3D FIX", 5: "RTK FLOAT", 6: "RTK FIXED"}
@@ -394,7 +348,7 @@ def telemetry_listener():
                 )
                 _last_gps_fix = current_fix
 
-            # ── Periodic snapshot log every 30 seconds ───────────────────
+            # Periodic snapshot log every 30 seconds 
             now = time.time()
             if now - _last_periodic_log >= 30.0:
                 log.info(
@@ -415,7 +369,7 @@ def telemetry_listener():
                 )
                 _last_periodic_log = now
 
-            # ── Warn on large cross-track error (> 5 m) ──────────────────
+            # Warn on large cross-track error (> 5 m) 
             xte = abs(telemetry["cross_track_error"])
             if xte > 5.0:
                 log.warning(
@@ -423,7 +377,6 @@ def telemetry_listener():
                     xte, telemetry["heading"], telemetry["desired_bearing"], telemetry["active_wp"],
                 )
 
-            # ── Console single-line summary ───────────────────────────────
             print(
                 f"\r[{telemetry['nav_status']:>10s}] "
                 f"GPS({telemetry['gps_lat']:.6f}, {telemetry['gps_lon']:.6f}) "
@@ -461,9 +414,7 @@ def telemetry_listener():
     log.info("Telemetry socket closed")
 
 
-# =============================================================================
-# MAIN  –  orchestrates the base station startup sequence
-# =============================================================================
+# MAIN 
 def main():
     global running
 
@@ -478,13 +429,11 @@ def main():
 
     default_waypoints = DEFAULT_WAYPOINTS
 
-    # ── 1. Start telemetry listener ──────────────────────────────────────
     log.info("Starting telemetry listener thread...")
     listener = threading.Thread(target=telemetry_listener, daemon=True, name="TelemetryListener")
     listener.start()
     log.info("Telemetry listener thread started (tid=%s)", listener.ident)
 
-    # ── 2. Callback for when user clicks "Start Mission" ─────────────────
     def on_waypoints_selected(wps):
         log.info("Mission start triggered by user — %d waypoints received from GUI", len(wps))
         for i, (lat, lon) in enumerate(wps):
@@ -499,7 +448,7 @@ def main():
         log.info("Waypoints dispatched to vehicle in %.2fs", elapsed)
         print("[MISSION] Waypoints sent. Dashboard is live.")
 
-    # ── 3. Launch the GUI thread ─────────────────────────────────────────
+    # Launch the GUI thread
     log.info("Starting GUI thread on port %d...", GUI_HTTP_PORT)
     gui_thread = threading.Thread(
         target=gui.show,
@@ -510,8 +459,11 @@ def main():
     )
     gui_thread.start()
     log.info("GUI thread started — open http://localhost:%d in your browser", GUI_HTTP_PORT)
+    
+    # Auto-open browser
+    threading.Timer(1.5, lambda: webbrowser.open(f"http://localhost:{GUI_HTTP_PORT}")).start()
 
-    # ── 4. Keep the main thread alive until Ctrl+C ───────────────────────
+    # Keep the main thread alive 
     log.info("Basestation ready — press Ctrl+C to stop")
     try:
         while True:
@@ -529,6 +481,6 @@ def main():
         log.info("=" * 60)
 
 
-# ── Entry point ──────────────────────────────────────────────────────────────
+# Entry point 
 if __name__ == "__main__":
     main()
